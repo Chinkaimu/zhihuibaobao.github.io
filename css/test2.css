@@ -1,0 +1,653 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,700italic,600italic,400italic,300italic);
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+
+.clearfix {
+    *zoom: 1
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+
+.clearfix:after {
+    clear: both
+}
+
+* {
+    padding: 0;
+    margin: 0
+}
+
+* {
+    padding: 0;
+    margin: 0
+}
+
+html, body {
+    height: 100%
+}
+
+.skrollr-desktop body {
+    height: 100% !important
+}
+
+body {
+    font-family: sans-serif
+}
+
+red {
+    color: #fb6e52
+}
+
+p {
+    margin: 1em 0
+}
+
+.parallax-image-wrapper {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    overflow: hidden
+}
+
+.parallax-image-wrapper-50 {
+    height: 50%;
+    top: -50%
+}
+
+.parallax-image-wrapper-100 {
+    height: 100%;
+    top: -100%
+}
+
+.parallax-image {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover
+}
+
+.parallax-image:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.parallax-image-50 {
+    height: 200%;
+    top: -50%
+}
+
+.parallax-image-100 {
+    height: 100%;
+    top: 0
+}
+
+.parallax-image.skrollable-between {
+    display: block
+}
+
+.no-skrollr .parallax-image-wrapper {
+    display: none !important
+}
+
+#skrollr-body {
+    height: 100%;
+    overflow: visible;
+    position: relative
+}
+
+.gap {
+    background: transparent center no-repeat;
+    background-size: cover
+}
+
+.skrollr .gap {
+    background: transparent !important
+}
+
+.gap-50 {
+    height: 50%
+}
+
+.gap-100 {
+    height: 100%
+}
+
+.landing-page .content {
+    background: #fff;
+    padding: 1em
+}
+
+.landing-page .navbar-default {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    background-color: transparent;
+    border: 0
+}
+
+.landing-page .navbar-default .navbar-toggle {
+    border-color: #fff;
+    -webkit-border-radius: 2px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 2px;
+    -moz-background-clip: padding;
+    border-radius: 2px;
+    background-clip: padding-box
+}
+
+.landing-page .navbar-default .navbar-toggle:hover, .landing-page .navbar-default .navbar-toggle:focus {
+    background-color: #2dc3e8
+}
+
+.landing-page .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff
+}
+
+.landing-page .navbar-default .navbar-header .navbar-brand img {
+    margin-top: -8px;
+    height: 36px
+}
+
+.landing-page .navbar-default .navbar-nav {
+    padding-top: 0
+}
+
+.landing-page .navbar-default .navbar-nav > li > a {
+    color: #282828;
+    font-weight: 300;
+    font-size: 15px
+}
+
+.landing-page .navbar-default .navbar-nav > li > a:hover, .landing-page .navbar-default .navbar-nav > li > a:focus {
+    color: #222
+}
+
+.landing-page .navbar-default .navbar-nav > li > a.buy {
+    color: #2dc3e8;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif, tahoma
+}
+
+.landing-page .navbar-default.other-pages {
+    background-color: #2dc3e8
+}
+
+.landing-page .navbar-default.other-pages .navbar-nav > li > a {
+    color: #fff
+}
+
+.landing-page .navbar-default.other-pages .navbar-nav > li > a.buy {
+    color: #fff;
+    background-color: #5bd0ed
+}
+
+.landing-page .navbar-default.other-pages .navbar-nav > li > a.buy:hover {
+    background-color: #72d7f0
+}
+
+@media (min-width: 768px) {
+    .landing-page .navbar-nav.navbar-right:last-child {
+        margin-right: 0
+    }
+}
+
+.landing-page .block-wrapper {
+    display: block;
+    margin: 0 auto !important;
+    padding-bottom: 85px
+}
+
+.landing-page .inner-content {
+    width: 90% !important;
+    margin: 0 auto !important;
+    max-width: 1334px
+}
+
+.landing-page .slide-cover .cover-statement, .landing-page .slide-cover .cover-statement-description {
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 45px;
+    color: #fff;
+    -webkit-transform: skew(20deg, -20deg);
+    -moz-transform: skew(20deg, -20deg);
+    -o-transform: skew(20deg, -20deg);
+    -ms-transform: skew(20deg, -20deg);
+    transform: skew(20deg, -20deg);
+    text-shadow: 0 1px 1px #4d4d4d
+}
+
+.landing-page .slide-cover .cover-statement-description {
+    font-size: 20px;
+    top: 160px;
+    left: 11%
+}
+
+.landing-page .slide-cover .cover-link {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%
+}
+
+.landing-page .slide-cover .cover-link a {
+    display: block;
+    color: #fbfbfb;
+    height: 60px;
+    padding: 8px 20px 8px;
+    border: 1px solid transparent;
+    text-align: center;
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 25px;
+    background-color: #2dc3e8
+}
+
+.landing-page .slide-cover .cover-link a:hover, .landing-page .slide-cover .cover-link a:focus {
+    text-decoration: none;
+    color: #fff
+}
+
+.landing-page .slide-cover .cover-link a i {
+    font-size: 40px
+}
+
+.landing-page .slide-slogan .slogan {
+    text-align: center;
+    padding: 100px 0 0
+}
+
+.landing-page .slide-slogan .slogan .slogan-title {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-weight: 300;
+    font-size: 35px
+}
+
+.landing-page .slide-slogan .slogan .slogan-title .title-word {
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    color: #2dc3e8;
+    font-size: 45px
+}
+
+.landing-page .slide-slogan .slogan .slogan-separator {
+    width: 1px;
+    height: 42px;
+    background-color: #ccc;
+    margin: 20px auto
+}
+
+.landing-page .slide-slogan .slogan .slogan-description {
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    padding: 0 25%
+}
+
+.landing-page .slide-slogan .slogan .slogan-action {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 70px
+}
+
+.landing-page .slide-slogan .slogan .slogan-action a {
+    color: #2dc3e8
+}
+
+.landing-page .slide-slogan .slogan .slogan-action a .action-word {
+    font-style: normal;
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 20px
+}
+
+.landing-page .slide-slogan .slogan-more {
+    text-align: center;
+    background: #ffce55;
+    margin-top: 0;
+    height: 80px
+}
+
+.landing-page .slide-slogan .slogan-more a {
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    padding-top: 20px;
+    line-height: 75px
+}
+
+.landing-page .slide-features {
+    padding: 50px 0 0
+}
+
+.landing-page .slide-features .row {
+    margin: 20px 0;
+    padding: 30px 15%
+}
+
+.landing-page .slide-features .features-text .heading {
+    margin-bottom: 15px
+}
+
+.landing-page .slide-features .features-text .heading h3 {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 25px;
+    line-height: 1.4em;
+    margin: .5em 0;
+    font-weight: 300
+}
+
+.landing-page .slide-features .features-text p {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 .5em 0;
+    line-height: 1.5em
+}
+
+.landing-page .slide-features .features-image {
+    text-align: center
+}
+
+.landing-page .slide-features .touts-container {
+    display: inline-block;
+    width: 100%;
+    margin-top: 75px
+}
+
+.landing-page .slide-features .touts-container .toutsList {
+    display: block;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 16px
+}
+
+.landing-page .slide-features .touts-container .toutsList .row {
+    padding: 0 15%
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout {
+    padding-top: 23px;
+    padding-bottom: 20px
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout .image-container {
+    display: block;
+    width: 100%;
+    text-align: center
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout .image-container i {
+    font-size: 3em
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout .text-container {
+    padding: 20px 10px;
+    float: left;
+    width: 100%;
+    text-align: center
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-weight: 400;
+    text-align: center
+}
+
+.landing-page .slide-features .touts-container .toutsList .tout p {
+    font-size: 14px;
+    text-align: center
+}
+
+.landing-page .slide-versions {
+    padding-top: 50px
+}
+
+.landing-page .slide-versions .version-items {
+    padding-top: 30px;
+    background: #ececea
+}
+
+.landing-page .slide-versions .version-items .item {
+    display: block;
+    background-color: #fff;
+    color: #282828;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    height: 440px;
+    -webkit-box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, .1);
+    -moz-box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, .1);
+    box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, .1)
+}
+
+.landing-page .slide-versions .version-items .item.link:before {
+    content: '';
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, #2dc3e8 100%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    transition-property: top, opacity;
+    transition-duration: .3s
+}
+
+.landing-page .slide-versions .version-items .item.link .details {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 16px;
+    padding: 20px;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3
+}
+
+.landing-page .slide-versions .version-items .item.link .details span {
+    display: block;
+    opacity: 0;
+    position: relative;
+    top: 100px;
+    transition-property: top, opacity;
+    transition-duration: .3s;
+    transition-delay: 0s
+}
+
+.landing-page .slide-versions .version-items .item.link .details .title {
+    line-height: 1;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 10px
+}
+
+.landing-page .slide-versions .version-items .item.link .details .info {
+    line-height: 1.2;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 300
+}
+
+.landing-page .slide-versions .version-items .item.link:focus, .landing-page .slide-versions .version-items .item.link:hover {
+    color: #dbdbdb
+}
+
+.landing-page .slide-versions .version-items .item.link:focus:before, .landing-page .slide-versions .version-items .item.link:hover:before, .landing-page .slide-versions .version-items .item.link:focus span, .landing-page .slide-versions .version-items .item.link:hover span {
+    opacity: 1
+}
+
+.landing-page .slide-versions .version-items .item.link:focus:before, .landing-page .slide-versions .version-items .item.link:hover:before {
+    top: 0
+}
+
+.landing-page .slide-versions .version-items .item.link:focus span, .landing-page .slide-versions .version-items .item.link:hover span {
+    top: 0
+}
+
+.landing-page .slide-versions .version-items .item.link:focus .title, .landing-page .slide-versions .version-items .item.link:hover .title {
+    transition-delay: .15s
+}
+
+.landing-page .slide-versions .version-items .item.link:focus .info, .landing-page .slide-versions .version-items .item.link:hover .info {
+    transition-delay: .25s
+}
+
+.landing-page .slide-versions .version-items .item:focus, .landing-page .slide-versions .version-items .item:hover {
+    text-decoration: none
+}
+
+.landing-page .slide-versions .version-items .item .ribbon {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    left: -31px !important;
+    top: 16px !important;
+    color: #fff;
+    overflow: hidden;
+    padding: 0 4px;
+    width: 120px;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    min-width: auto !important;
+    margin: 0 !important;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 13px;
+    font-weight: 200;
+    line-height: 28px;
+    white-space: nowrap;
+    text-align: center;
+    z-index: 1
+}
+
+.landing-page .slide-versions .version-items .item .ribbon.coming {
+    background-color: #ffce55
+}
+
+.landing-page .slide-versions .version-items .item .ribbon.new {
+    background-color: #2dc3e8
+}
+
+.landing-page .slide-versions .version-items .item .version-image {
+    display: block;
+    margin: 10px auto;
+    height: 128px
+}
+
+.landing-page .slide-versions .version-items .item .version-description .version-name {
+    margin-top: 35px;
+    display: block;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: #2dc3e8;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-size: 18px;
+    padding: 5px 15px 0;
+    text-align: center
+}
+
+.landing-page .slide-versions .version-items .item .version-description .version-desc {
+    display: block;
+    min-height: 135px;
+    padding: 5px 15px;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    font-weight: 300
+}
+
+.landing-page .slide-versions .versions-title {
+    text-align: center;
+    background: #ffce55;
+    margin-top: 0;
+    height: 80px
+}
+
+.landing-page .slide-versions .versions-title a {
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 25px;
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    color: #fff;
+    padding-top: 20px;
+    line-height: 75px
+}
+
+.landing-page .slide-footer {
+    background-color: #353535;
+    padding: 100px
+}
+
+.landing-page .slide-footer .footer-description {
+    text-align: center;
+    color: #999;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    line-height: 25px
+}
+
+.landing-page .slide-footer .footer-title {
+    color: #fff;
+    font-family: 'Kaushan Script', 'Open Sans', sans-serif, tahoma;
+    font-size: 35px;
+    text-align: center;
+    margin: 50px auto
+}
+
+.landing-page .slide-footer .footer-address, .landing-page .slide-footer .footer-tel {
+    text-align: center;
+    color: #999;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    line-height: 23px
+}
+
+.landing-page .slide-footer .footer-tel {
+    margin: 20px auto 0
+}
+
+.landing-page .slide-footer .footer-mail {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif, tahoma;
+    line-height: 23px;
+    color: #999
+}
+
+.landing-page .slide-footer .footer-mail a {
+    color: #999
+}
+
+.landing-page .slide-footer .footer-mail a:hover {
+    text-decoration: none;
+    color: #fff
+}
+
+.landing-page .slide-footer .footer-links {
+    color: #999;
+    text-align: center;
+    margin-top: 30px
+}
+
+.landing-page .slide-footer .footer-links .link {
+    font-family: 'Open Sans', sans-serif, tahoma;
+    color: #fff;
+    font-weight: 600
+}

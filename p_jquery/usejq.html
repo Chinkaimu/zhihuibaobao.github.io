@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Convenient Operation</title>
+    <script src="../js/jquery/2.1.3/jquery.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .demo{
+            margin:25px;
+        }
+      #demo1 p{
+          color:red;
+          cursor:pointer;
+          margin:5px;
+      }
+      #demo1 p:hover{
+          color:yellow;
+      }
+        div#hello{
+            background-color:#bca;
+            width:100px;
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo1" class="demo">
+        <p>一、滑动效果API---slideUp():鼠标浮动到字段上显示黄色覆盖；点击时滑动隐藏</p>
+        <p>First Paragraph</p>
+        <p>Second Paragraph</p>
+        <p>Yet one more Paragraph</p>
+    </div>
+    <div id="demo2" class="demo">
+         <p>二、自定义动画效果API---animation():点击Run，Hello文本框动画放大</p>
+         <button id="hello-run">run</button>
+         <div id="hello">Hello</div>
+    </div>
+    <div id="demo3" class="demo">
+        <p>三、事件托管API——on()</p>
+        <input type="checkbox" name="check-test" value="Hourly">
+        <input type="checkbox" name="check-test" value="Daily">
+        <input type="checkbox" name="check-test" value="Monthly">
+        <input type="checkbox" name="check-test" value="Yearly">
+        <div id="result"><p></p></div>
+    </div>
+   <script>
+      $("#demo1").on("click","p",function(){
+          // 一定要通过$转换成对象
+          $(this).slideUp();
+      });
+
+       $("#hello-run").bind("click",function(){
+           $("#hello").animate(
+                   {
+                       width:"50%",
+                       opacity:0.4 ,
+                       marginLeft:"0.6in",
+                       fontSize:"3em",
+                       borderWidth:"10px"
+                   },1500
+           );
+       });
+
+      function checkedCount(){
+          var n = $("input:checked").length;
+          $("#result p").text( n + " " + (n === 1 ? "is ":"are " ) + "checked.");
+      }
+       $("#demo3 input[type='checkbox']").on("click",checkedCount);
+   </script>
+</body>
+</html>

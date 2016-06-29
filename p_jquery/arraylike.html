@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ArrayLike Object -- aQuery</title>
+    <style type="text/css">
+        div {
+            width: 30px;
+            height: 10px;
+            float: left;
+        }
+    </style>
+    <script src="../js/jquery/2.1.3/jquery.js"></script>
+</head>
+<body>
+        <button id="test1">jQuey[0]</button>
+        <button id="test2">jQuey.get</button>
+        <button id="test3">aQuery[0]</button>
+        <button id="test4">aQuery.get</button>
+
+        <p class="book">book1</p>
+        <p class="book">book2</p>
+
+        <div id="show1"></div>
+        <div id="show2"></div>
+        <div id="show3"></div>
+        <div id="show4"></div>
+    <script>
+        var aQuery = function(selector){
+            if( !(this instanceof aQuery)){
+                return new aQuery();
+            }
+            var elem = document.getElementsByClassName((/[^.].*/.exec(selector));
+            this.length = elem.length;
+            for(var i = 0 ; i < this.length ; i ++){
+                this[i] = elem[i];
+            }
+            this.context = document;
+            this.selector = selector;
+            this.get = function(num){
+                return this[i];
+            }
+        }
+
+        $("#test1").click(function(){
+            $("#show1").append($(".book")[0]);
+            $("#show1").append($(".book")[1]);
+        });
+
+        $("#test1").click(function(){
+            $("#show1").append($(".book").get(0));
+            $("#show1").append($(".book").get(1));
+        });
+
+        $("#test1").click(function(){
+            $("#show1").append(aQuery(".book")[0]);
+            $("#show1").append(aQuery(".book")[1]);
+        });
+
+        $("#test1").click(function(){
+            $("#show1").append(aQuery(".book").get(0));
+            $("#show1").append(aQuery(".book").get(1));
+        });
+
+    </script>
+</body>
+</html>

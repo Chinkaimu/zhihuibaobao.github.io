@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script src="../js/jquery/2.1.3/jquery.js"></script>
+</head>
+<body>
+   <ul id="button-list">
+       <button id="jquery-button1">jquery click1</button>
+       <button id="jquery-button2">jquery click2</button>
+       <button id="jquery-button3">jquery click3</button>
+       <button id="jquery-button4">jquery click4</button>
+    </ul>
+   <script>
+       !!($("#jquery-button1").click(
+               function(){
+                   console.log("jquery-button clicked");
+               }));
+       $("#button-list").on("click","button",function(){console.log("here is on event");});
+   </script>
+</body>
+</html>
