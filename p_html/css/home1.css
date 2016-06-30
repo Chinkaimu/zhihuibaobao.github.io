@@ -9,6 +9,7 @@ html{
 body{
     width: 100%;
     height:100%;
+    font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", arial, sans-serif;
 }
 .mypage{
     border:1px solid #000;
@@ -61,7 +62,7 @@ body{
     list-style: none;
 }
 .right_nav li{
-    background:url("../images/linews.jpg") no-repeat;
+    background:url("../../images/linews.jpg") no-repeat;
     font-family: "黑体";
     width:188px;
     height:31px;
@@ -69,10 +70,17 @@ body{
     padding-bottom:5px;
     padding-top:3px;
     line-height:31px;
+    cursor: pointer;
 }
+
+.right_nav li a {
+   text-decoration: none;
+    color:black;
+}
+
 /*伪类*/
 .right_nav li:hover{
-    background-image:url("../images/hoverd.jpg") ;
+    background-image:url("../../images/hoverd.jpg") ;
 }
 .left_main{
     float:left;
@@ -85,7 +93,7 @@ body{
     height:610px;
     width:22px;
     float: left;
-    background-image: url("../images/cutting_line.jpg");
+    background-image: url("../../images/cutting_line.jpg");
 }
 .right_main{
     height:650px;
@@ -115,6 +123,7 @@ body{
     color:#000;
     text-decoration:none;
     font-size:13px;
+    cursor:pointer;
 }
 .intro_content:hover{
     font-size:14px;
@@ -132,14 +141,15 @@ body{
     color:#333;
     font-size:14px;
     font-family: "宋体";
-    line-height: 25px;
+    line-height: 40px;
     float:left;
-    height:25px;
+    height:45px;
     width:508px;
 }
 .keywords{
     text-align: center;
     color:#bcbf5e;
+    margin-top:15px;
 }
 .content_list{
     width:500px;
@@ -149,6 +159,7 @@ body{
 }
 .content_list li{
     line-height: 25px;
+    cursor: pointer;
 }
 .content_list li:hover{
     font-size:15px;
@@ -163,7 +174,7 @@ body{
     float: left;
     line-height: 25px;
     text-align:center;
-    background-image: url("../images/footer.jpg");
+    background-image: url("../../images/footer.jpg");
     width:975px;
     height:64px;
     padding-top:20px;
