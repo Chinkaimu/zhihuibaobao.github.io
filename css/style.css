@@ -291,7 +291,7 @@ input, textarea, button {
         height: 128px;
     }
 }
-@media (max-width:768px){
+@media (min-width:768px){
     .main .main_wrap .list .list-item img {
         display: block;
         margin: 8px auto;
