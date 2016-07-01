@@ -21,33 +21,14 @@ input, textarea, button {
     background: #31b5bd;
     color: white;
 }
-
-@media only screen and (max-width: 47.99em) {
-    #main {
-        padding: 3.5em 0 0;
-    }
+.index_header .header {
+    background-image: url(../images/bg_sky/1-1.png);
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
 }
-
-@media only screen and (min-width: 75em) {
-    .main_wrap {
-        max-width: 68.75em;
-        margin: auto;
-        position: relative;
-    }
-
-    .post_wrap {
-        max-width: 45em;
-        margin: auto;
-        position: relative;
-    }
-
-    .page_wrap {
-        max-width: 75em;
-        margin: auto;
-        position: relative;
-    }
-}
-
 .header .menu .icon-icon_menu {
     display: inline-block;
     width: 3.5em;
@@ -56,12 +37,11 @@ input, textarea, button {
     text-align: center;
     color: white;
     cursor: pointer;
+    text-decoration: none;
 }
-
 .header .menu .icon-icon_menu:before {
     font-size: 2em;
 }
-
 .header .search .icon-icon_search {
     display: inline-block;
     width: 3.5em;
@@ -70,16 +50,16 @@ input, textarea, button {
     text-align: center;
     color: white;
     cursor: pointer;
+    text-decoration: none;
 }
-
 .header .search .icon-icon_search:before {
     font-size: 2em;
 }
-
 .header .title a {
     font-family: "Forum", sans-serif;
     font-size: 1.5em;
     color: white;
+    text-decoration: none;
 }
 
 .header .title a:active {
@@ -87,10 +67,6 @@ input, textarea, button {
 }
 
 .header .title a:visited {
-    color: white;
-}
-
-.header .title a:hover {
     color: white;
 }
 
@@ -109,7 +85,110 @@ input, textarea, button {
     font-size: 3em;
 }
 
+@media only screen and (max-width: 47.99em){
+   .index_header .header{
+       width: 100%;
+       height:3.5em;
+       background:#333;
+       position:absolute;
+       left:0;
+       top:0;
+       z-index:11;
+   }
+    .index_header .header .search{
+        position:absolute;
+        right:0;
+        top:0;
+    }
+    .index_header .header .title{
+        width:100%;
+        height:3.5em;
+        line-height: 3.5em;
+        position:absolute;
+        left:0;
+        top:0;
+        text-align: center;
+    }
+    .index_header .header .menu_wrapper{
+        display:none;
+    }
+}
+@media only screen and (min-width: 48em) and (max-width: 74.99em){
+    .header .title{
+        padding:5em 0 1em;
+        text-align:center;
+    }
+    .header .search {
+        float: right;
+        display: inline-block;   }
+    .header .search input {
+        display: block;
+        width: 3.5em;
+        height: 1.5em;
+        line-height: 1.5em;
+        padding: 0.8em 0;
+        background:none;
+        font-size: 1em;
+        text-indent: 0.8em;
+        opacity: 0;
+        color:white;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 1em;
+        z-index: 5;   }
+    .header .search:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 1.5em;
+        padding: 0.8em 0;
+        background: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 4;
+        -webkit-transition: width 0.3s cubic-bezier(0.15, 0.95, 0.41, 0.95), background 0.3s cubic-bezier(0.15,
+        0.95, 0.41, 0.95);
+        transition: width 0.3s cubic-bezier(0.15, 0.95, 0.41, 0.95), background 0.3s cubic-bezier(0.15,
+        0.95, 0.41, 0.95);   }
+    .search_on .search input {
+        width: 20em;
+        cursor: text;
+        -webkit-animation: fadein 0.3s cubic-bezier(0.15, 0.95, 0.41, 0.95) 0.3s both;
+        animation: fadein 0.3s cubic-bezier(0.15, 0.95, 0.41, 0.95) 0.3s both;   }
+    .search_on .search:after {
+        width: 20em;
+        background: #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);   }
+    .header .menu{
+        display:none;
+    }
+    .menu_wrapper{
+        padding:0 0 5em;
+    }
+    .header .menu_wrapper .nav{
+        text-align: center;
+        list-style: none;
+    }
+    .header .menu_wrapper .nav li{
+        display:inline-block;
+    }
+    .header .menu_wrapper .nav li a{
+        background:transparent;
+        padding:0 0.75em;
+        color:white;
+        font-size:0.875em;
+    }
+    .index_header .down{
+        display:none;
+    }
+}
+
 @media only screen and (min-width: 75em) {
+    .index_header .header {
+        height: 100vh;
+    }
     .header {
         background: #333;
     }
@@ -164,7 +243,6 @@ input, textarea, button {
     .header .title a {
         display: block;
         padding: 0 1.5em;
-        text-decoration: none;
     }
 
     .header .title a:hover {
@@ -220,16 +298,6 @@ input, textarea, button {
         transform: scale(1, 1);
     }
 
-    .index_header .header {
-        height: 100vh;
-        background-image: url(../images/bg_sky/1-1.png);
-        background-size: 1920px 1080px;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        position: relative;
-    }
-
     .index_header .header .down {
         display: block;
     }
@@ -246,6 +314,18 @@ input, textarea, button {
         -webkit-animation: jump 2s cubic-bezier(0.15, 0.95, 0.41, 0.95) both infinite;
         animation: jump 2s cubic-bezier(0.15, 0.95, 0.41, 0.95) both infinite;
     }
+    .main_wrap {
+        max-width: 68.75em;
+        margin: auto;
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 47.99em) {
+    #main {
+        padding: 3.5em 0 0;
+    }
+
 }
 
 .main {
@@ -284,27 +364,12 @@ input, textarea, button {
     transition-property: top, opacity;
     transition-duration: 0.3s;
 }
-@media (min-width:992px) {
-    .main .main_wrap .list .list-item img {
+
+.main .main_wrap .list .list-item img {
         display: block;
-        margin: 10px auto;
-        height: 128px;
+        margin: 7% auto;
+        height: 36%;
     }
-}
-@media (min-width:768px){
-    .main .main_wrap .list .list-item img {
-        display: block;
-        margin: 8px auto;
-        height:160px;
-    }
-}
-@media (max-width:768px) {
-    .main .main_wrap .list .list-item img {
-        display: block;
-        margin: 8px auto;
-        height:170px;
-    }
-}
 
 .main .main_wrap .list .list-item .version-description .version-name {
     margin-top: 35px;
@@ -387,14 +452,16 @@ input, textarea, button {
 footer {
     color: #a2a2a2;
     font-size: 12px;
+    padding:2em;
 }
 
 footer .logo {
     background: url(../images/icon.png) no-repeat center center;
-    background-size: 35px 41px;
+    background-size: 30px 39px;
     width: 35px;
     height: 41px;
     margin: 0 auto;
+    padding:1em 0;
 }
 
 footer a {
