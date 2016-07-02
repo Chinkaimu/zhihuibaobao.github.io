@@ -32,13 +32,11 @@
         <p>主要功能：home 雪碧图，图片滑动； about 文本显示与隐藏； photots 图片放大；
             live 表格，缩略词提取； Contact 表单，Ajax提交表单。</p>
 
-        <p>一、home.html</p>
-
-        <ol>
-            <li><p>编写prepareSlideShow()，准备图片播放的位置。</p>
+            <p>一、home.html</p>
+            <p>1.编写prepareSlideShow()，准备图片播放的位置。</p>
 
                 <p>第一次代码：
-                    <code>javascript
+                    <code>
                         function prepareSlideShow(){
                         if(!document.getElementById) return false;
                         var intro = document.getElementById("intro");
@@ -56,7 +54,7 @@
                 <p>图片显示在文字上方，而且没有按照 150px*150px去显示。
                     错误：style设置写成了属性设置，缺少overflow设置，超出div的内容进行
                     隐藏才能起到限定大小框定内容的效果。  修改后代码：
-                    <code>javascript
+                    <code>
                         slideShowDiv.style.width = "150px";
                         slideShowDiv.style.height = "150px";
                         slideShowDiv.style.overflow = "hidden";
@@ -64,7 +62,7 @@
                     问题：图片div是插入到p后面，为什么会在前面。
                     原因：insertAfter函数最后的targetElement缺少nextSibling。
                     当不是最后一个节点时候应该插到下一个节点的前面。(DOM只实现了insertBefore方法)
-                    <code>javascript
+                    <code>
                         function insertAfter(newELement,targetElement){
                         var parent = targetELement.parentNode;
                         if(parent.lastChild == targetElement){
@@ -81,7 +79,7 @@
                 <p>2.接下来要为链接添加onmouseover监听时间,控制图片显示的位置：
                     初始代码 </p>
 
-                <p><code>javascript
+                <p><code>
                     for(var i = 0; i &lt; links.length ; i++){
                     links[i].onmouseover = function(){
                     destination = this.getAttribute("href");
@@ -131,7 +129,7 @@
                     随意截取字符串的时候要先找到”#”的位置，然后从”#”开始截取id.
                     （事实上array = string.split(character);方法就不用这么麻烦了）</p>
 
-                <p><code>javascript
+                <p><code>
                     function prepareInternalnav(){
                     if(!document.getElementsByTagName) return false;
                     if(!document.getElementById) return false;
@@ -177,7 +175,7 @@
 
                 <p>2.js代码</p>
 
-                <p><code>javascript
+                <p><code>
                     function preparePlace(){
                     if(!document.getElementById) return false;
                     if(!document.getElementsByTagName) return false;
@@ -220,7 +218,7 @@
 
                 <p>3.代码优化</p>
 
-                <p><code>javascript
+                <p><code>
                     function preparePlaceholder(){
                     if(!document.createElement) return false;
                     if(!document.createTextNode) return false;
@@ -280,7 +278,7 @@
                     在添加高亮事件的过程中,注意添加了onmouseover监听事件后还需要onmouseout事件,通过属性
                     的方式记录原来的className.</p>
 
-                <p><code>javascript
+                <p><code>
                     rows[j].oldClassName = rows[j].className;
                     rows[j].onmouseover = function(){
                     addClass(this,"highlight");
@@ -357,7 +355,7 @@
                     var request = new ActiveXObject(“Msxml2.XMLHTTP.3.”).
                     其他浏览器创建新对象var request = new XMLHttpRequest().</p>
 
-                <p><code>javascript
+                <p><code>
                     function getHttpObject(){
                     if(typeof XMLHttpRequest == 'undefined'){
                     XMLHttpRequest = function(){
@@ -381,7 +379,7 @@
                 <p>监听表单的onsubmit事件，如果通过ajax提交了表单，就不再走正常的表单提交流程。
                     否则，按正常的表单提交进行。</p>
 
-                <p><code>javascript
+                <p><code>
                     thisform.onsubmit = function(){
                     if(!validateForm(this)) return false;
                     var article = document.getElementsByTagName("article")[0];
@@ -397,7 +395,7 @@
                     进行对象序列化）；XML编码的请求(document.implementation.createDocument("","query",null));
                     上传文件；mutipart/form-data请求</p>
 
-                <p><code>javascript
+                <p><code>
                     for(var i = 0 ; i &lt; whichform.elements.length ; i++){
                     element = whichform.elements[i];
                     if(element.type != 'submit') {
@@ -405,8 +403,8 @@
                     }
                     }
                     var data = dataParts.join('&amp;');
-                </code></p></li>
-        </ol>
+                </code></p>
+
     </section>
 </article>
 </body>
