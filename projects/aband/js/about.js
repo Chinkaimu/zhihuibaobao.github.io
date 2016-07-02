@@ -25,7 +25,7 @@ function prepareInternalnav(){
         if(i != 0)document.getElementById(sectionId).style.display = "none";
         links[i].destination = sectionId;
         links[i].onclick = function(){
-            showSection(this.destination);
+            showSection(this.id);
             return false;
         }
     }

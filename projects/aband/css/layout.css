@@ -108,3 +108,9 @@ label{
 fieldset{
     border:0;
 }
+section p{
+    text-indent: 2em;
+}
+.doc_title{
+  text-align: center;
+}

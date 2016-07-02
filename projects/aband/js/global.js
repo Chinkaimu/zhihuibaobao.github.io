@@ -50,7 +50,6 @@ function highLightPage(){
 }
 
 function moveElement(elementID,final_x,final_y,interval){
-    console.log("moveElement");
     if(!document.getElementById) return false;
     if(!document.getElementById(elementID)) return false;
     var elem = document.getElementById(elementID);
