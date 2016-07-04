@@ -125,6 +125,11 @@ body{
     font-size:13px;
     cursor:pointer;
 }
+.intro_content.chinese{
+   font-family: "宋体";
+   line-height: 18px;
+}
+
 .intro_content:hover{
     font-size:14px;
 }
@@ -224,4 +229,7 @@ body{
 
 .items{
     width:230px;
+}
+.change_lang{
+    font-size:14px;
 }

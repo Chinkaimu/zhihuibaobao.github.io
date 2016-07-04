@@ -21,7 +21,7 @@ input, textarea, button {
     background: #31b5bd;
     color: white;
 }
-.index_header .header {
+.index_header .header,.header{
     background-image: url(../images/bg_sky/1-1.png);
     background-size:cover;
     background-position: center center;
@@ -85,8 +85,12 @@ input, textarea, button {
     font-size: 3em;
 }
 
+.header .down{
+    display: none;
+}
+
 @media only screen and (max-width: 47.99em){
-   .index_header .header{
+   .index_header .header,.header{
        width: 100%;
        height:3.5em;
        background:#333;
@@ -95,12 +99,12 @@ input, textarea, button {
        top:0;
        z-index:11;
    }
-    .index_header .header .search{
+    .header .search{
         position:absolute;
         right:0;
         top:0;
     }
-    .index_header .header .title{
+    .header .title{
         width:100%;
         height:3.5em;
         line-height: 3.5em;
@@ -109,7 +113,7 @@ input, textarea, button {
         top:0;
         text-align: center;
     }
-    .index_header .header .menu_wrapper{
+    .header .menu_wrapper{
         display:none;
     }
 }
@@ -180,9 +184,7 @@ input, textarea, button {
         color:white;
         font-size:0.875em;
     }
-    .index_header .down{
-        display:none;
-    }
+
 }
 
 @media only screen and (min-width: 75em) {
@@ -510,6 +512,43 @@ footer div {
     }
     100% {
         transform: translate(0, 0);
+    }
+}
+
+/* specific css for articles main-post_wrap-detai-post-content*/
+
+@media only screen and (min-width:48em){
+    .detail{
+        margin:0 auto;
+        width:78%;
+        background:#fff;
+        border-radius: 0.2em;
+        box-shadow:0 0.1em 0.35em rgba(0,0,0,0.26);
+    }
+    .detail .content{
+        padding:2.5em;
+    }
+    .detail .title{
+        margin:0 0 1em;
+        padding:0 0 1em;
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        font-size:1.875em;
+    }
+    .detail h3{
+        font-weight:bold;
+        line-height: 1.5em;
+        font-size:1.1em;
+    }
+    .detail ul{
+        text-indent: 2em;
+        list-style: disc inside;
+    }
+    .detail p{
+        text-indent: 2em;
+        line-height: 1.5em;
+    }
+    .post_wrap{
+    padding-bottom: 50px;
     }
 }
 

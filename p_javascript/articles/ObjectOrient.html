@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>面向对象</title>
+    <link rel="icon" type="image/png" href="/practices/images/icon.png">
+    <link rel="stylesheet" href="/practices/css/reset.css">
+    <link rel="stylesheet" href="/practices/css/font.css">
+    <link rel="stylesheet" href="/practices/css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/practices/index.html">CHEN.HAIMENG</a></h1>
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="/practices/p_html/ex_index.html">简历</a></li>
+                <li><a href="#">技术分享</a></li>
+                <li><a href="#">书文影音</a></li>
+                <li><a href="#">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+<div id="main" class="main">
+<div class="post_wrap">
+    <div class="detail">
+     <article class="post">
+      <section class="content">
+      <h1 class="title">JavaScript面向对象</h1>
+      <h3>1.包含知识点</h3>
+
+      <ul>
+          <li>对象的属性</li>
+          <li>对象的创建方法</li>
+          <li>原型链和对象的继承</li>
+      </ul>
+
+      <h3>2.什么是对象？</h3>
+
+      <p>ECMA-262标准定义：“无序属性的集合，其属性可以包含基本值、对象或者函数”。对象的每个属性或方法，都有一个名字。理解——散列表，一组名值对，值可以是数组或者函数。</p>
+
+      <h3>3.对象的属性类型有哪些？区别是什么？有哪些行为特性？参考ECMA-262（第5版）</h3>
+
+      <p>对象的属性分为数据属性和访问器属性。它们之间的区别是访问器属性不包含数值，它们包含一对getter和setter函数（非必须）。访问器属性不能直接定义，必须通过Object.defineProperty()来定义。相应的，它们的行为特性也有所不同。数值属性的行为特性包括，Configurable表示该属性是否可配置，能否被delete删除从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。Enumerable表示能否通过for-in循环返回属性。Writable表示能否修改属性值。Value包含属性的数据值。访问器属性的特性包括Configurable，Enumerable，get，set。get是在读取属性时调用的函数，set是写入属性时调用的函数。点操作定义的属性Configurable、Enumerable、Writable默认值是true，如果是使用Object.defineProperty()定义的属性，这三个特性的默认值是false。</p>
+
+      <p>测试：</p>
+
+      <ul>
+          <li>Object.defineProperty()能否修改原先点操作符定义的属性特性？答：能修改。</li>
+          <li>Object.defineProperty()如果设置了Configurable为false（包括默认设置），无法将其修改为true，因为Configurable=false第二项表示能否修改属性的特性。修改writable特性时不会报错，但无效，修改其他特性会报错。</li>
+          <li>注意访问器属性get,set对应的函数不是属性值，而是读取时调用执行的函数。</li>
+          <li>Object.defineProperties()创建多个属性。</li>
+      </ul>
+
+      <p>错误记录：</p>
+
+      <ul>
+          <li>属性特征都是小写。</li>
+      </ul>
+
+      <h3>4.如何访问属性的特性？</h3>
+
+      <p>ECMAScript 5的Object.getOwnPropertyDescriptor()方法可以取得给定属性的描述符，通过描述符获取属性的特征。</p>
+
+      <h3>5.对象有哪些构造模式？说明模式之间的区别和各自的优缺点。</h3>
+
+      <ul>
+          <li>(1)工厂模式：抽象具体对象的创建过程，用函数封装以特定接口创建对象的细节。缺点——没有解决对象的识别问题。</li>
+          <li>(2)构造函数模式：通过构造函数的new操作来创建对象实例。构造函数跟工厂模式的函数的区别有三：没有显示地创建对象；直接将属性和方法复制给this对象；没有return语句。实际上经历的过程：创建一个新对象；将构造函数的作用域赋值给新对象；执行构造函数中的代码（为这个对象添加属性）；返回这个对象。每个对象都会有一个construtor属性，指向构造函数。优点：创建自定义的构造函数，将它实例标记为特定类型，解决了工厂模式没解决的对象识别问题。缺点：每个方法都要在每个函数上重新创建一遍，不同的实例上得同名函数不相等，每一个函数就是一个Function对象，没有必要创建两个完成同样任务的Function实例，也没有必要执行代码前就将函数绑定到特定对象上。解决方法可以是将方法提出来到全局变量中，然而如果方法很多的话就需要定义很多全局函数，失去了引用类型的封装性。</li>
+          <li>(3)原型模式：先给构造函数添加原型对象，再使用new操作创建对象。跟构造模式相比，将属性赋值给原型而不是this。实例的原型属性[[prototype]]属性指向构造函数的原型，构造函数的原型对象本质是一个实例对象。（注解：原型对象可以理解为new一个构造函数产生了对象，constructor指向构造函数。）构造函数模式则对每一个实例都新建了每一个属性和方法。每创建一个函数，就会同时创建它的prototype对象，这个对象会自动获取constructor属性。如果重写了prototype对象，constructor会指向重写的类型，默认情况下constructor的属性应该是不可枚举的。重写原型对象，已定义的实例仍然指向原来的原型对象。优点：实例间共享属性和方法。缺点：当遇到属性是引用类型时，会导致一个实例修改引用类型内容时修改prototype里的内容。</li>
+          <li>(4)组合使用构造函数和原型模式：使用最广泛、认可度最好的创建自定义类型的方法。利用构造函数定义实例属性，而原型模式定义方法和共享的属性。</li>
+          <li><p>(5)动态原型模式：避免构造函数和原型独立，将他们都封装在构造函数中，只需要加入一个if判断其中一个function的属性不存在即可，原型只会在第一次调用构造函数时执行。</p>
+
+              <p>错误记录：</p>
+
+              <ul><li>if判断属性是否存在时，属性前记得加入this。</li></ul></li>
+          <li>(6)寄生构造函数模式： 创建一个函数，封装创建对象的代码，返回新创建的对象，但表面上看又像典型的构造函数，能用new操作符创建对象。事实上构造函数末尾的return语句，重写了调用构造函数时返回的值。优点：常用于对原生对象的改造。缺点：同工厂模式一样，不能用instanceof确定其类型。
+              错误记录：对于instanceof，typeof，isEnumerableProperty等操作符如果左边有+等操作，一定要加上括号修改优先级。</li>
+          <li>(7)稳妥构造函数模式：除了构造函数中的函数，无法直接访问其成员数据。优点：安全，适用于new,this无法使用的场景。缺点：不能用instanceof判断类型。
+              稳妥对象定义：没有公共属性，其方法也不引用this对象。</li>
+      </ul>
+
+      <h3>6.构造函数、原型和实例之间的关系是什么？</h3>
+
+      <p>每创建一个构造函数，就会同时给他创建一个原型对象prototype，这个对象会自动获取constructor属性，指向构造函数，而实例都包含一个指向原型对象的内部指针。</p>
+
+      <h3>7.什么是原型链，如何构建的？有什么作用？有什么缺点吗？解决方法是什么？</h3>
+
+      <p>构造函数会对应一个原型对象，原型对象都会有一个指向构造函数的指针，而实例会有一个指向原型的内部指针。如果把A构造函数的原型对象设置为B构造函数的实例，该A原型对象就会有指向B构造函数原型的指针。相应的将B构造函数的原型对象设置为C构造函数的实例，上述关系依然成立，层层递进，就构成了实例与原型的链条，即原型链。作用是实现继承。存在的缺点：一方面，超类型的实例属性在子对象中成了原型属性，对于引用类型的操作会成为问题。另一方面，无法在不影响所有对象实例的情况下，向超类型的构造函数传递参数。所以实践中很少单独使用原型链。通过借用构造函数解决问题。</p>
+
+      <h3>8.如何确定原型和实例之间的关系？</h3>
+
+      <p>instaceof    isPrototypeOf</p>
+
+      <h3>9.对象继承有哪些方法？其优缺点分别是什么？</h3>
+
+      <p>原型链继承，优点：正确使用圆形链实现继承；缺点：超类型的实例属性成为子类型的原型属性，一个实例的引用类型属性修改可能影响其他全部实例；不能再不影响所有对象的情况下向超类型传递参数。所以一般不会单独使用原型链实现继承。借用构造函数，优点：解决了原型链继承的问题。缺点：未实现方法共享。前面两者实现组合继承：借用构造函数实现属性继承，原型链实现方法继承，JavaScript中最常用的继承模式。缺点：两次调用构造函数，借用构造函数中以及原型继承中。原型式继承，优点：能够基于现有对象创建，相当于创建对象副本，不需要构造函数，自定义类型。缺点：包含引用类型的属性都会共享相应的值。寄生式继承，在原型式继承的基础上加入增强对象方法，创建一个函数，子类原型的prototype是超类型原型的实例，而非组合继承中超类型的实例。优点：加入了增强方法。缺点：未实现函数复用。寄生组合式继承：只调用了一次子类型构造函数，避免了在子类型原型上不必要的、多余的属性，还能保持原型链，正常使用instanceof和isPrototypeOf判断类型。是引用类型最理想的继承范式。</p>
+
+      <h4>参考书籍</h4>
+
+      <p>《JavaScript高级程序设计》</p>
+
+      <h4>参考代码</h4>
+
+      <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_javascript/js/ObjectOrient.js">我的代码</a></p>
+
+     </section>
+     </article>
+    </div>
+</div>
+</div>
+   <footer>
+        <h2 class="logo"></h2>
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved </div>
+    </footer>
+</main>
+</body>
+</html>
