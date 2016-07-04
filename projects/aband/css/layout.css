@@ -111,6 +111,16 @@ fieldset{
 section p{
     text-indent: 2em;
 }
+section p code{
+    text-indent: 0;
+}
 .doc_title{
   text-align: center;
+}
+
+code{
+    display:block;
+    background-color:#fff;
+    background-size: contain;
+    padding-left:4em;
 }
