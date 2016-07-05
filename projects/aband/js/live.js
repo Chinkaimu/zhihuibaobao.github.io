@@ -84,7 +84,7 @@ function displayAbbreviations(){
     for(key in defs){
       var definition = defs[key];
         var dtitle = document.createElement("dt");
-        var dtitile_text = docuemnt.createTextNode(key);
+        var dtitile_text = document.createTextNode(key);
         dtitle.appendChild(dtitile_text);
         var desc = document.createElement("dd");
         var desc_text = document.createTextNode(definition);
