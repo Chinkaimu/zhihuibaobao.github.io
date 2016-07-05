@@ -89,7 +89,7 @@ function displayAbbreviations(){
         var desc = document.createElement("dd");
         var desc_text = document.createTextNode(definition);
         desc.appendChild(desc_text);
-        dlist.appendChild(dtitile);
+        dlist.appendChild(dtitle);
         dlist.appendChild(desc);
     }
 

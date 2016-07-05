@@ -517,6 +517,23 @@ footer div {
 
 /* specific css for articles main-post_wrap-detai-post-content*/
 
+.detail h3{
+    font-weight:bold;
+    line-height: 1.5em;
+    font-size:1.1em;
+}
+.detail ul{
+    text-indent: 2em;
+    list-style: disc inside;
+}
+.detail p{
+    text-indent: 2em;
+    line-height: 1.5em;
+}
+.detail .title{
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
 @media only screen and (min-width:48em){
     .detail{
         margin:0 auto;
@@ -531,25 +548,12 @@ footer div {
     .detail .title{
         margin:0 0 1em;
         padding:0 0 1em;
-        border-bottom: 1px solid rgba(0,0,0,0.12);
         font-size:1.875em;
-    }
-    .detail h3{
-        font-weight:bold;
-        line-height: 1.5em;
-        font-size:1.1em;
-    }
-    .detail ul{
-        text-indent: 2em;
-        list-style: disc inside;
-    }
-    .detail p{
-        text-indent: 2em;
-        line-height: 1.5em;
     }
     .post_wrap{
     padding-bottom: 50px;
     }
 }
+
 
 /*# sourceMappingURL=style.css.map */
