@@ -74,7 +74,7 @@ function displayAbbreviations(){
     var defs = new Array();
 
     for(var i = 0 ; i < abbreviations.length ; i++){
-        var cuttent_abbr = abbreviations[i];
+        var current_abbr = abbreviations[i];
         if(current_abbr.childNodes.length < 0) continue;
         var definition  = current_abbr.getAttribute("title");
         var key = current_abbr.lastChild.nodeValue;
