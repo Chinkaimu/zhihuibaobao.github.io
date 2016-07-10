@@ -48,6 +48,29 @@
       <h3>2.什么是对象？</h3>
 
       <p>ECMA-262标准定义：“无序属性的集合，其属性可以包含基本值、对象或者函数”。对象的每个属性或方法，都有一个名字。理解——散列表，一组名值对，值可以是数组或者函数。</p>
+          <p>java对象与javascript对象的区别：（1）对象字面量创建方法；（2）行为定义；（3）javascript构造函数生成对象，构造函数可以当做普通函数执行；
+          java由类生成，类不能当做单独执行。</p>
+          <code>
+              /*java object*/ <br>
+              public class Person(name){ <br>
+                &nbsp;&nbsp;&nbsp;String name= name;<br>
+                &nbsp;&nbsp;&nbsp;String age = "15";<br>
+              &nbsp;&nbsp;&nbsp; public void sayNameandAge(){<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  System.out.println("name = " + name + "; age=" +  age);<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              }<br>
+              Person person = new Person("Joke");<br><br>
+
+              /*javascript object*/<br>
+              function Person(name){<br>
+              &nbsp;&nbsp;&nbsp; this.name = name;<br>
+              &nbsp;&nbsp;&nbsp; this.age = "15";<br>
+              &nbsp;&nbsp;&nbsp; this.sayNameandAge = function(){<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  console.log(("name = " + name + "; age=" +  age));<br>
+              &nbsp;&nbsp;&nbsp; }<br>
+              }<br>
+              var person = new Person("Joke");<br>
+          </code>
 
       <h3>3.对象的属性类型有哪些？区别是什么？有哪些行为特性？参考ECMA-262（第5版）</h3>
 
@@ -106,6 +129,7 @@
 
       <p>原型链继承，优点：正确使用圆形链实现继承；缺点：超类型的实例属性成为子类型的原型属性，一个实例的引用类型属性修改可能影响其他全部实例；不能再不影响所有对象的情况下向超类型传递参数。所以一般不会单独使用原型链实现继承。借用构造函数，优点：解决了原型链继承的问题。缺点：未实现方法共享。前面两者实现组合继承：借用构造函数实现属性继承，原型链实现方法继承，JavaScript中最常用的继承模式。缺点：两次调用构造函数，借用构造函数中以及原型继承中。原型式继承，优点：能够基于现有对象创建，相当于创建对象副本，不需要构造函数，自定义类型。缺点：包含引用类型的属性都会共享相应的值。寄生式继承，在原型式继承的基础上加入增强对象方法，创建一个函数，子类原型的prototype是超类型原型的实例，而非组合继承中超类型的实例。优点：加入了增强方法。缺点：未实现函数复用。寄生组合式继承：只调用了一次子类型构造函数，避免了在子类型原型上不必要的、多余的属性，还能保持原型链，正常使用instanceof和isPrototypeOf判断类型。是引用类型最理想的继承范式。</p>
 
+       <img src="../../images/articles/protolist.png">
       <h4>参考书籍</h4>
 
       <p>《JavaScript高级程序设计》</p>
