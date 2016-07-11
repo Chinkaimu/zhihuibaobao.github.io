@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>理解immutable.js</title>'
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">理解可变对象和不可变对象</h1>
+                        <h3>1.什么是Immutable Data不可变对象</h3>
+                        <p>Immutable Data是指一旦被创造后，就不可以被改变的数据。
+                          通过使用Immutable Data，可以让我们更容易的去处理缓存、回退、数据变化检测等问题，简化我们的开发。
+                        javascript本身没有不可变数据对象，但是Facebook的开源项目immutable.js弥补了这一点。学过java的人知道String常量会存在
+                        常量词中，String常量一旦创建就不能修改，重新赋值的时候实际上是又创建了一个常量，并没有改变原来的值，
+                            个人理解这就是不可变数据对象。</p>
+                        <h3>2.js中的Immutable Data</h3>
+                        <p>在javascript中我们可以通过deep clone来模拟Immutable Data，就是每次对数据进行操作，新对数据进行deep clone出一个新数据。</p>
+                        <p>不过深度拷贝效率很低。</p>
+                        <code>
+                            /**<br>
+                            * learning-immutable - clone-deep.js<br>
+                            * Created by mds on 15/6/6.<br>
+                            */<br>
+
+                            'use strict';<br>
+                            var cloneDeep = require('lodash.clonedeep');<br>
+
+                            var data = {<br>
+                            id: 'data',<br>
+                            author: {<br>
+                            name: 'mdemo',<br>
+                            github: 'https://github.com/demohi'<br>
+                            }<br>
+                            };<br>
+
+                            var data1 = cloneDeep(data);<br>
+
+                            console.log('equal:', data1===data); //false<br>
+
+                            data1.id = 'data1';<br>
+                            data1.author.name = 'demohi';<br>
+
+                            console.log(data.id);// data<br>
+                            console.log(data1.id);// data1<br>
+
+                            console.log(data.author.name);//mdemo<br>
+                            console.log(data1.author.name);//demohi <br>
+                        </code>
+
+                        <h3>3.immutable.js</h3>
+                        <p>immutable.js是由facebook开源的一个项目，主要是为了解决javascript Immutable Data的问题，
+                            通过参考hash maps tries 和 vector tries提供了一种更有效的方式。当我们发生一个set操作的时候，immutable.js会只clone它的父级别以上的部分，
+                            其他保持不变，这样大家可以共享同样的部分，可以大大提高性能。</p>
+
+                        <h3>4.不可变对象的好处</h3>
+                        <ul>
+                        <li>(1)提高效率，拷贝的时候只需要复制地址。</li>
+                        <li>(2)不可变对象对于多线程是安全的。</li>
+                        </ul>
+
+                        <h4>参考链接</h4>
+
+                        <p><a href="https://boke.io/immutable-js/">搞定immutable.js</a></p>
+                        <p><a href="http://www.jb51.net/article/49092.htm">java的string类为什么是不可变的</a></p>
+
+                        <h4>参考代码</h4>
+
+                        <p><a href="https://boke.io/immutable-js/">对象深拷贝</a></p>
+
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved </div>
+    </footer>
+</main>
+</body>
+</html>
