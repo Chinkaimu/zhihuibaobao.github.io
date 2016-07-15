@@ -32,10 +32,10 @@ function deepClone(obj){
         return new RegExp(obj.source,flags.join(''));;
     }
 
-    var result = Array.isArray(obj)?[]:obj.constructor?new Obj.constructor:{};
+    var result = Array.isArray(obj)?[]:obj.constructor?new obj.constructor:{};
 
-    for(var prop in obj){
-        result[key] = this.callee.call(obj[key]);
+    for(var key in obj){
+        result[key] = arguments.callee.call(obj[key]);
     }
    return result;
 }
