@@ -254,11 +254,11 @@ SubType2.prototype.getSubValue = function(){
 }
 
 var subType2 = new SubType2("chm1",10);
-//console.log("subType2.name = " +subType2.name);
-//console.log("subType2.property = " + subType2.getSuperValue() + " ; subType2.subproperty = " + subType2.getSubValue());
+console.log("subType2.name = " +subType2.name);
+console.log("subType2.property = " + subType2.getSuperValue() + " ; subType2.subproperty = " + subType2.getSubValue());
 var subType3 = new SubType2("chm2",10);
-//console.log("subType3.name = " +subType3.name);
-//console.log("subType3.property = " + subType3.getSuperValue() + " ; subType3.subproperty = " + subType3.getSubValue());
+console.log("subType3.name = " +subType3.name);
+console.log("subType3.property = " + subType3.getSuperValue() + " ; subType3.subproperty = " + subType3.getSubValue());
 
 //原型式继承:能够完成基于已有对象创建新对象，同时不必因此创建自定义的类型。相当于创建对象副本，还可以加入自定义属性。
 function object(o){

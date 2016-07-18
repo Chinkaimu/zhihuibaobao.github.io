@@ -543,7 +543,7 @@ footer div {
         box-shadow:0 0.1em 0.35em rgba(0,0,0,0.26);
     }
     .detail .content{
-        padding:2.5em;
+        padding: 2.5em 5em;
     }
     .detail .title{
         margin:0 0 1em;
@@ -626,9 +626,11 @@ footer div {
     }
 }
 
-code{
+code.block{
     display:block;
     padding-left:2em;
+}
+code{
     border:1px solid #000;
     font-size:0.85em;
     font-color:#eee;
