@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vueValidator</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scale=no;">
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-validator.js"></script>
+</head>
+<body>
+表单验证，显示每一项验证结果值：
+<div id="app">
+    <validator name="validation">
+        <form novalidate>
+            <p class="validate-field" v-for="field in fields">
+                <label :for="field.id">{{field.label}}</label>
+                <input type="text" :id="field.id" :placeholder="field.placeholder" :field="field.name" v-validate="field.validate">
+            </p>
+            <span v-if="$validation.username.maxlength">Your username is too long.</span>
+            <span v-if="$validation.message.minlength">Your message is too long.</span>
+            <pre>{{ $validation | json }}</pre>
+        </form>
+    </validator>
+</div>
+
+表单验证，通过onReset方法重置modified等验证结果：
+<div id="app1">
+    <validator name="validation1">
+        <form novalidate>
+            <div class="username-field">
+                <label for="username">username:</label>
+                <input id="username" type="text" v-validate:username="['required']">
+            </div>
+            <div class="comment-field">
+                <label for="comment">comment:</label>
+                <input id="comment" type="text" v-validate:comment="{ maxlength: 256 }">
+            </div>
+            <div class="errors">
+                <p v-if="$validation1.username.required">Required your name.</p>
+                <p v-if="$validation1.comment.maxlength">Your comment is too long.</p>
+            </div>
+            <input type="submit" value="send" v-if="$validation1.valid">
+            <button type="button" @click="onReset">Reset Validation</button>
+        </form>
+        <pre>{{ $validation1 | json }}</pre>
+    </validator>
+</div>
+
+可验证的表单元素：
+<div id="app2">
+    <validator name="validation1">
+        <form novalidate>
+            <h1>Survey</h1>
+            <fieldset>
+                <legend>Which do you like fruit ?</legend>
+                <input id="apple" type="checkbox" value="apple" v-validate:fruits="{
+          required: { rule: true, message: requiredErrorMsg },
+          minlength: { rule: 1, message: minlengthErrorMsg },
+          maxlength: { rule: 2, message: maxlengthErrorMsg }
+        }">
+                <label for="apple">Apple</label>
+                <input id="orange" type="checkbox" value="orange" v-validate:fruits>
+                <label for="orange">Orage</label>
+                <input id="grape" type="checkbox" value="grape" v-validate:fruits>
+                <label for="grape">Grape</label>
+                <input id="banana" type="checkbox" value="banana" v-validate:fruits>
+                <label for="banana">Banana</label>
+                <ul class="errors">
+                    <li v-for="msg in $validation1.fruits.errors">
+                        <p>{{msg.message}}</p>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </validator>
+</div>
+
+支持下拉列表验证:
+<div id="app3">
+    <validator name="validation1">
+        <form novalidate>
+            <select v-validate:lang="{ required: true }">
+                <option value="">----- select your favorite programming language -----</option>
+                <option value="javascript">JavaScript</option>
+                <option value="ruby">Ruby</option>
+                <option value="python">Python</option>
+                <option value="perl">Perl</option>
+                <option value="lua">Lua</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+                <option value="elixir">Elixir</option>
+                <option value="c">C</option>
+                <option value="none">Not a nothing here</option>
+            </select>
+            <div class="errors">
+                <p v-if="$validation1.lang.required">Required !!</p>
+            </div>
+        </form>
+    </validator>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            fields: [{
+                id: 'username',
+                label: 'username',
+                name: 'username',
+                placeholder: 'input your username',
+                validate: { required: true, maxlength: 16 }
+            }, {
+                id: 'message',
+                label: 'message',
+                name: 'message',
+                placeholder: 'input your message',
+                validate: { required: true, minlength: 8 }
+            }]
+        }
+    });
+
+    new Vue({
+        el: '#app1',
+        methods: {
+            onReset: function () {
+                this.$resetValidation()
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app2',
+        computed: {
+            requiredErrorMsg: function () {
+                return 'Required fruit !!'
+            },
+            minlengthErrorMsg: function () {
+                return 'Please chose at least 1 fruit !!'
+            },
+            maxlengthErrorMsg: function () {
+                return 'Please chose at most 2 fruits !!'
+            }
+        }
+    });
+
+    new Vue({ el: '#app3' });
+</script>
+</body>
+</html>

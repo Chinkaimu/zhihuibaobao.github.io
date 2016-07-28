@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>vue.js demo1</title>
+    <script src="js/vue.min.js"></script>
+    <style>
+        .box{
+            box-sizing:content-box;
+            -moz-box-sizing:content-box;
+            -webkit-box-sizing:content-box;
+            width:45%;
+            float:left;
+            border:1px solid red;
+            margin:10px;
+            padding:10px;
+        }
+        hr{
+            border-color:green;
+        }
+        .redcolor{
+            color:red;
+        }
+        .exfont{
+           font-size:1.5em;
+        }
+
+        .transition-ex{
+            width:100px;
+            height:50px;
+            display:inline-block;
+            position:relative;
+            line-height:50px;
+            color:#000000;
+            text-align:center;
+        }
+        .transition-ex:after{
+            content:"";
+            display:inline-block;
+            width:100px;
+            height:50px;
+            border-radius: 4px;;
+            background-color:blue;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:-1;
+            transform:scale(0,1);
+            -webkit-transform:scale(0,1);
+            -moz-transform: scale(0,1);
+        }
+        .transition-ex:hover:after{
+            transition:transform 1s cubic-bezier(0.15, 0.95, 0.41, 0.95);
+            -webkit-transition:-webkit-transform 1s cubic-bezier(0.15, 0.95, 0.41, 0.95);
+            -moz-transition:-moz-transform 1s cubic-bezier(0.15, 0.95, 0.41, 0.95) ;
+            -moz-transform: scale(1,1);
+            -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+        }
+        /*.expandex{*/
+            /*width:100px;*/
+            /*height:50px;*/
+            /*line-height:50px;*/
+            /*background-color:lightskyblue;*/
+            /*text-align:center;*/
+        /*}*/
+        /* 必需 */
+        .expand-transition {
+            transition: height 0.5s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        /* .expand-enter 定义进入的开始状态 */
+        /* .expand-leave 定义离开的结束状态 */
+        .expand-enter, .expand-leave {
+            height: 0;
+            padding: 0 10px;
+            opacity: 0;
+        }
+        .bounce-transition{
+            display:inline-block;
+        }
+        .bounce-enter{
+            animation:bounce-in .5s;
+        }
+        .bounce-leave{
+            animation:bounce-out .5s;
+        }
+        @keyframes bounce-in {
+            0%{
+            transform:scale(0);
+            }
+            50%{
+                transform:scale(1.5);
+            }
+            100%{
+                transform:scale(1);
+            }
+        }
+        @keyframes bounce-out{
+            0%{
+                transform:scale(1);
+            }
+            50%{
+                transform:scale(1.5);
+            }
+            100%{
+                transform:scale(0);
+            }
+        }
+        Edit in JSFiddle
+        Result
+        HTML
+        JavaScript
+        CSS
+        ul {
+            padding-left: 0;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .staggered-transition {
+            transition: all .5s ease;
+            overflow: hidden;
+            margin: 0;
+            height: 20px;
+        }
+        .staggered-enter, .staggered-leave {
+            opacity: 0;
+            height: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h3>备注：可以直接在控制台修改变量值使得页面中状态改变</h3>
+    <hr>
+    <div id="app">
+        1.构造器实例<br>{{ name }}
+    </div>
+    <hr>
+    <div id="example1">
+        2.计算属性:<br>
+        a={{a}},b={{b}}
+    </div>
+    <hr>
+    <div id="example2">
+        3.计算属性$swatch:<br>
+        {{fullName}}
+    </div>
+    <hr>
+    <div id="example3">
+        4.v-bind:class,v-bind:style使用
+        <div v-bind:class="{'redcolor':isA,exfont:isB}">
+           通过v-bind:class对象语法：改变颜色+放大字体
+        </div>
+        <div v-bind:class="[classA,classB]">
+            通过v-bind:class数组语法：改变颜色+放大字体
+        </div>
+    </div>
+    <hr>
+    <div id="example4">
+       5.条件渲染 v-if and v-show
+        <h1 v-if="ok">Yes</h1>
+        <template v-if="ok">
+           <h1>Title</h1>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+        </template>
+        <div v-if="Math.random()>0.5">Sorry</div>
+        <div v-else>
+            Not sorry
+        </div>
+    </div>
+    <hr>
+    <div id="example5">
+       6.列表渲染<br>
+        <ul>
+            <li v-for="item in items">
+                {{item}} - {{$index}} - {{item.message}}
+            </li>
+            <li>测试单元素列表渲染</li>
+        </ul>
+        <ul>
+           <template v-for="item in items">
+             <li>{{$index}} - {{item.message}}</li>
+             <li>template渲染</li>
+           </template>
+        </ul>
+    </div>
+    <hr>
+    <div id="example6">
+        7.方法与事件处理器<br>
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <br><hr>
+    <div id="example7">
+        8.表单控件绑定<br>
+        <span>Message is: {{ message }}</span>
+        <br>
+        <input type="text" v-model="message" placeholder="edit me">
+        <br><br>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+        <br><br>
+
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names:{{checkedNames | json}}</span>
+
+        <br>
+        <input type="radio" id="one" value="One1" v-model="picked1">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two1" v-model="picked1">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked1 }}</span>
+        <br>
+        多选！！！！用multiple<br>
+        <select v-model="selected" multiple>
+            <option selected>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected |json }}</span><br>
+
+         <br>绑定value<br>
+        <!-- 当选中时，`picked` 为字符串 "a" -->
+
+        a  <input type="radio" v-model="picked" value="a" checked>
+        b  <input type="radio" v-model="picked" value="b">
+        <span>选中：{{picked}}</span><br>
+
+        a  <input type="radio" v-model="ex7picked" v-bind:value="a" checked>
+        b  <input type="radio" v-model="ex7picked" v-bind:value="b">
+        <span>选中：{{ex7picked}}</span><br>
+
+        <!-- `toggle` 为 true 或 false -->
+        <input type="checkbox" v-model="toggle">
+        <span>{{toggle}}</span><br>
+        <!-- 当选中时，`selected` 为字符串 "abc" -->
+        <select v-model="selected1" checked>
+            <option value="abc">ABC</option>
+        </select>
+        <span>选中：{{selected1}}</span><br>
+        <input type="text" v-model="ex7input" placeholder="请输入姓名" lazy>
+        填写：{{ex7input}}<br>
+
+        转换为数字：<input v-model="age" number>
+        结果：{{age}}<br>
+
+        debounce: <input v-model="msg" debounce="5000">
+        结果输出：{{msg}}<br>
+    </div><br>
+</div>
+<div class="box">
+   <div class="transition-example">
+   <div class="transition-ex"> CSS3动画</div>
+   </div>
+    <div id="example8">
+        <div v-if="show" transition="expand">VUE过渡</div>
+        <div v-if="show" :transition="transitionName">Hello</div>
+        <span v-show="show" transition="bounce">Just Look At Me!</span>
+        <br>
+    </div>
+    <hr>
+    <div id="demo">
+        <input v-model="query">
+        <ul>
+            <li v-for="item in list | filterBy query"
+                transition="staggered"
+                stagger="100">
+                {{item.msg}}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="js/d1.js"></script>
+</body>
+</html>
