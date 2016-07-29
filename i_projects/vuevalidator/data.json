@@ -1,0 +1,10 @@
+{
+  "phoneNum":"12345678",
+  "price":"88",
+  "tradeItems":  [
+    {"tradeName":"餐饮"},
+    {"tradeName":"美甲"},
+    {"tradeName":"旅游"},
+    {"tradeName":"快递"},
+    {"tradeName":"亲子"}]
+}
