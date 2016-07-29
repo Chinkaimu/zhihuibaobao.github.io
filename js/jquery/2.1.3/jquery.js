@@ -4805,7 +4805,7 @@ jQuery.fn.extend({
 
 	on: function( types, selector, data, fn, /*INTERNAL*/ one ) {
 		//Candy-test
-		console.log("type = " + type + ";selector = " + selector + ";data = " + data + ";fn = " + fn);
+		//console.log("type = " + type + ";selector = " + selector + ";data = " + data + ";fn = " + fn);
 		var origFn, type;
 
 		// Types can be a map of types/handlers
@@ -7487,8 +7487,8 @@ jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblcl
 
 	// Handle event binding
 	jQuery.fn[ name ] = function( data, fn ) {
-		console.log("data = " + data);
-		console.log("fn = " + fn);
+		//console.log("data = " + data);
+		//console.log("fn = " + fn);
 		return arguments.length > 0 ?
 			this.on( name, null, data, fn ) :
 			this.trigger( name );

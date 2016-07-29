@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no;">
-    <title>百度糯米</title>
+    <title>Vue验证</title>
     <style>
         * {
             margin: 0;
@@ -93,7 +93,7 @@
         .warn-msg{
             color:red;
             font-size:0.6em;
-            display:none;
+            /*display:none;*/
         }
     </style>
     <script src="js/vue.min.js"></script>
@@ -108,14 +108,14 @@
                 <div id="username-field"  v-on:click="clickShift">
                     <label for="username">商家名称</label>
                     <!-- 验证期语法：使用了对象型字面量 -->
-                    <input id="username" type="text" placeholder="请输入名称" v-validate:username="{required:true,maxlength:20}">
+                    <input id="username" type="text" placeholder="请输入名称" initial="off" v-validate:username="{required:true,maxlength:20}">
                     <p v-if="$validation1.username.required" class="warn-msg">必须输入商家名称.</p>
                     <p v-if="$validation1.username.maxlength" class="warn-msg">商家名称输入字符不能超过20.</p>
                 </div>
                 <hr>
                 <div id="phone-field"  v-on:click="clickShift">
                     <label for="phone">商家电话</label>
-                    <input id="phone" type="text" v-validate:phone="['required','numeric']">
+                    <input id="phone" type="text" v-model = "phoneNum" initial="off" v-validate:phone="['required','numeric']">
                     <p v-if="$validation1.phone.required" class="warn-msg">必须输入商家电话.</p>
                     <p v-if="$validation1.phone.numeric" class="warn-msg">商家电话必须是开头为1的11位数字.</p>
                 </div>
@@ -123,22 +123,23 @@
 
             <div id="price-info" class="one-field">
                 <label for="price">团购价</label>
-                <input id="price" type="text" placeholder="不可点击的"  v-validate:price="['required','range']" readonly="true"> <!--如果设置为disabled，完全禁止与设置该属性的对象交互(表现为不可改写、不可提交等)。-->
-                <!--<p v-if="$validation1.price.required" class="warn-msg">必须输入团购价.</p>-->
-                <!--<p v-if="$validation1.price.range" class="warn-msg">团购价必须在10到100之间.</p>-->
+                <input id="price" type="text" placeholder="不可点击的"  v-model="price" initial="off" v-validate:price="['required','range']" readonly="true"> <!--如果设置为disabled，完全禁止与设置该属性的对象交互(表现为不可改写、不可提交等)。-->
+                <p v-if="$validation1.price.required" class="warn-msg">必须输入团购价.</p>
+                <p v-if="$validation1.price.range" class="warn-msg">团购价必须在10到100之间.</p>
             </div>
 
             <div id="trade-info" class="one-field">
                 <div id="discount-field" v-on:click="clickShift">
                     <label for="discount">是否打折</label>
-                    <input id="discount" type="checkbox" name="discount" value="discount" v-validate:discount="['required']">
+                    <!--initial="off"关闭自动初始化-->
+                    <input id="discount" type="checkbox" name="discount" value="discount" initial="off" v-validate:discount="['required']">
                     <p v-if="$validation1.discount.required" class="warn-msg">必须选择是否打折.</p>
                 </div>
                 <hr>
                 <div id="trade-field">
                     <label for="trade">行业类型</label>
-                    <input id="trade" type="text" v-on:click="tradeStart" placeholder="请选择" value="{{picked}}" v-validate:trade="['required']">
-                    <p v-if="$validation1.trade.required" class="warn-msg">必须选择行业类型.</p>
+                    <input id="trade" type="text" v-on:click="tradeStart"  v-model="picked" initial="off" placeholder="请选择" v-validate:trade="['required']"  readonly="readonly">
+                    <p v-if="$validation1.trade.required" class="warn-msg">必须输入行业类型.</p>
                 </div>
             </div>
             <div class="submit-box">
@@ -153,10 +154,10 @@
                     <span>取消</span>
                 </li>
                 <div id="tradeItems"></div>
-                <template v-for="item in tradeList">
-                 <li v-on:click="clickShift">
-                  <label for="item{{$index}}">{{item.tradeName}}</label>
-                  <input type="radio" value="{{item.tradeName}}"  v-model="picked"  name="trade" id="item{{$index}}">
+        <template v-for="item in tradeList">
+            <li v-on:click="clickShift">
+                <label for="item{{$index}}">{{item.tradeName}}</label>
+                <input type="radio" value="{{item.tradeName}}" v-model="picked" name="trade" id="item{{$index}}">
                  </li>
                 </template>
             </ul>
@@ -164,22 +165,22 @@
     </validator>
 </div>
 <script>
-    $.getJSON("data.json",function(data){
-       $("#phone").val(data.phoneNum);
-       $("#price").val(data.price);
-    });
-    var tradeItems = [
-        {"tradeName":"餐饮"},
-        {"tradeName":"美甲"},
-        {"tradeName":"旅游"},
-        {"tradeName":"快递"},
-        {"tradeName":"亲子"}];
-    new Vue({
+
+  var vm =   new Vue({
         el: "#myapp",
         data:{
-            chm:"chm",
-            tradeList:tradeItems,
-            picked:''
+            phoneNum:"",
+            price:"",
+            tradeList:null,
+            picked:""
+        },
+        created: function(){
+            var self = this;
+            $.getJSON("data.json",function(data){
+                self.price = data.price;
+                self.phoneNum = data.phoneNum;
+                self.tradeList = data.tradeList;
+            });
         },
         validators:{
             numeric:{
@@ -189,7 +190,6 @@
             },
             range:{
                 check:function(val){
-                    console.log(parseInt(val) >= 10 && parseInt(val) <= 100);
                     return (parseInt(val) >= 10 && parseInt(val) <= 100);
                 }
             }
@@ -211,17 +211,30 @@
                 $(event.target).find("input").click();
             },
             submitForm:function(event){
-                var message="";
-               if($(".warn-msg").length != 0){
-                   $(".warn-msg").each(function(index,item){
-                       message += "(" + index + ")" + $(item).text();
-                   });
-                   alert(message);
-               }else{
-                   $.post("post.html",$(document.forms[1]).serialize(),function(data){
-                       alert(data);
-                   });
-               }
+                console.log("submitForm");
+                var self = this;
+                //自定义验证时机
+                this.$validate(true,function(){
+//                    console.log("validation1.invalid = " + self.$validation1.invalid);
+                    if(self.$validation1.valid){
+                        console.log("valid = " + self.$validate.valid);
+                        $.post("post.html",$(document.forms[1]).serialize(),function(data){
+                            alert(data);
+                        });
+                    }
+//                    var message="";
+//                    if($(".warn-msg").length != 0){
+//                        $(".warn-msg").each(function(index,item){
+//                            message += "(" + index + ")" + $(item).text();
+//                        });
+//                        alert(message);
+//                    }else{
+//                        console.log($(".warn-msg").length);
+//                        $.post("post.html",$(document.forms[1]).serialize(),function(data){
+//                            alert(data);
+//                        });
+//                    }
+                });
             }
         }
     });

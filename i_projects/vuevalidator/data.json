@@ -1,7 +1,7 @@
 {
   "phoneNum":"12345678",
   "price":"88",
-  "tradeItems":  [
+  "tradeList":  [
     {"tradeName":"餐饮"},
     {"tradeName":"美甲"},
     {"tradeName":"旅游"},
