@@ -137,7 +137,8 @@
                 <hr>
                 <div id="trade-field">
                     <label for="trade">行业类型</label>
-                    <input id="trade" type="text" v-on:click="tradeStart" placeholder="请选择" value="{{picked}}">
+                    <input id="trade" type="text" v-on:click="tradeStart" placeholder="请选择" value="{{picked}}" v-validate:trade="['required']">
+                    <p v-if="$validation1.trade.required" class="warn-msg">必须选择行业类型.</p>
                 </div>
             </div>
             <div class="submit-box">
