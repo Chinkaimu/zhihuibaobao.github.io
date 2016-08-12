@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>z-index堆叠顺序测试</title>
+    <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">z-index堆叠顺序</h1>
+                        <h3>问题：</h3>
+                        <p>设置相对或绝对定位时，可以设置<a href="http://www.w3school.com.cn/cssref/pr_pos_z-index.asp">z-index</a>来确定堆叠顺序。
+                            那么堆叠顺序如何确定呢？下面div<1-5>的堆叠顺序如何？ 如下图</p>
+                        <img src="../imgs/zindex-0.png">
+                        <p>1.div1-5 的z-index全部设置为 z-index:0 时,div4 > div2 > div5 > div3 > div1 （子元素覆盖父元素，后面的元素覆盖前面的元素）</p>
+                        <img src="../imgs/zindex-1.png">
+                        <p>2.将div3 z-index:1，其他均为0;
+                            div4 > div2> div3>div5 > div1.
+                        </p>
+                        <img src="../imgs/zindex-2.png">
+                        <p>3.将div1 z-index:1，其他均为0;
+                            div5 > div3 > div1 > div4 > div2.
+                        </p>
+                        <img src="../imgs/zindex-3.png">
+                        <p>4.将div1 z-index:1,div4 z-index:5，其他均为0;
+                            同第3种情况
+                        </p>
+                        <h3>总结：</h3>
+                        <p> （1）对于同级元素，默认(或position:static)情况下文档流后面的元素会覆盖前面的。</p>
+                          <p>  （2）同一个父元素包裹的子元素比较z-index才有意义。不同父元素包裹下的子元素之间的z-index服从从父规则。</p>
+                           <p> （3）IE6/7下position不为static，且z-index不存在时z-index为0，除此之外的浏览器z-index为auto。</p>
+                         <p>   （4）z-index为auto的元素不参与层级关系的比较，由向上遍历至此且z-index不为auto的元素来参与比较。</p>
+                        </p>
+                        <h3>实现效果：<a href="tests/z-index.html">查看效果</a></h3>
+                        <h4>参考代码</h4>
+                        <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_htmlcss/practices/tests/z-index.html">我的代码</a></p>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>

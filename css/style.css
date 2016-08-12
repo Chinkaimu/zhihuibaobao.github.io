@@ -12,6 +12,10 @@ input, textarea, button {
     font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Source Han Sans SC", "Microsoft YaHei", "WenQuanYi MicroHei", sans-serif;
 }
 
+img{
+    margin-left:4em;
+}
+
 ::selection {
     background: #31b5bd;
     color: white;
