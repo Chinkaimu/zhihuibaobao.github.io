@@ -22,7 +22,7 @@ input, textarea, button {
     color: white;
 }
 .index_header .header,.header{
-    background-image: url(../images/bg_sky/1-1.png);
+    background-image: url(../images/bg_sky/1.png);
     background-size:cover;
     background-position: center center;
     background-repeat: no-repeat;

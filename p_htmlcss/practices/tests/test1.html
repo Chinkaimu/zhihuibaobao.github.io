@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>link</title>
+    <style>
+      .container{
+         width:200px;
+         margin:auto;
+       }
+      .component{
+        width:200px;
+        height:300px;
+        color:white; 
+        font-size:40px; 
+        text-align:center;
+        line-height:300px;
+       } 
+       #b{
+          background:black; 
+          position:relative; 
+          overflow:hidden;          
+        }
+       #a{
+          background:red;   
+          position:absolute; 
+          top:-300px;                    
+        }
+        #b:hover #a{         
+           top:0px;         
+           transition:top 3s;               
+        }
+      
+    </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div id="b" class="component"> 
+       b  
+      <div id="a" class="component">       
+       a 
+      </div>
+    </div>
+  </div>
+</body>
+</html>

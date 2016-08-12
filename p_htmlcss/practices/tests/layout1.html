@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html>
+<head>
+    <title>布局实例</title>
+    <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <script src="../../../js/jquery/2.1.3/jquery.js"></script>
+    <style type="text/css">
+        body{
+            padding:50px;
+        }
+        .hd,.main,.aside,.ft{
+            background-color:gray;
+            text-align:center;
+        }
+        .hd{
+            width:100%;
+            height:30px;
+            margin-bottom:10px;
+        }
+        .ft{
+            width:100%;
+            height:30px;
+            margin-top:10px;
+        }
+        .demo{
+            margin-top:20px;
+        }
+        #demo2{
+            margin-top:20px;
+        }
+
+        #demo2 .hd,#demo2 .main,#demo2 .aside,#demo2 .ft{
+            background-color:green;
+            text-align:center;
+        }
+
+
+        .db1{
+            position:relative;
+        }
+        .db1 .aside{
+            position:absolute;
+            left:0;
+            top:0;
+            width:200px;
+        }
+
+        .db1 .main{
+            margin-left:210px;
+        }
+
+
+        .db2{
+            overflow:hidden;
+        }
+        .db2 .aside{
+            float:left;
+            width:200px;
+            height:200px;
+        }
+        .db2 .aside:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .db2 .main{
+            margin-left:210px;
+        }
+
+        .db3{
+            margin-left:210px;
+        }
+        .db3 .aside{
+            float:left;
+            width:200px;
+            margin-left:-210px;
+        }
+        .db3 .main{
+            float:left;
+            width:100%;
+        }
+        .db3:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+
+        #demo2 .db3 .aside{
+            position:relative;
+            left:-100%;
+        }
+        .description{
+            margin:15px;
+        }
+
+        .db4{
+            padding-left:210px;
+        }
+        .db4 .main{
+            float:right;
+            width:100%;
+        }
+        .db4 .aside{
+            margin-left:-210px;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="description">
+    HTML方案：（1）灰色：aside在前面，main在后面；（2）绿色：main在前面，aside在后面
+</div>
+
+<div class="description">
+    可选择的CSS方案：
+    <input type="radio" value="db1" name="style-way" checked>absolute+margin(或父元素padding)
+    <input type="radio" value="db2" name="style-way">left+margin
+    <input type="radio" value="db4" name="style-way">right+负margin
+    <input type="radio" value="db3" name="style-way">left+relative+负margin
+</div>
+
+<div class="demo" id="demo1">
+    <div class="hd">header</div>
+    <div  class="db db1">
+        <div class="aside">
+            Aside <br> 侧边栏区域
+        </div>
+        <div class="main">
+            Main <br> 主内容区域
+        </div>
+    </div>
+    <div class="ft">footer</div>
+</div>
+
+<div class="demo" id="demo2">
+    <div class="hd">header</div>
+    <div class="db db1">
+        <div class="main">
+            Main <br> 主内容区域
+        </div>
+        <div class="aside">
+            Aside <br> 侧边栏区域
+        </div>
+    </div>
+    <div class="ft">footer</div>
+</div>
+
+<script>
+    $("input:radio[name='style-way']").on("change",function(){
+       $(".db").attr("class","db");
+       $(".db").addClass($('input:radio[name="style-way"]:checked').val()+" ");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>布局实践</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">CSS布局实践</h1>
+                         <h3>实现目标：</h3>
+                         <p>两栏结构应该是最常见和经典的网页呈现之一，如下图</p>
+                        <img src="../imgs/layout-1.png">
+                        <h3>解决思路：</h3>
+                        <h3>一、absolute+margin</h3>
+                        <p>原理：（1）对aside设置absolute使其脱离文档流；（2）对main设置margin使其不被aside覆盖。</p>
+                        <p>优点：在设置aside高度小于main的情况下能够很好的达到设计效果，并且HTML结构中main与aside可以随意交换位置。</p>
+                        <p>缺点：块级元素的宽度未设置则自动填充父元素，高度未设置则由包裹内容决定。当main的内容少，高度小于aside时，aside将会溢出bd到footer.</p>
+                        <h3>二、left+margin</h3>
+                        <p>原理：（1）对aside设置float使其脱离文档流；（2）float会使得紧随其后的元素环绕在其周围。对main设置margin中断环绕，main自称封闭矩形。</p>
+                        <p>注意事项：给父元素bd设置为BFC，避免float的aside溢出。根据BFC规则，会计算其中float元素的高度。</p>
+                        <p>缺点：只设置一个元素float不能将重点内容main放前面。因为float是对后面元素产生影响。</p>
+                        <h3>三、right+负margin</h3>
+                        <p>原理：同left+margin一样，不过将HTML结构中main与aside的位置互换一下，main通过float:right;到右边去。left通过负margin到左边。个人认为这是最简单且优秀的布局。</p>
+                        <h3>四、left+负margin</h3>
+                        <p>原理：(1)aside与aside都设置float:left，再调节宽度及偏移量，使得他们能够在同一行显示；（2）在bd最后要清除浮动，避免对footer造成影响。
+                            （3）如果aside在前面，main在后面，则设置bd的margin-left为210px,main的width为100%;aside通过margin-left:-210px;到左边去。
+                        （4）如果main在前面，aside在后面。同样设置bd的margin-left为210px，使得main的width可以设置为100%。aside先margin-left:-100%;移动到main的最左边，
+                        然后借助position:relative;再往左移动210px;达到效果。
+                        </p>
+                        <h3>实现效果：<a href="tests/layout1.html">单独查看效果</a></h3>
+                        <iframe width="100%" height="500px" src="tests/layout1.html"></iframe>
+                        <h3>注意事项：</h3>
+                        <p>（1）HTML中将main写在aside前面，因为main信息更重要。搜索引擎是从上往下解析内容的。</p>
+                        <p>（2）浮动元素的宽度没有显式定义时，由其内容决定。</p>
+                        <p>（3）position:absolute;一定要记得给父元素添加relative。如果未设置top等偏移位置，就还在常规流排布的位置，不过不占常规流的地方。</p>
+                        <p>（5）通过伪元素的clear:both;清除浮动时，要设置display:block;。clear:both;只对block元素有效。</p>
+                        <h4>参考代码</h4>
+                        <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_htmlcss/tests/layout1.html">我的代码</a></p>
+                        <h4>参考链接</h4>
+                        <p><a href="http://blog.doyoe.com/2013/12/31/css/margin%E7%B3%BB%E5%88%97%E4%B9%8B%E5%B8%83%E5%B1%80%E7%AF%87/">margin系列之布局篇</a></p>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>
