@@ -1,0 +1,20 @@
+table,tr,th,td{
+    border:1px solid black;
+    border-collapse: collapse;
+}
+table tr th{
+    background: #ccc;
+    padding:10px 35px;
+}
+table td{
+    padding:20px 35px;
+}
+
+a{
+    color:#2b97e8;
+    font-size:1.1em;
+}
+
+iframe{
+    border:solid 1px gray;
+}

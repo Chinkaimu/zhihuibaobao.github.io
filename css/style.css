@@ -532,7 +532,7 @@ footer div {
 }
 .detail p{
     text-indent: 2em;
-    line-height: 1.5em;
+    line-height: 2em;
 }
 .detail .title{
     font-size: 1.2em;
@@ -547,12 +547,12 @@ footer div {
         box-shadow:0 0.1em 0.35em rgba(0,0,0,0.26);
     }
     .detail .content{
-        padding: 2.5em 5em;
+        padding: 2.5em 3em;
     }
     .detail .title{
         margin:0 0 1em;
         padding:0 0 1em;
-        font-size:1.875em;
+        font-size:1.2em;
     }
     .post_wrap{
     padding-bottom: 50px;
@@ -566,6 +566,9 @@ footer div {
 }
 
 /*specific css for lsarticles*/
+.post-preview{
+    padding-left:4em;
+}
 .post-preview a{
     color: #000;
 }
@@ -584,7 +587,7 @@ footer div {
 @media only screen and (min-width:48em) {
     .post-preview>a .post-title {
         line-height:1.3;
-        font-size: 1.875em;
+        font-size: 1.2em;
     }
     .post-preview>a .post-subtitle {
         display: inline-block;
@@ -592,7 +595,7 @@ footer div {
         line-height: 1.3;
     }
     .post-content-preview{
-        font-style:italic;
+        /*font-style:italic;*/
         color:#a3a3a3;
         font-size:12px;
     }
@@ -601,7 +604,7 @@ footer div {
     }
     .content hr {
         margin-bottom: 20px;
-        margin-top: 20px;
+        margin-top: 2px;
         border: 0;
         border-top: 1px solid #eee;
     }

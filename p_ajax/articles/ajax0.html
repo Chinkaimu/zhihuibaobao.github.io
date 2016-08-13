@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ajax学习（一）</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">Ajax学习(一)</h1>
+                        <p>一、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 什么是ajax</p>
+                        <p>1、Ajax(Asynchronous JavaScript and XML)使用脚本操纵HTTP的Web应用架构。</p>
+                        <p>2、所有的浏览器都支持XMLHttpRequest对象，它定义了用脚本操纵HTTP的API。</p>
+                        <p>3、HTTP请求四部分组成：</p>
+                        <p>（1）HTTP请求方法或“动作”</p>
+                        <p>（2）请求的URL</p>
+                        <p>（3）一个可选的请求头集合，其中可能包括身份验证信息</p>
+                        <p>（4）一个可选的请求主体</p>
+                        <p>服务器返回的HTTP响应三部分组成：</p>
+                        <p>（1）&nbsp;&nbsp;&nbsp;&nbsp; 一个数字和文字组成的状态码，用来显示请求的成功和失败</p>
+                        <p>（2）&nbsp;&nbsp;&nbsp;&nbsp; 一个响应头的集合</p>
+                        <p>（3）&nbsp;&nbsp;&nbsp;&nbsp; 响应主体</p>
+                        <p>二、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ajax的工作原理</p>
+                        <p>1、 代码中的实现步骤：</p>
+                        <p>（1）&nbsp;&nbsp;&nbsp;&nbsp; 指定请求</p>
+                        <p>request.open(‘post’,url),request.setRequestHeader(‘Content-Type’,’text/plain;charset=utf-8’),request.send(msg)</p>
+                        <p>（2）&nbsp;&nbsp;&nbsp;&nbsp; 取得响应</p>
+                        <p>request.getResponseHeader(‘Content-Type’),request.responseText</p>
+                        <p><span style="color:#00B050">如果服务器向发送诸如对象或数组这样的结构化数组作为其响应，它应该传输</span><span style="color:#00B050">JSON</span><span style="color:#00B050">编码的字符串数据。当接收它时，可以把</span><span style="color:#00B050">responseText</span><span style="color:#00B050">属性传递给</span><span style="color:#00B050">JSON.parse().</span></p>
+                        <p><span style="color:#00B050">项目中的使用：（</span><span style="color:#00B050">1</span><span style="color:#00B050">）后台生成的</span><span style="color:#00B050">JSON</span><span style="color:#00B050">字符串方式</span><span style="color:#00B050"> JSONArray.toString()</span><span style="color:#00B050">传递给前台，前台</span><span style="color:#00B050">jQuery</span><span style="color:#00B050">的</span><span style="color:#00B050">$(url,function(data){});</span><span style="color:#00B050">中</span><span style="color:#00B050">data</span><span style="color:#00B050">直接使用</span><span style="color:#00B050">JSON</span><span style="color:#00B050">字符串。不确定</span><span style="color:#00B050">jQuery</span><span style="color:#00B050">是否进行了处理，还是</span><span style="color:#00B050">java</span><span style="color:#00B050">的</span><span style="color:#00B050">JSON</span><span style="color:#00B050">串转成字符串后前台可以直接使用。（</span><span style="color:#00B050">2</span><span style="color:#00B050">）</span><span style="color:#00B050">Upload</span><span style="color:#00B050">向前台传递信息采用的是</span><span style="color:#00B050">JSON</span><span style="color:#00B050">编码的字符串，如</span><span style="color:#00B050">“{‘status’:0
+ , ‘appId’ : ‘19388383892’}”</span><span style="color:#00B050">，到</span><span style="color:#00B050">dropzone</span><span style="color:#00B050">插件</span><span style="color:#00B050">responseText</span><span style="color:#00B050">得到文本数据后通过</span><span style="color:#00B050">eval</span><span style="color:#00B050">（）转换成</span><span style="color:#00B050">JSON</span><span style="color:#00B050">。最好不要使用</span><span style="color:#00B050">eval()</span><span style="color:#00B050">函数，而使用</span><span style="color:#00B050">JSON.parse()</span><span style="color:#00B050">。</span></p>
+                        <p>2、编码请求主体</p>
+                        <p>（1）表单的编码请求：表单中的数据编码到一个字符串中并随请求发送。编码方式：对每个表单元素的名字和&#20540;执行普通的URL编码（使用十六进制转移码替换特殊字符）。</p>
+                        <p>（2）JSON的编码请求：JSON.stringify(data)</p>
+                        <p>（3）XML编码的请求：</p>
+                        <p align="left"><span style="color:rgb(34,34,34)">/*create an XML document with root element&lt;query&gt;*/
+<br>
+var doc =document.implementation.createDocument(&quot;&quot;,&quot;query&quot;,null);<br>
+&nbsp;var query = document.documentElement;var find = document.createElement(&quot;find&quot;); <br>
+<a target="_blank" name="OLE_LINK6"></a><a target="_blank" name="OLE_LINK5"></a>query.appendChild(find);
+<br>
+find.setAttribute(&quot;zipCode&quot;,where); <br>
+find.setAttribute(&quot;radius&quot;,radius);<br>
+&nbsp;find.appendChild(docu.createTextNode(what));</span></p>
+                        <p>（4）上传文件：XHR2 API允许通过send()向服务器传送file对象来实现文件上传。文件类型是二进制大对象类型中的一个子类。</p>
+                        <p>（5）multipart/form-data请求：HTML表单同时包含文件上传元素和其他元素。</p>
+                        <p><span style="color:#00B050">重点：引申问题</span><span style="color:#00B050">---request</span><span style="color:#00B050">中</span><span style="color:#00B050">contentType</span><span style="color:#00B050">的重要性，</span><span style="color:#00B050">contentType</span><span style="color:#00B050">在</span><span style="color:#00B050">ajax</span><span style="color:#00B050">提交表单的设置请参考</span><span style="color:#00B050">
+<p><a href="http://blog.csdn.net/mhmyqn/article/details/25561535/">AJAX POST请求参数以formdata和request payload>数据在servle的获取方式</a></p>
+                        <p align="left">3、HTTP进度事件</p>
+                        <p>（1）XMLHttpRequest对象x，设置x.onprogress以监控响应的下载速度，并设置x.upload.onprogress以监控请求的上传速度。</p>
+                        <p>（2）除了像type和timestamp这样常用的Event对象属性外，与这些progress事件相关联的事件对象还有3个属性：loaded表示目前传送的字节数&#20540;。total是自”Content-Length”头传输的数据的整体长度，如果不知道长度，则为0。如果知道长度，lengthComputable为true，否则为false。</p>
+                        <p align="left"><span style="color:rgb(34,34,34)">if(&quot;onprogress&quot; in (new XMLHttpRequest())){
+</span></p>
+                        <p align="left"><span style="color:rgb(34,34,34)">request.onprogress = function(e){
+</span></p>
+                        <p align="left"><span style="color:rgb(34,34,34)">if(e.lengthComputable){</span></p>
+                        <p align="left"><span style="color:rgb(34,34,34)">&nbsp;progress.innerHTML =Math.round(100 * e.loaded/e.total) &#43; &quot;% Complete&quot;; }
+</span></p>
+                        <p align="left"><span style="color:rgb(34,34,34)">} }</span></p>
+                        <p>三、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jquery的ajax实现</p>
+                        <p>jQuery定义了为ajax定义了一个高级工具方法jQuery.ajax()及四个高级工具函数jQuery.getScript()、jQuery.getJSON()、jQuery.get()、jQuery.post()，记住其使用的参数设置基本就可使用jQuery的ajax方法。</p>
+                        <p>四、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 问题记录</p>
+                        <p>1、使用XMLHttpRequest请求JavaScript脚本，然后使用全局eval()执行这个脚本。但在这种情况下不需要使用XMLHttpRequest对象，因为&lt;script&gt;元素本身操纵HTTP脚本的能力完全可以实现加载并执行脚本。&lt;script&gt;能实现跨域HTTP请求，而XMLHttpRequest禁止。不是很理解。</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>参考文档：</p>
+                        <p>《JavaScript权威指南第6版》</p>
+                        <p>&nbsp;</p>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>

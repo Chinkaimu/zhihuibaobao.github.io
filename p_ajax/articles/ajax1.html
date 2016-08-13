@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ajax的FormData表单提交</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">Ajax利用FormData提交表单</h1>
+                        <p>一、知识储备</p>
+                        <p>1.Form表单：作为菜鸟，我就不多说了，“它山之石可以攻玉”，看这个<a href="http://www.cnblogs.com/fish-li/archive/2011/07/17/2108884.html">细说Form表单</a>。
+                            要更好的了解Form?那就看标准吧，<a href="https://www.w3.org/TR/html4/interact/forms.html">w3c的Form标准</a>。
+                        </p>
+                        <p>2.FormData：现代Web应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest2级为此定义了FormData类型。FormData为序列化表单以
+                            及创建与表单格式相同的数据（用于通过XHR传输）提供了遍历。例如<code>
+                                var data = new FormData(); data.append("name","Nicholas");
+                            </code>.使用和兼容性请看<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">FormData(来自MDN)</a></p>
+                        <p></p>
+                        <p>二、ajax上传文件</p>
+                        <p>1、&nbsp; 上传单个文件</p>
+                        <p align="left" style="background:rgb(43,43,43)"><span style="color:#A9B7C6">/* ajaxupload.jsp */</span></p>
+                        <p align="left" style="background:rgb(43,43,43)"><span style="color:#A9B7C6">&lt;%@ </span>
+                            <strong><span style="color:#CC7832">page </span></strong><span style="color:#A9B7C6">contentType=&quot;</span><span style="color:#6A8759">text/html; charset = utf-8</span><span style="color:#A9B7C6">&quot; %&gt;<br>
+</span><span style="color:#E8BF6A">&lt;!DOCTYPE </span><span style="color:#BABABA">html</span><span style="color:#E8BF6A">&gt;<br>
+&lt;html&gt;<br>
+&nbsp; &lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;title&gt;</span><span style="color:#A9B7C6">Asynchronous Javascript and XML</span><span style="color:#E8BF6A">&lt;/title&gt;<br>
+&nbsp; &lt;/head&gt;<br>
+&nbsp; &lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">请选择要上传的文件：</span><span style="color:#E8BF6A">&lt;input
+</span><span style="color:#BABABA">id=</span><span style="color:#A5C261">&quot;uploadItem&quot;</span><span style="color:#BABABA">name=</span><span style="color:#A5C261">&quot;uploadItem&quot;
+</span><span style="color:#BABABA">type=</span><span style="color:#A5C261">&quot;file&quot;</span><span style="color:#E8BF6A">&gt;<br>
+&nbsp; &lt;script&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">var </span></strong><span style="color:#A9B7C6">test=
+</span><strong><span style="color:#CC7832">function </span></strong><span style="color:#FFC66D">x</span><span style="color:#A9B7C6">(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">var </span></strong><span style="color:#A9B7C6">elem=
+</span><span style="color:#9876AA">document</span><span style="color:#A9B7C6">.</span><span style="color:#FFC66D">getElementById</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;uploadItem&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">elem.</span><span style="color:#FFC66D">addEventListener</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;change&quot;</span><span style="color:#CC7832">,<strong>function</strong></span><span style="color:#A9B7C6">()
+ {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">var </span></strong><span style="color:#A9B7C6">item=&nbsp;
+</span><span style="color:#9876AA">document</span><span style="color:#A9B7C6">.</span><span style="color:#FFC66D">getElementById</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;uploadItem&quot;</span><span style="color:#A9B7C6">).</span><span style="color:#9876AA">files</span><span style="color:#A9B7C6">[</span><span style="color:#6897BB">0</span><span style="color:#A9B7C6">]</span><span style="color:#CC7832">;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>var </strong></span><span style="color:#A9B7C6">formData = </span>
+                            <strong><span style="color:#CC7832">new </span></strong><span style="color:#9876AA">FormData</span><span style="color:#A9B7C6">()</span><span style="color:#CC7832">;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">formData.</span><span style="color:#FFC66D">append</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;uploadItem&quot;</span><span style="color:#CC7832">,</span><span style="color:#A9B7C6">item)</span><span style="color:#CC7832">;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>var </strong></span><span style="color:#A9B7C6">xhr = </span>
+                            <strong><span style="color:#CC7832">new </span></strong><span style="color:#FFC66D">XMLHttpRequest</span><span style="color:#A9B7C6">()</span><span style="color:#CC7832">;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">xhr.</span><span style="color:#FFC66D">open</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;post&quot;</span><span style="color:#CC7832">,</span><span style="color:#6A8759">&quot;../upload&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;<br>
+</span><span style="color:gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;multipart/form-data&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">xhr.</span><span style="color:#FFC66D">send</span><span style="color:#A9B7C6">(formData)</span><span style="color:#CC7832">;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}</span><span style="color:#CC7832">,<strong>false</strong></span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}()</span><span style="color:#CC7832">;<br>
+&nbsp; </span><span style="color:#E8BF6A">&lt;/script&gt;<br>
+&nbsp; &lt;/body&gt;<br>
+&lt;/html&gt;</span></p>
+                        <pre style="background:#2B2B2B"><span style="color:#E8BF6A">&nbsp;</span></pre>
+                        <pre style="background:#2B2B2B"><span style="color:#A9B7C6">/*upload */</span></pre>
+<pre style="background:#2B2B2B"><span style="color:#E8BF6A">public class upload extends HttpServlet{
+&nbsp;&nbsp;&nbsp; public void doPost(HttpServletRequest request,HttpServletResponse response)throws &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IOException,ServletException {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.setCharacterEncoding(&quot;UTF-8&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;DiskFileItemFactory factory = new DiskFileItemFactory();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ServletFileUpload upload = new ServletFileUpload(factory);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List&lt;FileItem&gt; items = upload.parseRequest(request);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String fileName=&quot;&quot;;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; File savefile ;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String apkPath = &quot;D:/temp/&quot;;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (FileItem item : items) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!item.isFormField()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fileName = apkPath &#43; item.getName();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(&quot;fileName = &quot; &#43; fileName);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;savefile = new File(fileName);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item.write(savefile);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch(Exception e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PrintWriter out = null;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out = response.getWriter();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }catch (Exception e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out.println(&quot;upload successed!&quot;);
+&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;}</span></pre>
+                        <p>如下代码，定义一个type=file的input组件，监听变化后直接上传。</p>
+                        <p><span style="color:#00B050">注意点</span>：使用了FormData存储上传的文件。FormData对象介绍<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData</a>，使用<a target="_blank" href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/Using_FormData_Objects%E3%80%82%E8%BF%99%E6%98%AFXMLHttpRequest">https://developer.mozilla.org/zh-CN/docs/Web/Guide/Using_FormData_Objects<span style="color:black">。这是</span><span style="color:windowtext">XMLHttpRequest</span></a>level2中新引入的对象，XMLHttpRequest2见<a target="_blank" href="https://www.w3.org/TR/2012/WD-XMLHttpRequest-20120117/">https://www.w3.org/TR/2012/WD-XMLHttpRequest-20120117/</a>，这是2012年的草案。其兼容性可以在CanIUse网站http://caniuse.com/查询。相关对象的使用等最好查询比较专业的网站，而不是查询个人博客等，个人博客有的可能不是很好理解，并且不会实时随着对象变化来更新。</p>
+                        <p><span style="color:red">本人错误使用</span>：设置了XMLHttpRequest的Content-Type为mutipart/form-data，这样导致错误“<span style="color:red">the request was rejected because no multipartboundary was found</span>”，浏览器HTTP请求头信息中，看到Content-Type中没有boundary（浏览器随机生成）。</p>
+                        个人理解表单要上传文件时是通过enctype属性指定编码规则，而不是通过修改request的请求头。但是原生ajax提交所以这一步设置跟我原先的希望设置编码类型为mutipart/form-data有所不同。
+                        <p></p>
+                        <p>本人使用过的文件上传插件Dropzone也是用FormData上传文件的，设置的请求头属性有Accecpt，Cache-Control，X-Requested-With，不包含Content-Type。从请求头中我们可以看到Content-Type是自动被设置为multipart/form-data的。从HTTP请求信息中我们还可以看到<span style="color:#7030A0">Request Payload</span>，这是请求的有效荷载，也是一个&#20540;得讨论的问题，可以跟请求参数的Query
+                            String Parameter做下比较。</p>
+                        <p>2、&nbsp; 提交表单，表单中携带文件</p>
+                        <p>根据FormData的使用我们可以看到，将简单的键&#20540;对数据和文件数据放到FormData发送是很简单的一个问题，那么问题在哪里呢？问题在于后台如何取到普通的表单数据。</p>
+<pre style="background:#2B2B2B"><span style="color:#E8BF6A">&lt;!DOCTYPE </span><span style="color:#BABABA">HTML </span><span style="color:#E8BF6A">PUBLIC </span><span style="color:#A5C261">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span><span style="color:#E8BF6A">&gt;</span><span style="color:#E8BF6A">
+</span><span style="color:#E8BF6A">&lt;html&gt;
+&lt;head&gt;
+&nbsp;&nbsp;&nbsp; &lt;title&gt;</span><span style="color:#A9B7C6">提交包含数据和文件的表单</span><span style="color:#E8BF6A">&lt;/title&gt;
+&nbsp;&nbsp;&nbsp; &lt;meta </span><span style="color:#BABABA">http-equiv=</span><span style="color:#A5C261">&quot;Content-Type&quot; </span><span style="color:#BABABA">content=</span><span style="color:#A5C261">&quot;text/html;charset=utf-8&quot;</span><span style="color:#E8BF6A">&gt;
+&nbsp;&nbsp;&nbsp; &lt;script </span><span style="color:#BABABA">type=</span><span style="color:#A5C261">&quot;text/javascript&quot;</span><span style="color:#E8BF6A">&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">function </span></strong><span style="color:#FFC66D">sendForm</span><span style="color:#A9B7C6">(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">var </span></strong><span style="color:#A9B7C6">oData = </span><strong><span style="color:#CC7832">new </span></strong><span style="color:#9876AA">FormData</span><span style="color:#A9B7C6">(</span><span style="color:#9876AA">document</span><span style="color:#A9B7C6">.</span><span style="color:#9876AA">forms</span><span style="color:#A9B7C6">.</span><span style="color:#FFC66D">namedItem</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;fileinfo&quot;</span><span style="color:#A9B7C6">))</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">oData.</span><span style="color:#FFC66D">append</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;CustomField&quot;</span><span style="color:#CC7832">,</span><span style="color:#6A8759">&quot;This is some extra data&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>var </strong></span><span style="color:#A9B7C6">oReq = </span><strong><span style="color:#CC7832">new </span></strong><span style="color:#FFC66D">XMLHttpRequest</span><span style="color:#A9B7C6">()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">oReq.</span><span style="color:#FFC66D">open</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;post&quot;</span><span style="color:#CC7832">,</span><span style="color:#6A8759">&quot;../upload&quot;</span><span style="color:#CC7832">,<strong>true</strong></span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">oReq.</span><span style="color:#FFC66D">send</span><span style="color:#A9B7C6">(oData)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}
+&nbsp;&nbsp;&nbsp; </span><span style="color:#E8BF6A">&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form </span><span style="color:#BABABA">enctype=</span><span style="color:#A5C261">&quot;multipart/form-data&quot; </span><span style="color:#BABABA">method=</span><span style="color:#A5C261">&quot;post&quot; </span><span style="color:#BABABA">name=</span><span style="color:#A5C261">&quot;fileinfo&quot;</span><span style="color:#E8BF6A">&gt;
+&nbsp;&nbsp;&nbsp; &lt;table&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;label&gt;</span><span style="color:#A9B7C6">Your email address:</span><span style="color:#E8BF6A">&lt;/label&gt;&lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;input </span><span style="color:#BABABA">type=</span><span style="color:#A5C261">&quot;email&quot; </span><span style="color:#BABABA">autocomplete=</span><span style="color:#A5C261">&quot;on&quot; </span><span style="color:#BABABA">autofocus name=</span><span style="color:#A5C261">&quot;userid&quot; </span><span style="color:#BABABA">placeholder=</span><span style="color:#A5C261">&quot;email&quot; </span><span style="color:#BABABA">required size=</span><span style="color:#A5C261">&quot;32&quot;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#BABABA">maxlength=</span><span style="color:#A5C261">&quot;64&quot;</span><span style="color:#E8BF6A">/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;label&gt;</span><span style="color:#A9B7C6">Custom file label:</span><span style="color:#E8BF6A">&lt;/label&gt;&lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;input </span><span style="color:#BABABA">type=</span><span style="color:#A5C261">&quot;text&quot; </span><span style="color:#BABABA">name=</span><span style="color:#A5C261">&quot;filelabel&quot; </span><span style="color:#BABABA">size=</span><span style="color:#A5C261">&quot;12&quot; </span><span style="color:#BABABA">maxlength=</span><span style="color:#A5C261">&quot;32&quot;</span><span style="color:#E8BF6A">/&gt;&lt;br/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tr&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;label&gt;</span><span style="color:#A9B7C6">File to stash:</span><span style="color:#E8BF6A">&lt;/label&gt;&lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;input </span><span style="color:#BABABA">type=</span><span style="color:#A5C261">&quot;file&quot; </span><span style="color:#BABABA">name=</span><span style="color:#A5C261">&quot;file&quot; </span><span style="color:#BABABA">required</span><span style="color:#E8BF6A">/&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/tr&gt;
+&nbsp;&nbsp;&nbsp; &lt;/table&gt;
+&lt;/form&gt;
+&lt;div </span><span style="color:#BABABA">id=</span><span style="color:#A5C261">&quot;output&quot;</span><span style="color:#E8BF6A">&gt;&lt;/div&gt;
+&lt;a </span><span style="color:#BABABA">href=</span><span style="color:#A5C261">&quot;javascript:</span><span style="color:#FFC66D">sendForm</span><span style="color:#A5C261">()&quot;</span><span style="color:#E8BF6A">&gt;</span><span style="color:#A9B7C6">Stash the file!</span><span style="color:#E8BF6A">&lt;/a&gt;
+&lt;/body&gt;
+&nbsp;&lt;/html&gt;</span></pre>
+                        <p><a target="_blank" name="OLE_LINK4"></a><a target="_blank" name="OLE_LINK3">如上代码表单中包含普通的键&#20540;对和文件，下面是请求头(图片丢失，再补)</a></p>
+                        <p></p>
+                        <p>所有的数据都放在RequestPayload（原生AJAX使用）中，该如何转换呢？Request.getParameter应该只能得到get请求中Query String Parameters或者post请求Form Data请求体中的数据。<a target="_blank" href="http://blog.csdn.net/mhmyqn/article/details/25561535?utm_source=tuicool&amp;utm_medium=referral">http://blog.csdn.net/mhmyqn/article/details/25561535?utm_source=tuicool&amp;utm_medium=referral</a>这个博客讲了用最原始的输入流方法读取Request
+                            Payload中的数据，但是这要设置Content-Type 为application/x-www-form-urlencoded。最后，转了半天发现上传组件的parseRequest转化出来FileItem是包括fieldItem的（一开始以为只是file文件的信息被解析出来了），如果是表单域，java可以如下代码进行解析（参考网址http://www.blogjava.net/xyzroundo/articles/186217.html）</p>
+<pre style="background:#2B2B2B"><span style="color:#CC7832">public void </span><span style="color:#FFC66D">doPost</span><span style="color:#A9B7C6">(HttpServletRequest request</span><span style="color:#CC7832">, </span><span style="color:#A9B7C6">HttpServletResponse response) </span><span style="color:#CC7832">throws </span><span style="color:#A9B7C6">IOException</span><span style="color:#CC7832">, </span><span style="color:#A9B7C6">ServletException {
+&nbsp;&nbsp;&nbsp; </span><span style="color:#CC7832">try </span><span style="color:#A9B7C6">{
+&nbsp;&nbsp;&nbsnbsp;&nbsp;&nbsp;&nbsp;&nbsp; request.setCharacterEncoding(</span><span style="color:#6A8759">&quot;UTF-8&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; boolean </span><span style="color:#A9B7C6">isMultipart = ServletFileUpload.<em>isMultipartContent</em>(request)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if </span><span style="color:#A9B7C6">(isMultipart) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;DiskFileItemFactory factory = </span><span style="color:#CC7832">new </span><span style="color:#A9B7C6">DiskFileItemFactory()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">ServletFileUpload upload = </span><span style="color:#CC7832">new </span><span style="color:#A9B7C6">ServletFileUpload(factory)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">List items = upload.parseRequest(request)</span><span style="color:#CC7832">;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:gray">//Process the uploaded items
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">Iterator iter = items.iterator()</span><span style="color:#CC7832">;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while</span><span style="color:#A9B7C6">(iter.hasNext()){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FileItem item = (FileItem)iter.next()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if</span><span style="color:#A9B7C6">(item.isFormField()){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String name =item.getFieldName()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">String value = item.getString(</span><span style="color:#6A8759">&quot;UTF-8&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">System.</span><em><span style="color:#9876AA">out</span></em><span style="color:#A9B7C6">.println(</span><span style="color:#6A8759">&quot;name = &quot; </span><span style="color:#A9B7C6">&#43; name &#43; </span><span style="color:#6A8759">&quot; ; value = &quot; </span><span style="color:#A9B7C6">&#43; value)</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+
+
+&nbsp;&nbsp;&nbsp; } </span><span style="color:#CC7832">catch </span><span style="color:#A9B7C6">(Exception e) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}
+
+&nbsp;&nbsp;&nbsp; PrintWriter out = </span><span style="color:#CC7832">null;
+&nbsp;&nbsp;&nbsp; try </span><span style="color:#A9B7C6">{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out = response.getWriter()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">} </span><span style="color:#CC7832">catch </span><span style="color:#A9B7C6">(Exception e) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e.printStackTrace()</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#A9B7C6">}
+&nbsp;&nbsp;&nbsp; out.println(</span><span style="color:#6A8759">&quot;upload successed!&quot;</span><span style="color:#A9B7C6">)</span><span style="color:#CC7832">;
+</span><span style="color:#A9B7C6">}</span></pre>
+                        <p>3、 添加进度条</p>
+                        <p>添加进度条HTML元素，并设置样式，为XMLHttpRequest添加onprogress事件，涉及e.lengthComputable，e.uploaded，e.total的使用。</p>
+                        <pre style="background:#2B2B2B"><span style="color:white">/*</span><span style="color:white">进度条元素</span><span style="color:white">*/</span></pre>
+<pre style="background:#2B2B2B"><span style="color:#E8BF6A">&lt;tr </span><span style="color:#BABABA">class=</span><span style="color:#A5C261">&quot;progress-display&quot;</span><span style="color:#E8BF6A">&gt;
+&nbsp;&nbsp;&nbsp; &lt;<span style="background:#344134">td</span>&gt;</span><span style="color:#A9B7C6">上传进度：</span><span style="color:#E8BF6A">&lt;/<span style="background:#344134">td</span>&gt;
+&nbsp;&nbsp;&nbsp; &lt;<span style="background:#344134">td</span>&gt;&lt;span </span><span style="color:#BABABA">id=</span><span style="color:#A5C261">&quot;progress-bar&quot; </span><span style="color:#BABABA">class=</span><span style="color:#A5C261">&quot;progress-bar&quot;</span><span style="color:#E8BF6A">&gt;&lt;span </span><span style="color:#BABABA">class=</span><span style="color:#A5C261">&quot;progress-bar-after&quot;</span><span style="color:#E8BF6A">&gt;&lt;/span&gt;&lt;/span&gt;&lt;/<span style="background:#344134">td</span>&gt;
+&lt;/tr&gt;</span></pre>
+                        <pre style="background:#2B2B2B"><span style="color:white">/*</span><span style="color:white">进度条样式*/</span></pre>
+<pre style="background:#2B2B2B"><span style="color:#A9B7C6">.</span><span style="color:#FFC66D">progress-bar</span><span style="color:#A9B7C6">{
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">display</span><span style="color:#A9B7C6">:inline-block</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">background-color</span><span style="color:#A9B7C6">:honeydew</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">width</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">100</span><span style="color:#A9B7C6">px</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">height</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">10</span><span style="color:#A9B7C6">px</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">position</span><span style="color:#A9B7C6">:relative</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">border-radius</span><span style="color:#A9B7C6">: </span><span style="color:#6897BB">2</span><span style="color:#A9B7C6">px</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">border</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">0.5</span><span style="color:#A9B7C6">px solid gray</span><span style="color:#CC7832">;
+</span><span style="color:#A9B7C6">}
+.</span><span style="color:#FFC66D">progress-bar-after</span><span style="color:#A9B7C6">{
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">content</span><span style="color:#A9B7C6">:</span><span style="color:#A5C261">&quot;&quot;</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">width</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">0</span><span style="color:#A9B7C6">%</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">height</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">10</span><span style="color:#A9B7C6">px</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">background-color</span><span style="color:#A9B7C6">:green</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">position</span><span style="color:#A9B7C6">:absolute</span><span style="color:#CC7832">;
+&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">left</span><span style="color:#A9B7C6">:</span><span style="color:#6897BB">0</span><span style="color:#CC7832">;
+</span><span style="color:#A9B7C6">}</span></pre>
+                        <pre style="background:#2B2B2B"><span style="color:#A9B7C6">/*XMLHttpRequest</span><span style="color:#A9B7C6">添加onprogress</span>事件*/</pre>
+<pre style="background:#2B2B2B"><span style="color:#A9B7C6">oReq.</span><span style="color:#FFC66D">onprogress </span><span style="color:#A9B7C6">= </span><strong><span style="color:#CC7832">function</span></strong><span style="color:#A9B7C6">(e){
+&nbsp;&nbsp;&nbsp; </span><strong><span style="color:#CC7832">if</span></strong><span style="color:#A9B7C6">(e.lengthComputable){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="color:#9876AA">document</span><span style="color:#A9B7C6">.</span><span style="color:#FFC66D">querySelector</span><span style="color:#A9B7C6">(</span><span style="color:#6A8759">&quot;.progress-bar-after&quot;</span><span style="color:#A9B7C6">).</span><span style="color:#9876AA">style</span><span style="color:#A9B7C6">.</span><span style="color:#9876AA">width </span><span style="color:#A9B7C6">= </span><span style="color:#9876AA">Math</span><span style="color:#A9B7C6">.</span><em><span style="color:#FFC66D">round</span></em><span style="color:#A9B7C6">(</span><span style="color:#6897BB">100</span><span style="color:#A9B7C6">* e.loaded/ e.</span><span style="color:#9876AA">total</span><span style="color:#A9B7C6">) &#43; </span><span style="color:#6A8759">&quot;%&quot;</span><span style="color:#CC7832">;
+&nbsp;&nbsp; &nbsp;</span><span style="color:#A9B7C6">}
+}</span></pre>
+                        <p>&nbsp;</p>
+                        <p>三、总结</p>
+                        <p>&nbsp;&nbsp;&nbsp; 做完上述工作以后发现AJAX通过FormData上传文件是件挺简单的事情，不过应该考虑FormData的兼容性。</p>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>

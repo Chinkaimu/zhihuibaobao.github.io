@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>maven,git,web工程</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">maven管理git版本控制的web工程</h1>
+                        <p>一.Git学习</p>
+                        <p><span>&nbsp;<wbr></span></p>
+                        <p><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span><span style="font-family:">我想从</span><span>0</span><span style="font-family:">开始创建一个相对来说完善并且专业的代码库</span><span>,</span><span style="font-family:">我选择</span><span>gitHub</span><span style="font-family:">托管代码</span><span>,</span><span style="font-family:">并且通过</span><span>Git</span><span style="font-family:">来进行版本控制</span><span>.</span><span style="font-family:">那么就从学习</span><span>git</span><span style="font-family:">开始</span><span>,</span><span style="font-family:">下面的链接是我学习的教程</span><span>[</span><span style="font-family:">廖雪峰的官网</span><span>,Git</span><span style="font-family:">教程</span><span>],</span><span style="font-family:">感觉简单易懂</span><span>,</span><span style="font-family:">马上就入门了</span><span>.</span></p>
+                        <p><span><a target="_blank" target="_blank" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd183<wbr>61248578c67b8067c8c017b0<wbr>00</a></span></p>
+                        <p><span><span style="font-family:">附上项目地址</span></span>，不断更新<span>https://github.com/zhihuibaobao/SplitedComponents</span></p>
+                        <p><span>&nbsp;<wbr></span></p>
+                        <p><span><span style="font-family:">二</span></span><span><span style="color:windowtext">.</span></span><span><span style="font-family:">搭建</span></span><span><span style="color:windowtext; text-decoration:none">Web</span></span><span><span style="font-family:">工程</span></span></p>
+                        <p><span>&nbsp;<wbr></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr></span></span></span><span><span style="color:windowtext; text-decoration:none">1.</span></span><span><span style="font-family:">环境准备</span></span><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="font-family:">系统环境</span></span><span><span style="color:windowtext; text-decoration:none">:ubuntu 12.24 ; jdk 1.7.0_65</span></span><span><span style="color:windowtext; text-decoration:none"><span style="">&nbsp;<wbr></span></span></span><span><span style="font-family:宋体">（我在</span></span><span><span style="color:windowtext; text-decoration:none">windows</span></span><span><span style="font-family:宋体">下也创建了</span></span><span><span style="color:windowtext; text-decoration:none">idea</span></span><span><span style="font-family:宋体">环境）</span></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="font-family:">开发工具</span></span><span><span style="color:windowtext; text-decoration:none">:<span style="">&nbsp;<wbr></span>idea 14.0.2</span></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="font-family:">项目管理工具</span></span><span><span style="color:windowtext; text-decoration:none">:maven (</span></span><span><span style="font-family:">官网</span></span><span><span style="color:windowtext; text-decoration:none">:</span></span><span><a target="_blank" target="_blank" href="http://maven.apache.org/"><span style="color:windowtext; text-decoration:none">http://maven.apache.org/</span></a><span><span style="color:windowtext; text-decoration:none">)</span></span></span></p>
+                        <p><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></p>
+                        <p><span><span style="color:windowtext; text-decoration:none">2. web</span></span><span><span style="font-family:">工程说明</span></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="color:windowtext; text-decoration:none">java web</span></span><span><span style="font-family:">项目中</span></span><span><span style="color:windowtext; text-decoration:none">webapps</span></span><span><span style="font-family:">或者</span></span><span><span style="color:windowtext; text-decoration:none">webcontens</span></span><span><span style="font-family:">就是工程的发布文件夹</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">如果发布到</span></span><span><span style="color:windowtext; text-decoration:none">tomcat</span></span><span><span style="font-family:">中</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">将该文件夹下的内容拷贝到</span></span><span><span style="color:windowtext; text-decoration:none">webapps</span></span><span><span style="font-family:">下即可</span></span><span><span style="color:windowtext; text-decoration:none">(</span></span><span><span style="font-family:">如果在</span></span><span><span style="color:windowtext; text-decoration:none">webapps</span></span><span><span style="font-family:">下将所有内容放置</span></span><span><span style="color:windowtext; text-decoration:none">example</span></span><span><span style="font-family:">文件夹中</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">那么</span></span><span><span style="color:windowtext; text-decoration:none">example</span></span><span><span style="font-family:">将成为工程名</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">访问路径</span></span><span><span style="color:windowtext; text-decoration:none">:hostname:port/example/index.jsp).webapps</span></span><span><span style="font-family:">即部署文件会包括</span></span><span><span style="color:windowtext; text-decoration:none">WEB-INF</span></span><span><span style="font-family:">以及页面文件</span></span><span><span style="color:windowtext; text-decoration:none">(jsp</span></span><span><span style="font-family:">等</span></span><span><span style="color:windowtext; text-decoration:none">).</span></span></p>
+                        <p><span><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="color:windowtext; text-decoration:none">WEB-INF</span></span><span><span style="font-family:">下有</span></span><span><span style="color:windowtext; text-decoration:none">classes</span></span><span><span style="font-family:">文件夹</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">这是</span></span><span><span style="color:windowtext; text-decoration:none">java</span></span><span><span style="font-family:">类被编译后存放的地址</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">部署一般不部署源码</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">只将</span></span><span><span style="color:windowtext; text-decoration:none">class</span></span><span><span style="font-family:">文件部署</span></span><span><span style="color:windowtext; text-decoration:none">.</span></span><span><span style="font-family:">有些配置文件需要放在</span></span><span><span style="color:windowtext; text-decoration:none">classes</span></span><span><span style="font-family:">文件夹下</span></span><span><span style="color:windowtext; text-decoration:none">.WEB-INF</span></span><span><span style="font-family:">下还有</span></span><span><span style="color:windowtext; text-decoration:none">lib</span></span><span><span style="font-family:">目录</span></span><span><span style="color:windowtext; text-decoration:none">,</span></span><span><span style="font-family:">是</span></span><span style="font-size:10.5pt; font-family:">WebApp
+ Libraries</span><span><span style="font-family:">.</span></span><span><span style="font-family:">将依赖包拷贝到此目录下刷新工程</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">加入的包一般就可以自动找到</span></span><span><span style="font-family:">.</span></span><span><span style="font-family:">通过</span></span><span><span style="font-family:">build
+ path</span></span><span><span style="font-family:">中的</span></span><span><span style="font-family:">addjar</span></span><span><span style="font-family:">还可以引用工程文件夹以外的</span></span><span><span style="font-family:">jar,</span></span><span><span style="font-family:">如果引用了工程外的</span></span><span><span style="font-family:">jar,</span></span><span><span style="font-family:">在</span></span><span><span style="font-family:">.classpath</span></span><span><span style="font-family:">文件中会添加</span></span><span style="font-size:10.5pt; font-family:"><a><span style="font-size:10.5pt; font-family:">D:/workspace/ojdbc14.jar</span></a></span><span style="font-size:10.5pt; font-family:">&quot;/&gt;</span><span><span style="font-family:">.WEB-INF/lib</span></span><span><span style="font-family:">中的依赖包不往</span></span><span><span style="font-family:">.classpath</span></span><span><span style="font-family:">文件中添加</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">两者却别不大</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">编译时先找</span></span><span><span style="font-family:">classpath</span></span><span><span style="font-family:">中的依赖包</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">没有的话找</span></span><span><span style="font-family:">WEB-INF/lib</span></span><span><span style="font-family:">下的依赖包</span></span><span><span style="font-family:">.</span></span><span><span style="font-family:">由于我们的工程由</span></span><span><span style="font-family:">mvn</span></span><span><span style="font-family:">管理</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">所有的依赖通过</span></span><span><span style="font-family:">pom.xml</span></span><span><span style="font-family:">配置</span></span><span><span style="font-family:">,maven</span></span><span><span style="font-family:">添加存在</span></span><span><span style="font-family:">.m2</span></span><span><span style="font-family:">文件中</span></span><span><span style="font-family:">,lib</span></span><span><span style="font-family:">只需要指向</span></span><span><span style="font-family:">.m2</span></span><span><span style="font-family:">目录即可</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">一般集成开发环境能创建</span></span><span><span style="font-family:">maven</span></span><span><span style="font-family:">的工程就已经完成这个配置了</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">如果</span></span><span><span style="font-family:">maven</span></span><span><span style="font-family:">自行安装则应该需要自己配置</span></span><span><span style="font-family:">.</span></span></p>
+                        <p><span>&nbsp;<wbr></span></p>
+                        <p><span><span style="font-family:">3.maven</span></span><span><span style="font-family:">工程转</span></span><span><span style="font-family:">web</span></span><span><span style="font-family:">工程</span></span></p>
+                        <p><span><span style="font-family:"><span style="">&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr>&nbsp;<wbr></span></span></span><span><span style="font-family:">我用</span></span><span><span style="font-family:">idea</span></span><span><span style="font-family:">直接创建了</span></span><span><span style="font-family:">maven</span></span><span><span style="font-family:">项目</span></span><span><span style="font-family:">,maven</span></span><span><span style="font-family:">项目是不存在</span></span><span><span style="font-family:">web</span></span><span><span style="font-family:">目录的</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">也就是不是</span></span><span><span style="font-family:">web</span></span><span><span style="font-family:">项目</span></span><span><span style="font-family:">,</span></span><span><span style="font-family:">我们需要自己修改</span></span><span><span style="font-family:">.</span></span><span><span style="font-family:">对于我的</span></span><span><span style="font-family:">idea(</span></span><span><span style="font-family:">其他集成开发环境会有所不同</span></span><span><span style="font-family:">),</span></span><span><span style="font-family:">项目右击选择</span></span><span><span style="font-family:">”</span></span><span><span style="font-family:">AddFrameworks
+ Support”----”webApplication”</span></span><span><span style="font-family:">打钩</span></span><span><span style="font-family:">.</span></span></p>
+                        <p><img src="../imgs/p1-1.png;690" alt=""><br>
+                        </p>
+                        <p><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr></span></span><span>OK</span><span style="font-family:">后</span><span>,</span><span style="font-family:">将会在工程目录下产生</span><span>web</span><span style="font-family:">目录</span><span>,</span><span style="font-family:">将其移动到</span><span>src/main</span><span style="font-family:">下</span><span>,</span><span style="font-family:">并且将</span><span>web</span><span style="font-family:">名称改为</span><span>webapp.(</span><span style="font-family:">我使用</span><span>maven</span><span style="font-family:">的</span><span>jetty</span><span style="font-family:">插件作为服务器</span><span>,</span><span style="font-family:">其操作的</span><span>web</span><span style="font-family:">目录在</span><span>src/main/webapp</span><span style="font-family:">下</span><span>,</span><span style="font-family:">应该可以自行配置</span><span>.)</span></p>
+                        <p><span><img src="" alt=""><img src="../imgs/p1-2.png;690" alt=""><br>
+<br>
+</span></p>
+                        <p><span style="font-family:">现在</span><span>index.jsp</span><span style="font-family:">里面写点东西</span><span>,</span><span style="font-family:">待会测试使用</span><span>.</span></p>
+                        <p><span style=""><span style=""><img src="../imgs/p1-3.png;690" alt="">&nbsp;<img src="" alt=""><wbr>
+<br>
+<br>
+</span></span></p>
+                        <p><span>4.</span><span style="font-family:">跑</span><span>web</span><span style="font-family:">工程我们需要服务器</span></p>
+                        <p><span style=""><span style="">&nbsp;<wbr>&nbsp;<wbr></span></span><span style="font-family:">注意</span><span>:</span><span style="font-family:">除了安装相应服务器外</span><span>,</span><span style="font-family:">跑相应的服务器需要相应的依赖包</span><span>,</span><span style="font-family:">正如</span><span>tomcat</span><span style="font-family:">需要</span><span>tomcat-jsptomcat-server</span><span style="font-family:">等</span><span>,jetty</span><span style="font-family:">需要依赖包</span><span style="font-size:10.5pt; font-family:">org.mortbay.jetty</span><span style="font-family:">等</span><span style="font-size:10.5pt; font-family:">,</span><span style="font-family:">直接贴出</span><span style="font-size:10.5pt; font-family:">pom.xml</span><span style="font-family:">的配置</span><span style="font-size:10.5pt; font-family:">:</span></p>
+                        <p><span style="font-family:">安装插件</span><span style="font-size:10.5pt; font-family:">:</span></p>
+                        <p><img src="" alt=""><img src="../imgs/p1-4.png;690" alt=""><br>
+                            <span style="font-family:">&nbsp;<wbr>添加依赖</span><span>:</span></p>
+                        <p>&nbsp;<img src="../imgs/p1-5.png;690" alt=""><img src="" alt=""></p>
+                        <p><span style="font-family:">然后我们看看</span><span>maven</span><span style="font-family:">下现有的插件吧</span></p>
+                        <p>&nbsp;<img src="../imgs/p1-6.png;690" alt=""><img src="" alt=""></p>
+                        <p><span>jetty run</span><span style="font-family:">起来</span></p>
+                        <p><span style="font-family:"><img src="../imgs/p1-7.png;690" name="image_operate_90191446693348884" alt="由git版本控制maven管理的简单web工程搭建" title="由git版本控制maven管理的简单web工程搭建"></a><br>
+<img src="" alt=""><br>
+</span></p>
+                        <p><span style="font-family:">看上面那个日志</span><span>,</span><span style="font-family:">里面有很多东西哟</span><span>,</span><span style="font-family:">整一个运行过程包括操作目录都写清楚了</span><span>.</span><span style="font-family:">运行成功</span></p>
+                        <p><span style="font-family:"><img src="" alt=""><img src="../imgs/p1-8.png;690" alt=""><br>
+</span></p>
+                       <h3>友情链接：</h3>
+                        <a href="http://blog.csdn.net/u010913443/article/details/51123465">eclipse下maven工程转web工程</a>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>
