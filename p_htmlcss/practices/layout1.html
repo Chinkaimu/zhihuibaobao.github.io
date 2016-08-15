@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>三列布局</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">双飞翼布局</h1>
+                         <p>圣杯布局和双飞翼布局，他们的都要求三列布局，中间宽度自适应，两边定宽，
+                             这样做的优势是重要的东西放在文档流前面可以优先渲染，而双飞翼布局是对圣杯布局的一种改良。</p>
+                         <p>实现效果如下图：</p>
+                         <img src="../imgs/layout-2.png">
+                        <h3>解决思路：</h3>
+                        <h3>一、圣杯布局</h3>
+                         <ul><li>（1）main，left,right均设置float:left;使它们能够在同一行；</li>
+                        <li> （2）设置父元素padding-left和padding-left为左右栏预留空间；</li>
+                         <li>（3）main设置width:100%;后left,right被挤到下面两行；</li>
+                         <li> （4）left设置margin-left:100%;移到main的左边，再通过relative布局左移它的宽度，达到目标位置；</li>
+                          <li>  （5）left设置margin-left:它的宽度;移到main的右边，再通过relative布局右移它的宽度，达到目标位置。</li>
+                           <li>（6）注意事项：<br>
+                              <blockquote> 父元素不需要设置为BFC避免float溢出，因为所有的子元素都是浮动元素。
+                              个人理解margin-left的设置是相对与父元素边界的，因为block元素的独占一行，导致margin-left不是相对于前面的block元素进行定位。
+                               </blockquote>
+                           </li>
+                          </ul>
+                        <h3>二、双飞翼布局</h3>
+                        <p>在不增加额外标签的情况下，圣杯布局已经非常完美，圣杯布局使用了相对定位，以后布局是有局限性的，而且宽度控制要改的地方也多，那么有没其他方法更加简洁方便呢？
+                        在淘宝UED探讨下，增加多一个div就可以不用相对布局了，只用到了浮动和负边距，这就是我们所说的双飞翼布局。</p>
+                        <ul>
+                            <li>实现方法：圣杯布局去掉了左右栏的相对定位，去掉包裹层padding，以中间栏新增div(inner)的margin代替。</li>
+                        </ul>
+                        <h3>实现效果：<a href="tests/layout1.html">单独查看效果</a></h3>
+                        <iframe width="100%" height="250px" src="tests/layout1.html"></iframe>
+                        <h4>参考代码</h4>
+                        <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_htmlcss/practices/tests/layout1.html">我的代码</a></p>
+                        <h4>参考链接</h4>
+                        <p><a href="http://www.cnblogs.com/tinyphp/p/4742922.html">圣杯布局实现过程</a></p>
+                        <p><a href="http://www.cnblogs.com/tinyphp/p/4743674.html">双飞翼布局</a></p>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>
