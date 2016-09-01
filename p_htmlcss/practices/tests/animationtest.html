@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .container{
+            position:relative;
+        }
+        .test{
+            position:absolute;
+            width:20px;
+            height:20px;
+            background-color:red;
+            -webkit-animation:mymove 5s infinite;
+        }
+        .test:hover{
+            -webkit-animation-name:none;
+            border:solid 2px black;
+        }
+        @keyframes mymove {
+            from{left:0px;}
+            to{left:200px;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+   <div class="test">
+    </div>
+    </div>
+</body>
+</html>

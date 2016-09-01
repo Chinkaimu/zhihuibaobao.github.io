@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>纯CSS实现幻灯片</title>
+    <link rel="stylesheet" href="../css/power1.css">
+</head>
+<body>
+  <div class="container">
+          <input type="radio" name="slideshow" id="slider01" />
+          <input type="radio" name="slideshow" id="slider02" />
+          <input type="radio" name="slideshow" id="slider03" />
+          <input type="radio" name="slideshow" id="slider04" />
+          <input type="radio"  name="slideshow" id="slider05" />
+
+      <div id="larrows">
+          <label for="slider05" id="l1"><</label>
+          <label for="slider01" id="l2"><</label>
+          <label for="slider02" id="l3"><</label>
+          <label for="slider03" id="l4"><</label>
+          <label for="slider04" id="l5"><</label>
+      </div>
+
+      <div id="rarrows">
+          <label for="slider02" id="r1">></label>
+          <label for="slider03" id="r2">></label>
+          <label for="slider04" id="r3">></label>
+          <label for="slider05" id="r4">></label>
+          <label for="slider01" id="r5">></label>
+      </div>
+
+      <div id="inner">
+       <ul>
+           <li id="animation01">
+               <div class="tooltip">img01</div>
+               <img src="../../imgs/powerimg/1.png">
+           </li>
+           <li id="animation02">
+               <div class="tooltip">img02</div>
+               <img src="../../imgs/powerimg/2.png">
+           </li>
+           <li id="animation03">
+               <div class="tooltip">img03</div>
+               <img src="../../imgs/powerimg/3.png">
+           </li>
+           <li id="animation04">
+               <div class="tooltip">img04</div>
+               <img src="../../imgs/powerimg/4.png">
+           </li>
+           <li id="animation05">
+               <div class="tooltip">img05</div>
+               <img src="../../imgs/powerimg/5.png">
+           </li>
+       </ul>
+     </div>
+
+      <div id="lbutton">
+          <label for="slider01" class="lb1"></label>
+          <label for="slider02" class="lb2"></label>
+          <label for="slider03" class="lb3"></label>
+          <label for="slider04" class="lb4"></label>
+          <label for="slider05" class="lb5"></label>
+      </div>
+  </div>
+  <p><a href="../power.html">实践文档</a></p>
+</body>
+</html>

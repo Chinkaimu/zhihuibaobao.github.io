@@ -1,0 +1,437 @@
+#{
+  padding:0;
+  margin:0;
+}
+
+.container{
+    margin:0 auto;
+    width:440px;
+    height:580px;
+    border:1px solid black;
+    border-radius: 4px;
+    position:relative;
+}
+
+.container input{
+    display: none;
+}
+
+#larrows label
+{
+    position:absolute;
+    height:60px;
+    line-height:60px;
+    top:220px;
+    left:-32px;
+    font-size:3.6em;
+}
+
+#rarrows label{
+    position:absolute;
+    height:60px;
+    line-height:60px;
+    top:220px;
+    right:-32px;
+    font-size:3.6em;
+}
+
+#inner{
+    width:440px;
+    height:580px;
+    overflow: hidden;
+    position:relative;
+}
+
+#inner ul{
+    position:relative;
+    height:580px;
+    width: 440px;
+    margin:0;
+    overflow: hidden;
+}
+
+#inner ul li{
+    list-style: none;
+    position:absolute;
+    left:0;
+    opacity:0;
+}
+
+#inner ul li .tooltip{
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+#lbutton{
+    /*margin-top:10px;*/
+    align-content: center;
+    display:flex;
+    justify-content: center;
+}
+#lbutton label{
+    display:inline-block;
+    border:1px solid black;
+    width:10px;
+    height:10px;
+    border-radius: 5px;
+    margin:5px;
+}
+
+/*******自动轮播动画开始********/
+li#animation01,
+#slider01:checked ~ #inner li#animation01,
+#slider02:checked ~ #inner li#animation02,
+#slider03:checked ~ #inner li#animation03,
+#slider04:checked ~ #inner li#animation04,
+#slider05:checked ~ #inner li#animation05{
+    -webkit-animation:img01 10s linear infinite;
+}
+li#animation02,
+#slider01:checked ~ #inner li#animation02,
+#slider02:checked ~ #inner li#animation03,
+#slider03:checked ~ #inner li#animation04,
+#slider04:checked ~ #inner li#animation05,
+#slider05:checked ~ #inner li#animation01{
+    -webkit-animation:img02 10s linear infinite;
+}
+li#animation03,
+#slider01:checked ~ #inner li#animation03,
+#slider02:checked ~ #inner li#animation04,
+#slider03:checked ~ #inner li#animation05,
+#slider04:checked ~ #inner li#animation01,
+#slider05:checked ~ #inner li#animation02{
+    -webkit-animation:img03 10s linear infinite;
+}
+li#animation04,
+#slider01:checked ~ #inner li#animation04,
+#slider02:checked ~ #inner li#animation05,
+#slider03:checked ~ #inner li#animation01,
+#slider04:checked ~ #inner li#animation02,
+#slider05:checked ~ #inner li#animation03{
+    -webkit-animation:img04 10s linear infinite;
+}
+li#animation05,
+#slider01:checked ~ #inner li#animation05,
+#slider02:checked ~ #inner li#animation01,
+#slider03:checked ~ #inner li#animation02,
+#slider04:checked ~ #inner li#animation03,
+#slider05:checked ~ #inner li#animation04{
+    -webkit-animation:img05 10s linear infinite;
+}
+
+@-webkit-keyframes img01{
+    0%{left:0px;opacity:1;}
+    18%{left:0px;opacity:1;}
+    20%{left:-440px;opacity:0;}
+    21%{left:440px;opacity:0;}
+    98%{left:440px;opacity:0;}
+    100%{left:0px;opacity:0;}
+ }
+@-webkit-keyframes img02{
+    0%{left:440px;opacity:0;}
+    18%{left:440px;opacity:0;}
+    20%{left:0px;opacity:1;}
+    38%{left:0px;opacity:1;}
+    40%{left:-440px;opacity:0;}
+    41%{left:440px;opacity:0;}
+    100%{left:440px;opacity:0;}
+ }
+@-webkit-keyframes  img03{
+    0%{left:440px;opacity:0;}
+    38%{left:440px;opacity:0;}
+    40%{left:0px;opacity:1;}
+    58%{left:0px;opacity:1;}
+    60%{left:-440px;opacity:0;}
+    61%{left:440px;opacity:0;}
+    100%{left:440px;opacity:0;}
+ }
+@-webkit-keyframes img04 {
+    0%{left:440px;opacity:0;}
+    58%{left:440px;opacity:0;}
+    60%{left:0px;opacity:1;}
+    78%{left:0px;opacity:1;}
+    80%{left:-440px;opacity:0;}
+    81%{left:440px;opacity:0;}
+    100%{left:440px;opacity:0;}
+ }
+@-webkit-keyframes img05 {
+    0%{left:-440px;opacity:0;}
+    1%{left:440px;opacity:0;}
+    78%{left:440px;opacity:0;}
+    80%{left:0px;opacity:1;}
+    98%{left:0px;opacity:1;}
+    100%{left:-440px;opacity:0;}
+}
+
+/*E ~ F	匹配任何在E元素之后的同级F元素。同级！！*/
+#lbutton label.lb1,
+#slider01:checked ~ #lbutton label:nth-child(1),
+#slider02:checked ~ #lbutton label:nth-child(2),
+#slider03:checked ~ #lbutton label:nth-child(3),
+#slider04:checked ~ #lbutton label:nth-child(4),
+#slider05:checked ~ #lbutton label:nth-child(5){
+    -webkit-animation:lb01 10s linear infinite;
+}
+#lbutton  label.lb2,
+#slider01:checked ~ #lbutton label:nth-child(2),
+#slider02:checked ~ #lbutton label:nth-child(3),
+#slider03:checked ~ #lbutton label:nth-child(4),
+#slider04:checked ~ #lbutton label:nth-child(5),
+#slider05:checked ~ #lbutton label:nth-child(1){
+    -webkit-animation:lb02 10s linear infinite;
+}
+#lbutton label.lb3,
+#slider01:checked ~ #lbutton label:nth-child(3),
+#slider02:checked ~ #lbutton label:nth-child(4),
+#slider03:checked ~ #lbutton label:nth-child(5),
+#slider04:checked ~ #lbutton label:nth-child(1),
+#slider05:checked ~ #lbutton label:nth-child(2){
+    -webkit-animation:lb03 10s linear infinite;
+}
+#lbutton label.lb4,
+#slider01:checked ~ #lbutton label:nth-child(4),
+#slider02:checked ~ #lbutton label:nth-child(5),
+#slider03:checked ~ #lbutton label:nth-child(1),
+#slider04:checked ~ #lbutton label:nth-child(2),
+#slider05:checked ~ #lbutton label:nth-child(3){
+    -webkit-animation:lb04 10s linear infinite;
+}
+#lbutton label.lb5,
+#slider01:checked ~ #lbutton label:nth-child(5),
+#slider02:checked ~ #lbutton label:nth-child(1),
+#slider03:checked ~ #lbutton label:nth-child(2),
+#slider04:checked ~ #lbutton label:nth-child(3),
+#slider05:checked ~ #lbutton label:nth-child(4){
+    -webkit-animation:lb05 10s linear infinite;
+}
+
+@-webkit-keyframes lb01{
+    0%{background-color: #000000;}
+    18%{background-color: #000000;}
+    20%{background-color: #fff;}
+    100%{background-color: #fff;}
+}
+@-webkit-keyframes lb02{
+    0%{background-color: #fff;}
+    18%{background-color: #fff;}
+    20%{background-color: #000000;}
+    38%{background-color: #000000;}
+    40%{background-color: #fff;}
+    100%{background-color: #fff;}
+}
+@-webkit-keyframes  lb03{
+    0%{background-color: #fff;}
+    38%{background-color: #fff;}
+    40%{background-color: #000000;}
+    58%{background-color: #000000;}
+    60%{background-color: #fff;}
+    100%{background-color: #fff;}
+}
+@-webkit-keyframes lb04 {
+    0%{background-color: #fff;}
+    58%{background-color: #fff;}
+    60%{background-color: #000000;}
+    78%{background-color: #000000;}
+    80%{background-color: #fff;}
+    100%{background-color: #fff;}
+}
+@-webkit-keyframes lb05 {
+    0%{background-color: #fff;}
+    78%{background-color: #fff;}
+    80%{background-color: #000000;}
+    98%{background-color: #000000;}
+    100%{background-color: #fff;}
+}
+
+/*通过下标选择图片*/
+/*#slider01:checked ~ #inner li#animation01,*/
+/*#slider02:checked ~ #inner li#animation02,*/
+/*#slider03:checked ~ #inner li#animation03,*/
+/*#slider04:checked ~ #inner li#animation04,*/
+/*#slider05:checked ~ #inner li#animation05{*/
+    /*opacity:1;*/
+    /*left:0px;*/
+    /*z-index:1;*/
+/*}*/
+
+/*#slider01:checked ~ #lbutton label#lb1,*/
+/*#slider02:checked ~ #lbutton label#lb2,*/
+/*#slider03:checked ~ #lbutton label#lb3,*/
+/*#slider04:checked ~ #lbutton label#lb4,*/
+/*#slider05:checked ~ #lbutton label#lb5{*/
+   /*background-color: #000;*/
+/*}*/
+
+/* :active 用于选择活动链接 */
+/*#slider01:active ~ #inner li,*/
+/*#slider02:active ~ #inner li,*/
+/*#slider03:active ~ #inner li,*/
+/*#slider04:active ~ #inner li,*/
+/*#slider05:active ~ #inner li,*/
+/*#slider01:active ~ #lbutton label,*/
+/*#slider02:active ~ #lbutton label,*/
+/*#slider03:active ~ #lbutton label,*/
+/*#slider04:active ~ #lbutton label,*/
+/*#slider05:active ~ #lbutton label,{*/
+    /*-webkit-animation-name:none;*/
+/*}*/
+
+#larrows#l1,
+#slider01:checked ~ #larrows label#l1,
+#slider02:checked ~ #larrows label#l2,
+#slider03:checked ~ #larrows label#l3,
+#slider04:checked ~ #larrows label#l4,
+#slider05:checked ~ #larrows label#l5{
+    -webkit-animation:la01 10s linear infinite;
+}
+#larrows#l2,
+#slider01:checked ~ #larrows label#l2,
+#slider02:checked ~ #larrows label#l3,
+#slider03:checked ~ #larrows label#l4,
+#slider04:checked ~ #larrows label#l5,
+#slider05:checked ~ #larrows label#l1{
+    -webkit-animation:la02 10s linear infinite;
+}
+#larrows#l3,
+#slider01:checked ~ #larrows label#l3,
+#slider02:checked ~ #larrows label#l4,
+#slider03:checked ~ #larrows label#l5,
+#slider04:checked ~ #larrows label#l1,
+#slider05:checked ~ #larrows label#l2{
+    -webkit-animation:la03 10s linear infinite;
+}
+#larrows#l4,
+#slider01:checked ~ #larrows label#l4,
+#slider02:checked ~ #larrows label#l5,
+#slider03:checked ~ #larrows label#l1,
+#slider04:checked ~ #larrows label#l2,
+#slider05:checked ~ #larrows label#l3{
+    -webkit-animation:la04 10s linear infinite;
+}
+#larrows#l5,
+#slider01:checked ~ #larrows label#l5,
+#slider02:checked ~ #larrows label#l1,
+#slider03:checked ~ #larrows label#l2,
+#slider04:checked ~ #larrows label#l3,
+#slider05:checked ~ #larrows label#l4{
+    -webkit-animation:la05 10s linear infinite;
+}
+
+@-webkit-keyframes la01{
+    0%{opacity:1;z-index:1;}
+    18%{opacity:1;z-index:1;}
+    20%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes la02{
+    0%{opacity:0;z-index:0;}
+    18%{opacity:0;z-index:0;}
+    20%{opacity:1;z-index:1;}
+    38%{opacity:1;z-index:1;}
+    40%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes  la03{
+    0%{opacity:0;z-index:0;}
+    38%{opacity:0;z-index:0;}
+    40%{opacity:1;z-index:1;}
+    58%{opacity:1;z-index:1;}
+    60%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes la04 {
+    0%{opacity:0;z-index:0;}
+    58%{opacity:0;z-index:0;}
+    60%{opacity:1;z-index:1;}
+    78%{opacity:1;z-index:1;}
+    80%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes la05 {
+    0%{opacity:0;z-index:0;}
+    78%{opacity:0;z-index:0;}
+    80%{opacity:1;z-index:1;}
+    98%{opacity:1;z-index:1;}
+    100%{opacity:0;z-index:0;}
+}
+
+#rarrows#r1,
+#slider01:checked ~ #rarrows label#r1,
+#slider02:checked ~ #rarrows label#r2,
+#slider03:checked ~ #rarrows label#r3,
+#slider04:checked ~ #rarrows label#r4,
+#slider05:checked ~ #rarrows label#r5{
+    -webkit-animation:la01 10s linear infinite;
+}
+#rarrows#r2,
+#slider01:checked ~ #rarrows label#r2,
+#slider02:checked ~ #rarrows label#r3,
+#slider03:checked ~ #rarrows label#r4,
+#slider04:checked ~ #rarrows label#r5,
+#slider05:checked ~ #rarrows label#r1{
+    -webkit-animation:la02 10s linear infinite;
+}
+#rarrows#r3,
+#slider01:checked ~ #rarrows label#r3,
+#slider02:checked ~ #rarrows label#r4,
+#slider03:checked ~ #rarrows label#r5,
+#slider04:checked ~ #rarrows label#r1,
+#slider05:checked ~ #rarrows label#r2{
+    -webkit-animation:la03 10s linear infinite;
+}
+#rarrows#r4,
+#slider01:checked ~ #larrows label#r4,
+#slider02:checked ~ #larrows label#r5,
+#slider03:checked ~ #larrows label#r1,
+#slider04:checked ~ #larrows label#r2,
+#slider05:checked ~ #larrows label#r3{
+    -webkit-animation:la04 10s linear infinite;
+}
+#rarrows#r5,
+#slider01:checked ~ #larrows label#r5,
+#slider02:checked ~ #larrows label#r1,
+#slider03:checked ~ #larrows label#r2,
+#slider04:checked ~ #larrows label#r3,
+#slider05:checked ~ #larrows label#r4{
+    -webkit-animation:ra05 10s linear infinite;
+}
+
+@-webkit-keyframes ra01{
+    0%{opacity:1;z-index:1;}
+    18%{opacity:1;z-index:1;}
+    20%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes ra02{
+    0%{opacity:0;z-index:0;}
+    18%{opacity:0;z-index:0;}
+    20%{opacity:1;z-index:1;}
+    38%{opacity:1;z-index:1;}
+    40%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes  ra03{
+    0%{opacity:0;z-index:0;}
+    38%{opacity:0;z-index:0;}
+    40%{opacity:1;z-index:1;}
+    58%{opacity:1;z-index:1;}
+    60%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes ra04 {
+    0%{opacity:0;z-index:0;}
+    58%{opacity:0;z-index:0;}
+    60%{opacity:1;z-index:1;}
+    78%{opacity:1;z-index:1;}
+    80%{opacity:0;z-index:0;}
+    100%{opacity:0;z-index:0;}
+}
+@-webkit-keyframes ra05 {
+    0%{opacity:0;z-index:0;}
+    78%{opacity:0;z-index:0;}
+    80%{opacity:1;z-index:1;}
+    98%{opacity:1;z-index:1;}
+    100%{opacity:0;z-index:0;}
+}
+
