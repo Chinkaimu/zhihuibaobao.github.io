@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>居中布局实践一</title>
+    <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <style>
+        .container{
+            width:80%;
+            height:180px;
+            border:1px solid black;
+        }
+        .content1{
+            text-align: center;
+        }
+
+        .content2{
+            width:80%;
+            margin:0 auto;
+        }
+
+        .content3{
+            float:right;
+
+            width:500px;
+            position:relative;
+            right:50%;
+            margin-right:-250px;
+            /*position:relative;*/
+            /*right:50%;*/
+            /*transform:translate(50%);*/
+        }
+
+        .container4{
+            position:relative;
+        }
+        .content4{
+           position:absolute;
+           left:50%;
+            /*border:1px solid black;*/
+           transform:translate(-50%);
+        }
+
+        .container5{
+            position:relative;
+        }
+        .content5{
+            position:absolute;
+            width:300px;
+            margin:0 auto;
+            left:0;
+            right:0;
+            background-color:red;
+        }
+
+        .container6{
+            display:flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+  <div class="container container1">
+      <div class="content1">
+          水平居中测试1：
+          1.如果需要居中的元素为常规流中inline元素，为父元素设置text-align: center;即可实现。
+      </div>
+  </div>
+
+  <div class="container container2">
+      <div class="content2">
+          水平居中测试2：
+          2.如果需要居中的元素为常规流中block元素，1）为元素设置宽度，2）设置左右margin为auto。3）IE6下需在父元素上设置text-align: center;
+          ,再给子元素恢复需要的值。
+      </div>
+  </div>
+
+  <div class="container container3">
+      <div class="content3">
+          水平居中测试3：
+          3.如果需要居中的元素为浮动元素，1）为元素设置宽度，2）position: relative;，3）浮动方向偏移量（left或者right）设置为50%，4）浮动方向上的margin设置为元素宽度一半乘以-1。
+          经实践测试，margin可以通过translate代替。该情况不用设置元素宽度，可以通过50%计算，设置为translate(50%)。元素的宽度是内容的宽度，由于block元素设置为浮动或绝对定位元素（相对定位元素还是父元素的宽度）
+          后其宽度是内容的宽度。
+      </div>
+  </div>
+
+
+  <div class="container container4">
+      <div class="content4">
+          水平居中测试4：
+          4.如果需要居中的元素为绝对定位元素，1）为元素设置宽度，2）偏移量设置为50%，3）偏移方向外边距设置为元素宽度一半乘以-1。这个设置同上面浮动元素的
+          居中原理差不多，上面第3点其实是通过float定位好元素位置，然后通过relative进行偏移。第4点直接进行偏移定位，也可以通过translate来实现。缺点是
+          无法确定当多行事其宽度会设置为多少。
+          记住：float设置浮动及position:absolute;及position:fixed设置后，其宽度都是由内容撑开的。
+      </div>
+  </div>
+
+  <div class="container container5">
+      <div class="content5">
+          水平居中测试5：
+          5.如果需要居中的元素为绝对定位元素，1）为元素设置宽度，2）设置左右偏移量都为0,3）设置左右外边距都为auto。不是很理解，还需要探究绝对定位
+          对margin的影响，margin设置的到底是相对于什么的margin，有待进一步学习理解
+      </div>
+  </div>
+
+  <div class="container container6">
+      <div class="content6">
+          水平居中测试6：
+          通过display:flex;实现水平居中。
+      </div>
+  </div>
+</body>
+</html>

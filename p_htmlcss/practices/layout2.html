@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>居中布局</title>
+    <link rel="icon" type="image/png" href="../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/font.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<main id="body_wrapper">
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
+        </div>
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
+
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
+        </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <h1 class="title">居中布局</h1>
+                         <h3>一、水平居中</h3>
+                         <p>1.如果需要居中的元素为常规流中inline元素，为父元素设置text-align: center;即可实现。</p>
+                         <p>2.如果需要居中的元素为常规流中block元素，1）为元素设置宽度，2）设置左右margin为auto。3）IE6下需在父元素上设置text-align: center;
+                             ,再给子元素恢复需要的值。</p>
+                         <p>3.如果需要居中的元素为浮动元素，1）为元素设置宽度，2）position: relative;，3）浮动方向偏移量（left或者right）设置为50%，4）浮动方向上的margin设置为元素宽度一半乘以-1。
+                         经实践测试，margin可以通过translate代替。该情况不用设置元素宽度，可以通过50%计算，设置为translate(50%)。元素的宽度是内容的宽度，由于block元素设置为浮动或绝对定位元素（相对定位元素还是父元素的宽度）
+                             后其宽度是内容的宽度。缺点是
+                             无法确定当多行事其宽度会设置为多少。</p>
+                         <p>4.如果需要居中的元素为绝对定位元素，1）为元素设置宽度，2）偏移量设置为50%，3）偏移方向外边距设置为元素宽度一半乘以-1。这个设置同上面浮动元素的
+                         居中原理差不多，上面第3点其实是通过float定位好元素位置，然后通过relative进行偏移。第4点直接进行偏移定位，也可以通过translate来实现。记住：float设置浮动及
+                         position:absolute;及position:fixed设置后，其宽度都是由内容撑开的。</p>
+                         <p>5.如果需要居中的元素为绝对定位元素，1）为元素设置宽度，2）设置左右偏移量都为0,3）设置左右外边距都为auto。不是很理解，还需要探究绝对定位
+                         对margin的影响，margin设置的到底是相对于什么的margin，有待进一步学习理解。</p>
+                         <p>6.使用flex，设置父元素为display:flex;且justify-content:center;主轴居中。</p>
+                         <p>总结：</p>
+                         <ul>
+                           <li>
+                               （1）能不设置宽度还是不设置宽度，像第2、3个例子如果内容宽度设置太小，
+                               将会出现非常不好的效果，可以自行尝试。所以，像3、4最好用translate去代替实现。</li>
+                           <li>
+                               （2）但是通过translate却设置的时候，不知道多行时左右会空出多少空隙。
+                               经测试，当数据两很多时并不会数据撑开到父元素宽度。</li>
+                         </ul>
+
+                        <h3>水平居中实现效果：<a href="tests/layout2-1.html">单独查看效果</a></h3>
+                        <iframe width="100%" height="1000px" src="tests/layout2-1.html"></iframe>
+
+                         <h3>二、垂直居中</h3>
+                         <h4>(一)针对元素的解决方案</h4>
+                         <p>1.单行的行内元素解决方案：当一个行内元素，即inline，inline-*类型的元素需要居中的话，
+                             可以将它的height和line-height同时设置为父元素的高度即可实现垂直居中效果。 如果多行的话，第二行开始将不会显示。</p>
+                         <p>2.图片的垂直居中解决方案：1)设置line-height为父元素高度；2）设置图片img的vertical-align:middle;。<a href="http://www.w3school.com.cn/cssref/pr_pos_vertical-align.asp">vertical-align参考</a></p>
+                         <p>3.已知高度的块状元素解决方案：1）父元素设置position:relative;2）子元素绝对定位position:absolute;并且top50%高度；3）margin-top设置为元素宽度一半乘以-1</p>
+                         <p>4.通过table实现垂直居中：1）父元素设置display:table;2）子元素设置display:table-cell;vertical-align:middle。
+                             因为vertical-align对inline、table元素有效，对块级元素无效。</p>
+                         <h4>(二)绝对定位居中技术</h4>
+                         <p>说明：绝对定位元素不在普通内容流中渲染，因此margin:auto可以使内容在通过top: 0; left: 0; bottom: 0;right: 0;设置的边界内垂直居中。</p>
+                         <p>5.容器内绝对居中：1）设置父元素position:relative;2）设置子元素宽度、高度；3）设置子元素position:absolute;且top,right,bottom,left均为0；4）设置子元素margin:auto.</p>
+                         <p>6.视口内绝对居中：1)设置元素position:fixed，且top,right,bottom,left值为0。</p>
+                         <p>7.如果你要设置一个固顶的头或增加其他的边栏，只需要在内容块的样式中加入像这样的CSS样式代码：top:70px;bottom:auto;由于已经声明了margin:auto;，该内容块将会垂直居中于你通过top,left,bottom和right属性定义的边界框内。
+                             你可以将内容块固定与屏幕的左侧或右侧，并且保持内容块垂直居中。使用right:0;left:auto;固定于屏幕右侧，使用left:0;right:auto;固定与屏幕左侧。</p>
+                         <h4>（三）其他居中定位技术</h4>
+                         <p>8.使用flex布局:包裹元素display:flex;且align-items:center;</p>
+                        <p>9.inline-block设置垂直居中，参考“盘点8种CSS实现垂直居中水平居中的绝对定位居中技术。”</p>
+                         <h3>垂直居中实现效果：<a href="tests/layout2-1.html">单独查看效果</a></h3>
+                         <iframe width="100%" height="1000px" src="tests/layout2-2.html"></iframe>
+
+                        <h3>三、水平垂直居中</h3>
+                         <p>可以查看垂直居中的实现。</p>
+
+                        <h4>参考代码</h4>
+                        <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_htmlcss/practices/tests/layout2-1.html">我的代码：水平居中</a></p>
+                        <p><a href="https://github.com/zhihuibaobao/zhihuibaobao.github.io/blob/master/p_htmlcss/practices/tests/layout2-2.html">我的代码：垂直居中</a></p>
+                        <h4>参考链接</h4>
+                        <p><a href="http://michaeljunlove.github.io/2016/03/03/CSS3%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD(%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD%E3%80%81%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E3%80%81%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD)/">Michael's blog</a></p>
+                        <p><a href="http://blog.csdn.net/freshlover/article/details/11579669">盘点8种CSS实现垂直居中水平居中的绝对定位居中技术</a></p>
+                        <p><a href="http://vanseodesign.com/css/vertical-centering/">6 Methods For Vertical Centering With CSS</a></p>
+
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h2 class="logo"></h2>
+
+        <div><a href="#">Advertisement</a> | <a href="#">Contact Me</a> | <a href="#">Job Hunting</a> <br/>
+            Copyright © 2010 - 2017 HaimengChen Personal, All Rights Reserved
+        </div>
+    </footer>
+</main>
+</body>
+</html>
