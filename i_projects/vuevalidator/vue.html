@@ -94,6 +94,19 @@
             font-size:0.6em;
             /*display:none;*/
         }
+        .note-article{
+            display:block;
+            margin:10px;
+            padding:20px;
+            border:1px solid
+        }
+        .note-article h4{
+            width:100px;
+            margin:0 auto;
+        }
+        .note-article p{
+            text-indent: 2em;;
+        }
     </style>
     <script src="js/vue.min.js"></script>
     <script src="js/vue-validator.js"></script>
@@ -107,7 +120,7 @@
                 <div id="username-field"  v-on:click="clickShift">
                     <label for="username">商家名称</label>
                     <!-- 验证期语法：使用了对象型字面量 -->
-                    <input id="username" type="text" placeholder="请输入名称" initial="off" v-validate:username="{required:true,maxlength:20}">
+                    <input id="username" type="text" placeholder="请输入名称" initial="off"    v-validate:username="{required:true,maxlength:20}">
                     <p v-if="$validation1.username.required" class="warn-msg">必须输入商家名称.</p>
                     <p v-if="$validation1.username.maxlength" class="warn-msg">商家名称输入字符不能超过20.</p>
                 </div>
@@ -169,7 +182,53 @@
 <p><a href="http://cn.vuejs.org/guide/">vue.js</a>
     <a href="http://vuejs.github.io/vue-validator/zh-cn/index.html">vue-validator.js</a>
 </p>
-<p><a href="document.html">学习文档</a></p>
+<p><a href="../../index.html">返回博客</a></p>
+<article class="note-article">
+  <h4>学习笔记</h4>
+    <p>正文开始前必须先唠叨几句，实在有点心塞有点懊恼。。总结：千万不要有侥幸心理，好的习惯一定要坚持，对待学习、工作
+        需要一丝不苟，认认真真的，踏踏实实的。话说这个Vue.js我把入门文档看了一遍，然后把写了两页的demo
+        （链接demo1、demo2），把里面的例子都亲自试了一遍。自己做的验证表单由于一开始没有特别理解vue的工作周期
+    还有其他一些细节原理，DOM操作与Vue数据绑定共用导致了不少问题。对于这个我还跟同学探讨了，我以为这块知识点
+        我至少已经入门了，近期不使用就不用太深究。而且，两个参考文档写的很详细，以后回顾一下马上就掌握了。
+        至于我的好习惯学习文档，本来要写的拖着拖着也就没写了。</p>
+    <p>呜···昨天，淘宝电话面试的时候讲到vue.js，其实一开始我是很自信的，毕竟那些代码我都写过了，例子我也都
+        自己做的，遇到了问题也努力去解决了。然而，当面试官让我提供一种数据双向绑定的方式的时候，我脑海里只蹦出
+        来一句话，“绑定的方式有很多种”。蓝鹅，我连v-model绑定都回忆不起来，什么指令我完全忘记了。我只好说了一句，
+        “HTML里加个标签，JS里面写一下对应的数据”。面试官问我实现基本原理，我回答了几个字，“监听吧...MVC模型”。
+        面试官应该已经了解我不行了，也就没有深究，感谢面试官。面完我就默默反省去了...不要有侥幸心理，
+        该掌握的知识还是得好好掌握的，做人要谦虚！！没啥时间够不够的，就是懒。</p>
+     <p>看一看代码，把忘记的捡一捡，总结总结。有自己的总结才会有更深刻的理解，才想得明白记得住。</p>
+    <p>一.Vue.js基本框架</p>
+    <p>
+         1.实现数据绑定：
+         (1)HTML绑定到JS:HTML结构中的数据message用双大括号引用（这叫文本插值，使用的是“Mustache”语法），对应着JS中的Vue对象data属性的message属性，
+         HTML可以通过此读取JS中数据。
+         (2)JS绑定到HTML：HTML中input标签指定属性v-model="message"，可以改变JS中Vue对象data属性的message属性。
+         (3)综上，HTML中input可以改变JS中message属性，JS中message属性的改变又促使{{message}}显示信息变化，
+         如此实现数据的双向绑定。
+    </p>
+    <p>
+        2.MVVM：Model-View-ViewModel，其中ViewModel是为View量身定制的Model，ViewModel包含所有UI特定的接口和属性，
+        并由一个ViewModel的视图绑定属性，获得二者之间的松耦合。Vue.js中Vue实例就是ViewModel。
+    <p>
+    <p>
+        3.Vue.js的核心：Vue.js的核心是一个响应的数据绑定系统，它让数据与DOM保持同步。其拥抱数据驱动的视图概念，在普通HTML模板
+        中使用特殊的语法将DOM“绑定”到底层数据。一旦创建绑定，DOM将于数据保持同步。每当修改了数据，DOM便相应地更新。
+        这样应用的种的逻辑就直接修改数据了，不需要与DOM更新搅合在一起。在实践过程中就碰到了AJAX使用DOM操作遇到了问题，
+        AJAX通过DOM操作获得数据提交表单，提交内容为空。
+    </p>
+        4.生命周期：创建Vue实例——观察数据——初始化事件——如果存在el，绑定元素——如果存在template,绑定模板——编译模板取代el或者编译el
+        ——编译后判断元素是否在文件中不存在则先插入——准备就绪——销毁数据绑定，子组件，事件监听——销毁。
+        生命周期钩子：总共6个钩子，created在初始化事件时候，beCompile在绑定元素（模板）之后，compiled在编译模板之后，ready在检查元素在文档中之后，
+    beforeDestroy在销毁数据绑定之前，destroyed销毁绑定数据后。本实践通过created这个钩子实现刚进入页面时,json数据的获取。切记：不能进行DOM操作，所有的操作是通过
+    viewmodel实现的。
+    </p>
+    <p>二、vue-validator.js</p>
+    <p>其实这块用的比较多，主要是验证。</p>
+    <p> 1.将表单放在 validator标签中，并用name进行命名如"validation1"，会生成相应的以名称命名的验证对象"$validation1"。</p>
+    <p> 2.结合v-model指令进行数据绑定的字段都可以通过validation进行验证，如绑定age字段，数据必须存在的验证方式为$validation1.age.required。</p>
+    <p> 3.通过设置initial="off"设置延迟初始化，避免刚进入页面时显示验证结果。</p>
+</article>
 <script>
   var vm =   new Vue({
         el: "#myapp",
@@ -222,8 +281,15 @@
                 this.$validate(true,function(){
 //                    console.log("validation1.invalid = " + self.$validation1.invalid);
                     if(self.$validation1.valid){
-                        console.log("valid = " + self.$validate.valid);
-                        $.post("post.html",$(document.forms[1]).serialize(),function(data){
+                        console.log("valid = " + self.$validation1.valid);
+                        console.log("vm = " + self.$data.username);
+                        console.log("vm = " + self.$data.phoneNum);
+                        console.log("vm = " + self.$data.price);
+                        console.log("vm = " + self.$data.tradeList);
+                        console.log("vm = " + self.$data.picked);
+
+
+                        $.post("post.html",self.$data,function(data){
                             alert(data);
                         });
                     }
