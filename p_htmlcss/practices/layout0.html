@@ -39,20 +39,31 @@
                     <section class="content">
                         <h1 class="title">两列布局</h1>
                          <h3>实现目标：</h3>
-                         <p>两栏结构应该是最常见和经典的网页呈现之一，如下图</p>
+                         <p>两栏结构，左栏固定宽度主内容自适应宽度。最常见和经典的网页呈现之一，如下图</p>
                         <img src="../imgs/layout-1.png">
                         <h3>解决思路：</h3>
-                        <h3>一、absolute+margin</h3>
-                        <p>原理：（1）对aside设置absolute使其脱离文档流；（2）对main设置margin使其不被aside覆盖。</p>
+                        <h3>一、absolute+margin(或父元素padding)</h3>
+                        <p>原理：（1）对aside设置absolute使其脱离文档流；（2）对main设置margin使其不被aside覆盖或者对父元素设置padding使不被覆盖。</p>
                         <p>优点：在设置aside高度小于main的情况下能够很好的达到设计效果，并且HTML结构中main与aside可以随意交换位置。</p>
-                        <p>缺点：块级元素的宽度未设置则自动填充父元素，高度未设置则由包裹内容决定。当main的内容少，高度小于aside时，aside将会溢出bd到footer.</p>
+                        <p>缺点：块级元素的宽度未设置则自动填充父元素，高度未设置则由包裹内容决定。当main的内容少，高度小于aside时，aside将会溢出bd到footer（aside已脱离文档流）.</p>
+                        <p>警告: main高度超过aside时，aside下面会有空白。</p>
+                        <p>适用场景：（1）aside的高度确保小于main，且能接受aside的下方空白；（2）设置aside和main高度相同，main设置overflow:scroll。</p>
                         <h3>二、left+margin</h3>
-                        <p>原理：（1）对aside设置float使其脱离文档流；（2）float会使得紧随其后的元素环绕在其周围。对main设置margin中断环绕，main自称封闭矩形。</p>
-                        <p>注意事项：给父元素bd设置为BFC，避免float的aside溢出。根据BFC规则，会计算其中float元素的高度。</p>
+                        <p>原理：（1）对aside设置float使其脱离文档流；（2）float会使得紧随其后的元素环绕在其周围。对main设置margin中断环绕，main自成封闭矩形。</p>
+                        <p>注意事项：给父元素bd设置为<a href="https://www.w3.org/TR/CSS21/visuren.html#block-formatting">块级格式化上下文（BFC）</a>，避免float的aside溢出。根据BFC规则，会计算其中float元素的高度。</p>
+                        <p>优点：BFC解决了方法一存在未设置高度导致aside溢出的问题。</p>
                         <p>缺点：只设置一个元素float不能将重点内容main放前面。因为float是对后面元素产生影响。</p>
-                        <h3>三、right+负margin</h3>
-                        <p>原理：同left+margin一样，不过将HTML结构中main与aside的位置互换一下，main通过float:right;到右边去。left通过负margin到左边。个人认为这是最简单且优秀的布局。</p>
-                        <h3>四、left+负margin</h3>
+
+                        <h3>三、right+负margin+父padding</h3>
+                        <p>原理：同left+margin一样，不过将HTML结构中main与aside的位置互换一下，main通过float:right;到右边去。父元素设置内容有左边的padding, left通过负margin到父元素内容的左边。
+                            方案二、三如果交换main和aside标签的位置，则会出现错行。
+                        </p>
+                        <h3>重点补充：</h3>
+                        <p>overflow:hidden;设置BFC会造成负面影响，截断超出父容器的内容。所以方案三不能用margin设置父元素左边的空隙（aside左移会被隐藏），只能用padding。
+                            下面方案四将通过父元素的after元素清除浮动，完成父容器包括浮动子元素的能力。
+                        </p>
+                        <p>优点：main标签放在前面利于SEO。相对于方案二，增加了父元素的padding设置。</p>
+                        <h3>四、left+负margin+父padding或margin</h3>
                         <p>原理：(1)aside与aside都设置float:left，再调节宽度及偏移量，使得他们能够在同一行显示；（2）在bd最后要清除浮动，避免对footer造成影响。
                             （3）如果aside在前面，main在后面，则设置bd的margin-left为210px,main的width为100%;aside通过margin-left:-210px;到左边去。
                         （4）如果main在前面，aside在后面。同样设置bd的margin-left为210px，使得main的width可以设置为100%。aside先margin-left:-100%;移动到main的最左边，

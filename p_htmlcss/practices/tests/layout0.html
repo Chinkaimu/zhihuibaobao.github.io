@@ -26,6 +26,9 @@
         .demo{
             margin-top:20px;
         }
+        #demo1 {
+            height: 400px; 
+        }
         #demo2{
             margin-top:20px;
         }
@@ -45,90 +48,135 @@
             top:0;
             width:200px;
         }
-
         .db1 .main{
             margin-left:210px;
+            height: 100px;
+            overflow: scroll;
         }
 
 
         .db2{
             overflow:hidden;
-        }
+        } 
         .db2 .aside{
             float:left;
             width:200px;
-            height:200px;
+            border: 1px solid #fff;
         }
-        .db2 .aside:after{
-            content:"";
-            display:block;
-            clear:both;
-        }
+        
         .db2 .main{
             margin-left:210px;
-        }
+        } 
 
         .db3{
-            margin-left:210px;
-        }
-        .db3 .aside{
-            float:left;
-            width:200px;
-            margin-left:-210px;
+            padding-left:210px;
+            overflow: hidden; 
         }
         .db3 .main{
-            float:left;
+            float:right;
+            display: block;
             width:100%;
         }
-        .db3:after{
+        .db3 .aside{
+            margin-left:-210px; 
+            width:200px;
+        }
+        /* .db3:after{
             content:"";
             display:block;
             clear:both;
-        }
+        } */
 
-        #demo2 .db3 .aside{
-            position:relative;
-            left:-100%;
-        }
-        .description{
-            margin:15px;
-        }
 
-        .db4{
-            padding-left:210px;
+        .db3-1{
+            margin-left:210px;
         }
-        .db4 .main{
+        .db3-1 .main{
             float:right;
             width:100%;
         }
-        .db4 .aside{
-            margin-left:-210px;
+        .db3-1 .aside{
+            margin-left:-210px; 
             width:200px;
+        }
+
+        .db4{
+            margin-left:210px;
+            /* overflow: hidden; */
+        }
+        .db4 .aside{
+            float:left;
+            width:200px;
+            margin-left:-210px;
+        }
+        .db4 .main{
+            float:left;
+            width:100%;
+        }
+        .db4:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+
+        .db5 {
+            display: flex;
+        }
+
+        .db5 .aside{
+            width: 200px;
+        }
+
+        .db5 .main{
+            margin-left:20px;
+            flex: 1;
+        }
+
+        #demo2 .db4 .aside{
+            position:relative;
+            left:-100%;
+        }
+
+        .description{
+            margin:15px;
         }
     </style>
 </head>
 <body>
 
 <div class="description">
-    HTML方案：（1）灰色：aside在前面，main在后面；（2）绿色：main在前面，aside在后面
+    HTML方案：（1）灰色：aside标签在前面，main标签在后面；（2）绿色：main标签在前面，aside标签在后面
 </div>
 
 <div class="description">
     可选择的CSS方案：
-    <input type="radio" value="db1" name="style-way" checked>absolute+margin(或父元素padding)
+    <input type="radio" value="db1" name="style-way">absolute+margin(或父元素padding)
     <input type="radio" value="db2" name="style-way">left+margin
-    <input type="radio" value="db4" name="style-way">right+负margin
-    <input type="radio" value="db3" name="style-way">left+relative+负margin
+    <input type="radio" value="db3" name="style-way">right+负margin+父padding
+    <input type="radio" value="db4" name="style-way">left+relative+负margin+父padding或margin
+    <input type="radio" value="db5" name="style-way" checked>flex 
+    <br><br>
+    补充案例：
+    <input type="radio" value="db3-1" name="style-way" checked>方案三使用margin-left，溢出
 </div>
 
 <div class="demo" id="demo1">
     <div class="hd">header</div>
-    <div  class="db db1">
+    <div  class="db db5">
         <div class="aside">
             Aside <br> 侧边栏区域
+            <br> 侧边栏区域
+            <br> 侧边栏区域
         </div>
         <div class="main">
-            Main <br> 主内容区域
+            Main 
+            <br>主内容区域
+            <br>主内容区域
+            <br>主内容区域
+            <br>主内容区域
+            <br>主内容区域 
+            <br>主内容区域 
+            <br>主内容区域        
         </div>
     </div>
     <div class="ft">footer</div>
@@ -136,9 +184,10 @@
 
 <div class="demo" id="demo2">
     <div class="hd">header</div>
-    <div class="db db1">
+    <div class="db db5">
         <div class="main">
             Main <br> 主内容区域
+            <br>主内容区域
         </div>
         <div class="aside">
             Aside <br> 侧边栏区域
@@ -149,6 +198,7 @@
 
 <script>
     $("input:radio[name='style-way']").on("change",function(){
+        //重置class属性
        $(".db").attr("class","db");
        $(".db").addClass($('input:radio[name="style-way"]:checked').val()+" ");
     });

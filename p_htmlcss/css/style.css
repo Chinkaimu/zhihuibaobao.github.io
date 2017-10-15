@@ -18,3 +18,7 @@ a{
 iframe{
     border:solid 1px gray;
 }
+
+.red-font {
+    color:red;
+}
