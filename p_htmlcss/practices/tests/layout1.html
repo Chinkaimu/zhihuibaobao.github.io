@@ -23,30 +23,29 @@
            background-color: blue;
        }
         .db1{
-           padding-left:190px;
-           padding-right:210px;
+           padding-left: 190px;
+           padding-right: 210px;
         }
         .db1 .main{
-            float:left;
-            width:100%;
+            float: left;
+            width: 100%;
         }
         .db1 .left{
-            width:190px;
-            float:left;
-            margin-left:-190px;
-            position:relative;
-            left:-100%;
+            width: 190px;
+            float: left;
+            margin-left: -100%;
+            position: relative;
+            left: -190px;
         }
         .db1 .right{
-            width:210px;
-            float:left;
-            margin-left:-210px;
-            position:relative;
-            right:-210px;
+            width: 210px;
+            float: left;
+            margin-left: -210px;
+            position: relative;
+            right: -210px; 
         }
         .bd:after{
             content:"";
-            width:10px;
             display:block;
             clear:both;
         }
@@ -69,20 +68,38 @@
             margin-left:190px;
             margin-right:210px;
         }
+
+        .db3 {
+            display: flex;
+        }
+        .db3 .main{
+            order: 1;
+            flex: 1;
+        }
+        .db3 .left{
+            order: 0;
+            width: 190px;
+        }
+        .db3 .right{
+            order: 1; 
+            width: 210px; 
+        }
+
     </style>
 </head>
 <body>
 
 <div class="description">
     可选择的CSS方案：
-    <input type="radio" value="db1" name="style-way" checked>圣杯布局
+    <input type="radio" value="db1" name="style-way">圣杯布局
     <input type="radio" value="db2" name="style-way">双飞翼布局
+    <input type="radio" value="db3" name="style-way" checked>flex    
 </div>
 
 
 <div class="demo">
     <div class="hd">header</div>
-    <div class="bd db1">
+    <div class="bd db3">
         <div class="main">
             <div class="inner">
                Main <br> 主内容区域

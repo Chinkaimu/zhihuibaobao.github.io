@@ -44,14 +44,13 @@
                          <img src="../imgs/layout-2.png">
                         <h3>解决思路：</h3>
                         <h3>一、圣杯布局</h3>
-                         <ul><li>（1）main，left,right均设置float:left;使它们能够在同一行；</li>
-                        <li> （2）设置父元素padding-left和padding-left为左右栏预留空间；</li>
+                         <ul><li>（1）main,left,right均设置float:left;使它们能够在同一行；</li>
+                        <li> （2）设置父元素padding-left和padding-right为左右栏预留空间；</li>
                          <li>（3）main设置width:100%;后left,right被挤到下面两行；</li>
-                         <li> （4）left设置margin-left:100%;移到main的左边，再通过relative布局左移它的宽度，达到目标位置；</li>
-                          <li>  （5）left设置margin-left:它的宽度;移到main的右边，再通过relative布局右移它的宽度，达到目标位置。</li>
+                         <li> （4）left设置margin-left:-100%;移到main的左边，再通过relative布局左移它的宽度，达到目标位置；</li>
+                          <li>  （5）right设置margin-left:它的宽度;移到main的右边，再通过relative布局右移它的宽度，达到目标位置。</li>
                            <li>（6）注意事项：<br>
-                              <blockquote> 父元素不需要设置为BFC避免float溢出，因为所有的子元素都是浮动元素。
-                              个人理解margin-left的设置是相对与父元素边界的，因为block元素的独占一行，导致margin-left不是相对于前面的block元素进行定位。
+                              <blockquote> 在父元素最后加入空的伪元素清除浮动，否则父容器无法容纳子容器。
                                </blockquote>
                            </li>
                           </ul>
@@ -61,6 +60,12 @@
                         <ul>
                             <li>实现方法：圣杯布局去掉了左右栏的相对定位，去掉包裹层padding，以中间栏新增div(inner)的margin代替。</li>
                         </ul>
+                        <h3>三、flex</h3>
+                        <p>
+                            （1）设置父容器的display:flex;
+                             (2) 通过order属性设置main，left，right的顺序；
+                            （3）左右设置固定宽度，中间main设置填充容器。
+                        </p>
                         <h3>实现效果：<a href="tests/layout1.html">单独查看效果</a></h3>
                         <iframe width="100%" height="250px" src="tests/layout1.html"></iframe>
                         <h4>参考代码</h4>
