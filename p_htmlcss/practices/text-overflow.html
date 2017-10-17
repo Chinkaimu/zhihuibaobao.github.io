@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文字截断</title>
+    <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <script src="../../js/jquery/2.1.3/jquery.js"></script>    
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding:50px 250px;
+        }
+        #white-space-container{
+            width: 600px;
+        }
+        .class-normal{
+            white-space: normal;
+        }
+        .class-pre{
+            white-space: pre;
+        }
+        .class-nowrap{
+            white-space: nowrap;
+        }
+        .class-pre-wrap{
+            white-space: pre-wrap;
+        }
+        .class-pre-line{
+            white-space: pre-line;
+        }
+        #use-text-overflow-ellipsis{
+            white-space: nowrap;
+            overflow: hidden;
+            border: 1px dotted #99FFFF;
+            width: 300px;
+            text-overflow: ellipsis;
+        }
+        #use-text-overflow-ellipsis:hover{
+            overflow: visible;
+        }
+        #use-text-overflow-clip{
+            white-space: nowrap;
+            overflow: hidden;
+            border: 1px dotted #99FFFF;
+            width: 300px;
+            text-overflow: clip;
+        }
+        #use-text-overflow-clip:hover{
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        文字截断相关的CSS属性：
+        <a href="https://www.w3.org/TR/CSS21/text.html#propdef-white-space">white-space</a>、
+        <a href="https://www.w3.org/TR/CSS21/visufx.html#x0">overflow</a>、
+        <a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp">CSS3属性：text-overflow</a>
+    </p>
+    <div id="use-white-space">
+        <h4>white-space使用:<a href="http://www.w3school.com.cn/css/css_text.asp">CSS 文本</a></h4>
+        示例：
+        <a id="class-normal" href="#">normal</a>
+        <a id="class-pre" href="#">pre</a>
+        <a id="class-nowrap" href="#">nowrap</a>
+        <a id="class-pre-wrap" href="#">pre-wrap</a>
+        <a id="class-pre-line" href="#">pre-line</a>
+        <div id="white-space-container">
+            white-space宽度400px
+            <img src="../imgs/white-space-attrs.png"/>
+        </div>
+    </div>
+    <div id="use-overflow">
+        <h4>overflow使用</h4>
+        <img src="../imgs/overflow-attrs.png"/>
+    </div>    
+
+    <br/><br/>
+    <div id="use-text-overflow-ellipsis">
+        任意字符串的截断text-overflow: ellipsis; 需要配合overflow:hidden;和white-space:nowrap使用。                   
+    </div>
+    <div id="use-text-overflow-clip">
+            任意字符串的截断text-overflow: clip; 需要配合overflow:hidden;和white-space:nowrap使用。                   
+        </div>
+    <script>
+        $("#use-white-space a").click(function(event) {
+            let text = "";
+            $("#white-space-container").attr("class",event.target.id);
+            text += "1. normal默认。空白      (此处多个空白，被合并成了一个空白)会被浏览器忽略。       (spaces here) This value directs user agents to          (spaces here)     collapse sequences of white space,           (spaces here)      and break lines as necessary to fill line boxes.";
+            text += "<br>2. class-pre空白会被浏览器          (此处多个空白)保留。\n (n换行符)其行为方式类似 HTML 中的 pre 标签。<br>(br符)This value prevents user agents from collapsing sequences of white space. Lines are only broken at preserved newline characters.";
+            text += "<br>3. class-nowrap文本不会换行，文本会在在同一行上继续，直到遇到br(这里是br标签）<br> 标签为止。其他表现同normal。This value collapses white space as for 'normal', but (spaces here)            suppresses line breaks within text.";
+            text += "<br>4. class-pre-wrap保留空白符序列，          (此处多个空白)         但是正常地进行换行。This value prevents user agents from collapsing sequences of white space. Lines are broken at preserved newline characters, and as necessary to fill line boxes.";
+            text += "<br>5. class-pre-line合并空白符序列，但是          (此处多个空白)     保留换行符。 This value directs user agents to collapse sequences of white space. Lines are broken at preserved newline characters, and as necessary to fill line boxes.";
+            $("#white-space-container").html(text);
+        });
+    </script>
+</body>
+</html>

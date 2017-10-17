@@ -117,6 +117,7 @@
 
 <script>
     $("input:radio[name='style-way']").on("change",function(){
+        //设置或返回匹配元素的属性和值
        $(".bd").attr("class","bd");
        $(".bd").addClass($('input:radio[name="style-way"]:checked').val()+" ");
     });
