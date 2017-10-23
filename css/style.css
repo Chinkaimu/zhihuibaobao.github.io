@@ -46,18 +46,15 @@ img{
 .header .menu .icon-icon_menu:before {
     font-size: 2em;
 }
-.header .search .icon-icon_search {
+.header .search .search-icon {
     display: inline-block;
-    width: 3.5em;
-    height: 3.5em;
-    line-height: 3.5em;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
     text-align: center;
     color: white;
     cursor: pointer;
     text-decoration: none;
-}
-.header .search .icon-icon_search:before {
-    font-size: 2em;
 }
 .header .title a {
     font-family: "Forum", sans-serif;
@@ -212,15 +209,16 @@ img{
         position: relative;
     }
 
-    .header .search .icon-icon_search {
+    .header .search .search-icon {
         float: right;
-        width: 2em;
-        height: 1.875em;
-        line-height: 1.875em;
+        margin-right: 10px;
+        margin-top: 5px;
+        font-size: 12px;
+        line-height: 1em;
         color: rgba(0, 0, 0, 0.87);
     }
 
-    .header .search .icon-icon_search:before {
+    .header .search .search-icon:before {
         font-size: 1.5em;
     }
 
