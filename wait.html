@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>亲~人太多，被挤爆了！</title>
+<style>
+    #content {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+    }
+    #wait-page {
+        font: 14px "宋体 microsoft yahei";
+        padding-bottom: 20px;
+    }
+    #wait-page img {
+        border: none;
+    }
+    #wait-page .float-left {
+        float: left;
+    }
+    #wait-page .header {
+        width: 100%;
+        background: #fff;
+        text-align: center;
+        height: 360px;
+    }
+    .header .inner {
+        width: 990px;
+        margin: 0 auto;
+        height: 100%;
+        /*overflow:hidden;*/
+        background: #fff;
+    }
+    .inner .header-left {
+        width: 50%;
+        height: 100%;
+        text-align: left;
+        background: #fff url("//img.alicdn.com/tps/TB1SEsJNVXXXXaCXpXXXXXXXXXX-182-182.png") no-repeat right 160px;
+    }
+    .header-left img {
+        margin-top: 10px;
+    }
+    .inner .header-right {
+        width: 305px;
+        height: 200px;
+        text-align: left;
+        padding-top: 195px;
+        padding-left: 40px;
+        overflow: hidden;
+        line-height: 25px;
+        position: relative;
+    }
+    .header-right p {
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        font-family: tahoma, arial, Microsoft Yahei, \5b8b\4f53;
+    }
+    .header-right .wait-time {
+        font-weight: normal;
+        margin-top: 10px;
+    }
+    .wait-time b {
+        color: #ff0000;
+        font-size: 25px;
+    }
+    .header-right .host-name {
+        color: #bcbcbc;
+        font-size: 12px;
+        bottom: 10px;
+        right: 0;
+        position: absolute;
+    }
+    #wait-page .wait-content {
+        width: 990px;
+        margin: 0 auto;
+    }
+    #wait-page .footer {
+        width: 990px;
+        margin: 50px auto 0;
+    }
+    .footer .hot-tip {
+        list-style: none;
+        margin: 20px 0 0 0;
+        overflow: hidden;
+        color: #666666;
+        padding: 20px 20px;
+        background: #f9f9f9;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+    .hot-tip p {
+        margin: 10px 0;
+    }
+    .footer div.tip-title {
+        height: 45px;
+        width: 100%;
+        background: url("//img.alicdn.com/tps/i1/T1uH6CFXNeXXblt8rF-299-45.jpg") no-repeat 49% top;
+    }
+    .btn-reload {
+      display: inline-block;
+      line-height: 33px;
+      height: 33px;
+      width: 100px;
+      font-size: 16px;
+      text-align: center;
+      color: #fff;
+      background-color: #ee0a3b;
+      text-decoration: none;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    .btn-reload:hover {
+      text-decoration: underline;
+    }
+    </style>
+<script>
+    (function(d) {
+        var t = d.createElement("script");
+        t.type = "text/javascript";
+        t.async = true;
+        t.id = "tb-beacon-aplus";
+        t.setAttribute("exparams", "category=&userid=1756565980&aplus");
+        t.src = ("https:" == d.location.protocol ? "https://s" : "http://a") + ".tbcdn.cn/s/aplus_v2.js";
+        d.getElementsByTagName("head")[0].appendChild(t);
+    })(document);
+    </script>
+</head>
+<body><script>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=2226663383&aplus&yunid=&7ee83ee17b737&asid=AdcvuISGLfNZWbZOXAAAAADhf371Qq/Wjg==&sidx=BKlwdfsQKmD641cOvVWtxWgd6C5QYNoYOKSniVegokYPenFDcOCB3MyWlou56l/yYLaIK2YJbaxF8JJ607tRgqEKkFnI4pSBFLDj9cZFzs9Xy6zdr/Xg9gcnL4dmKZnVBeJnlXgfZP3t9EnlRrhukpK0kaSFJO1t3PJrHcWyMCI=",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+</script>
+<article>
+<div id="wait-page" data-spm="a2225j3">
+<header>
+<div class="header">
+<div class="inner">
+<div class="header-left float-left">
+<a id="wait_url" href="www.taobao.com"> <img id="wait_logo" src="//assets.alicdn.com/tbsp/img/header/logo.png" alt="双十一logo" />
+</a>
+</div>
+<div class="header-right float-left">
+<p>亲~人太多，被挤爆了！</p>
+<p class="wait-time"><b id="run-time"> </b>秒后自动跳转... </p>
+<a href="javascript:window.location.reload()" class="btn-reload">刷新</a>
+<div class="host-name"><span id="wait-host"></span></div>
+</div>
+</div>
+</div>
+</header>
+<section>
+<div class="wait-content"></div>
+</section>
+<footer>
+<div class="footer"></div>
+</footer>
+</div>
+</article>
+<div class="js-footer"></div>
+<script src="//g.alicdn.com/??kissy/k/1.4.8/seed-min.js"></script>
+<script src="//g.alicdn.com/kg/kmd-adapter/0.1.5/index.js"></script>
+<script src="//g.alicdn.com/kg/tb-footer/0.1.0/index.js"></script>
+<script>
+    KISSY.use('kg/tb-footer/0.1.0/', function(S, tbFooter) {
+        // render 接受一个容器参数, 默认为 body
+        tbFooter.render('.js-footer');
+    });
+    </script>
+<script>
+    (function() {
+        var Wait = {
+            init: function(backUrl) {
+                var self = this,
+                    isTest = !(location.href.indexOf("http_referer") > -1),
+                    url = !isTest ? location.href :
+                    "http://www.taobao.com/markets/common/wait?wh_ttid=pc&id=s&wait_time=30&http_referer=" + backUrl,
+                    param = self.util.dealURL(url),
+                    eclipse = "..."; //省略号的个数
+                switch (param.id) {
+                    case 'q':
+                        eclipse = ".";
+                        break;
+                    case 's':
+                        eclipse = "..";
+                        break;
+                    case 'c':
+                        eclipse = "....";
+                        break;
+                };
+                // document.getElementById("eclipse").innerText = eclipse;
+                document.getElementById("wait-host").innerText = param["http_referer"].split("?")[0];
+                self.goback(param, isTest);
+            },
+            goback: function(param, isTest) {
+                var self = this,
+                    refer = param["http_referer"],
+                    hasParam = false;
+                if (refer) {
+                    var t = param["http_referer"].split("?");
+                    if (t.length > 1) {
+                        hasParam = true;
+                    }
+                }    
+                debugger;            
+                var n = (param && param["request_count"]) || 0,
+                    waitTime = param["wait_time"],
+                    heartTime = 5,
+                    mod = 6,
+                    timeEle = document.getElementById("run-time"); //每隔多少秒请求一次
+
+                //如果请求三次，跳转到dead页面
+                if (n == waitTime / heartTime) {
+                    var ref = param["http_referer"].split("?")[0];
+                    location.href = "http://alisec.alicdn.com/taobao/deny.html?http_referer=" + ref + "&id=" + param.id;
+                    return;
+                };
+                //设置时间，并处理请求
+                timeEle.innerHTML = (waitTime - n % mod * heartTime) + " ";
+                console.log('timeEle.innerHTML', timeEle.innerHTML);
+
+                var url = param["http_referer"];
+                url = (n == 0 ? url + (hasParam ? "&request_count=1" : "?request_count=1") :
+                    url.replace("request_count=" + n, "request_count=" + (parseInt(n) + 1)));
+
+                var second = parseInt(timeEle.innerHTML) - 1,
+                    totalTime = 0,
+                    interval = setInterval(function() {
+                        second >= 0 ? timeEle.innerHTML = (parseInt(timeEle.innerHTML) - 1) + " " : clearInterval(interval);
+                        totalTime += 1000;
+                        var endUrl = '//www.tmall.com';
+                        if (Wait.inWhiteList(url)) {
+                            endUrl = url;
+                            console.log('endUrl', endUrl);
+                        }
+                        if (totalTime == heartTime * 1000) {
+                            location.href = endUrl;
+                            clearInterval(interval);
+                        }
+                    }, 1000);
+            },
+            inWhiteList: function(url) {
+                if (url.split('.com').length > 2) {
+                    return false;
+                }
+                if (url.indexOf('#') > 0) {
+                    return false;
+                }
+                if (url.indexOf('@') > 0) {
+                    return false;
+                }
+                var host = url.split('?')[0];
+                host = host.split('#')[0];
+                host = host.split('//')[1];
+                host = host.split('/')[0];
+                var domainlist = [".taobao.com", ".tmall.com", ".etao.com", ".aliyun.com", ".alimama.com",
+                    ".alibaba.com", ".juhuasuan.com", ".hitao.com", ".yisou.com", ".alipay.com", ".taohua.com",
+                    ".koubei.com", ".alisoft.com", ".tao123.com", ".laiwang.com"
+                ];
+                for (var i = 0, len = domainlist.length; i < len; i++) {
+                    if (host.split(domainlist[i])[1] == '') {
+                        return true;
+                    }
+                }
+                return false;
+            },
+            util: {
+                dealURL: function(url) {
+                    var self = this,
+                        o = {},
+                        http = url.match(/https?:\/\//g),
+                        t = url.split(/https?:\/\//g);
+                    for (var i = 0; i < t.length; i++) {
+                        if (t[i] == "") {
+                            t.splice(i, 1);
+                            i = i - 1;
+                        } else if ((i + 1) < t.length) {
+                            t[i] = http[i] + t[i]; //拼接协议内容，协议头
+                            t[i] += "httpUrl_" + (i + 1);
+                            t[i + 1] = http[i + 1] + t[i + 1];
+                            if (t[i].indexOf("?") > -1)
+                                self.unparam(t[i].split("?")[1], t, o);
+                            if (t[i + 1].indexOf("?") > -1)
+                                self.unparam(t[i + 1].split("?")[1], t, o);
+                        }
+                    }
+                    return o;
+                },
+                unparam: function(param, list, obj) {
+                    if (param) {
+                        var o = obj || {},
+                            l = param.split("&");
+                        for (var i = 0, len = l.length; i < len; i++) {
+                            var t = l[i].split("=");
+                            if (t.length > 1 && !o[t[0]]) {
+                                o[t[0]] = t[1].indexOf("httpUrl_") > -1 ? o[t[0]] = list[t[1].split("_")[1]] : t[1];
+                            }
+                        }
+                        return o;
+                    }
+                }
+            }
+        };
+        window.onload = function() {
+            changeLogo(); //切换Logo
+            Wait.init("http://www.taobao.com?");
+        }
+
+        function changeLogo() {
+            var host = KISSY.unparam(window.location.search.toLowerCase().replace('?', ''))['http_referer'] || 'http://www.taobao.com';
+            if (host.indexOf(".yisou.com") > 0) {
+                logo = "//img.alicdn.com/tps/i3/T1NsnmXlFoXXcDE5M5-110-52.png";
+                url = "//www.yisou.com";
+            } else if (host.indexOf("ju.taobao.com") >= 0) {
+                logo = "//img.alicdn.com/tps/i3/T1A9n1XkheXXbTWe39-124-33.png";
+                url = "//ju.taobao.com/";
+            } else if (host.indexOf(".etao.com") > 0) {
+                logo = "//img.alicdn.com/tps/i1/T1HyO8Xl8iXXXXXXXX-88-57.png";
+                url = "//www.etao.com/";
+            } else if (host.indexOf(".taobao.com") > 0) {
+                logo = "//assets.alicdn.com/tbsp/img/header/logo.png";
+                url = "//www.taobao.com";
+            } else if (host.indexOf(".tmall.com") > 0) {
+                logo = "//img.alicdn.com/tps/i1/T1zKfBFehfXXc.gCnl-190-26.png";
+                url = "//www.tmall.com/";
+            } else if (host.indexOf(".alipay.com") > 0) {
+                logo = "//img.alipay.com/pa/img/home/logo-alipay-t.png";
+                url = "//www.alipay.com/";
+            } else if (host.indexOf(".aliyun.com") > 0) {
+                logo = "//static.aliyun.com/images/www-summerwind/logo.gif";
+                url = "//www.aliyun.com/";
+            } else if (host.indexOf(".juhuasuan.com") > 0) {
+                logo = "//img.alicdn.com/tps/i3/T1A9n1XkheXXbTWe39-124-33.png";
+                url = "//www.juhuasuan.com/";
+            } else if (host.indexOf(".alibaba.com.cn") > 0) {
+                logo = "//i00.c.aliimg.com/cms/upload/2012/335/243/342533_1573916616.png";
+                url = "//www.alibaba.com.cn/";
+            } else if (host.indexOf(".laiwang.com") > 0) {
+                logo = "//img.alicdn.com/tps/i1/T12gvSFjhaXXczbco3-100-57.png";
+                url = "//laiwang.com";
+            } else {
+                logo = "//assets.alicdn.com/tbsp/img/header/logo.png";
+                url = "//www.taobao.com";
+            }
+            // var change_date = new Date();
+            // if (change_date.getMonth() + 1 == 11 && change_date.getDate() == 11) {
+            //     logo = "//gtms02.alicdn.com/tps/i2/TB1ZPoLGXXXXXakXpXXaO49FVXX-150-81.png";
+            //     url = "//1111.tmall.com";
+            // }
+            var urlEle = document.getElementById("wait_url"),
+                logoEle = document.getElementById("wait_logo");
+            if (urlEle) urlEle.href = url;
+            if (logoEle) logoEle.src = logo;
+        }
+    })();
+    </script>
+</body>
+</html>

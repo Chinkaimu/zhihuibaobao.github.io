@@ -54,6 +54,7 @@
     </style>
 </head>
 <body>
+    <div id="header"></div>
     <p>
         文字截断相关的CSS属性：
         <a href="https://www.w3.org/TR/CSS21/text.html#propdef-white-space">white-space</a>、
@@ -86,6 +87,7 @@
             任意字符串的截断text-overflow: clip; 需要配合overflow:hidden;和white-space:nowrap使用。                   
         </div>
     <script>
+        $("#header").load("../../header.html");
         $("#use-white-space a").click(function(event) {
             let text = "";
             $("#white-space-container").attr("class",event.target.id);
