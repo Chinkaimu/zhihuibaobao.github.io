@@ -14,8 +14,12 @@ console.log ("Array.isArray(b) : " + Array.isArray(b));
 /***************3.转换方法（3）*******************/
 console.log("b.toString() : " + b.toString() );
 console.log("b.toLocaleString() : " );console.log( b.toLocaleString() );
+// valueOf() 方法返回 Array 对象的原始值。
+// 该原始值由 Array 对象派生的所有对象继承。
+// valueOf() 方法通常由 JavaScript 在后台自动调用，并不显式地出现在代码中。
 console.log("b.valueof() : ");console.log(b.valueOf() ); //会输出[12,4,5]
 //alert(b.valueOf());   //alert会输出字符串，因为alert接收的参数是字符串，所以会在后台调用toString()
+//不会改变数组本身
 console.log("b.join('|') : " + b.join('|'));
 console.log("b.join(undefined) : " + b.join(undefined) );
 
