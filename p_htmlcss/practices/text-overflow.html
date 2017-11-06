@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>文字截断</title>
     <link rel="icon" type="image/png" href="../../../images/icon.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/jquery/2.1.3/jquery.js"></script>    
     <style>
         *{
             margin:0;
             padding:0;
-        }
-        body{
-            padding:50px 250px;
         }
         #white-space-container{
             width: 600px;
@@ -54,38 +53,69 @@
     </style>
 </head>
 <body>
-    <div id="header"></div>
-    <p>
-        文字截断相关的CSS属性：
-        <a href="https://www.w3.org/TR/CSS21/text.html#propdef-white-space">white-space</a>、
-        <a href="https://www.w3.org/TR/CSS21/visufx.html#x0">overflow</a>、
-        <a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp">CSS3属性：text-overflow</a>
-    </p>
-    <div id="use-white-space">
-        <h4>white-space使用:<a href="http://www.w3school.com.cn/css/css_text.asp">CSS 文本</a></h4>
-        示例：
-        <a id="class-normal" href="#">normal</a>
-        <a id="class-pre" href="#">pre</a>
-        <a id="class-nowrap" href="#">nowrap</a>
-        <a id="class-pre-wrap" href="#">pre-wrap</a>
-        <a id="class-pre-line" href="#">pre-line</a>
-        <div id="white-space-container">
-            white-space宽度400px
-            <img src="../imgs/white-space-attrs.png"/>
+    <header class="header clearfix">
+        <div class="menu">
+            <a href="javascript:;" class="icon-icon_menu"></a>
         </div>
-    </div>
-    <div id="use-overflow">
-        <h4>overflow使用</h4>
-        <img src="../imgs/overflow-attrs.png"/>
-    </div>    
+        <div class="search">
+            <input type="text">
+            <a href="javascript:;" class="icon-icon_search"></a>
+        </div>
+        <h1 class="title"><a href="/">CHEN.HAIMENG</a></h1>
 
-    <br/><br/>
-    <div id="use-text-overflow-ellipsis">
-        任意字符串的截断text-overflow: ellipsis; 需要配合overflow:hidden;和white-space:nowrap使用。                   
-    </div>
-    <div id="use-text-overflow-clip">
-            任意字符串的截断text-overflow: clip; 需要配合overflow:hidden;和white-space:nowrap使用。                   
+        <div class="menu_wrapper">
+            <nav class="nav">
+                <li><a class="resume" href="../../i_resume/ex_index_1.html">简历</a></li>
+                <li><a href="../../#content">小型实践</a></li>
+                <li><a href="../../i_articles/lsarticles.html">技术分享</a></li>
+                <li><a href="../../i_live/lsphotos.html">点滴生活</a></li>
+            </nav>
         </div>
+        <div class="down">
+            <a href="#content" class="icon-arrow2_down"></a>
+        </div>
+    </header>
+    <div id="main" class="main">
+        <div class="post_wrap">
+            <div class="detail">
+                <article class="post">
+                    <section class="content">
+                        <p>
+                            文字截断相关的CSS属性：
+                            <a href="https://www.w3.org/TR/CSS21/text.html#propdef-white-space">white-space</a>、
+                            <a href="https://www.w3.org/TR/CSS21/visufx.html#x0">overflow</a>、
+                            <a href="http://www.w3school.com.cn/cssref/pr_text-overflow.asp">CSS3属性：text-overflow</a>
+                        </p>
+                        <div id="use-white-space">
+                            <h4>white-space使用:<a href="http://www.w3school.com.cn/css/css_text.asp">CSS 文本</a></h4>
+                            示例：
+                            <a id="class-normal" href="#">normal</a>
+                            <a id="class-pre" href="#">pre</a>
+                            <a id="class-nowrap" href="#">nowrap</a>
+                            <a id="class-pre-wrap" href="#">pre-wrap</a>
+                            <a id="class-pre-line" href="#">pre-line</a>
+                            <div id="white-space-container">
+                                white-space宽度400px
+                                <img src="../imgs/white-space-attrs.png"/>
+                            </div>
+                        </div>
+                        <div id="use-overflow">
+                            <h4>overflow使用</h4>
+                            <img src="../imgs/overflow-attrs.png"/>
+                        </div>    
+
+                        <br/><br/>
+                        <div id="use-text-overflow-ellipsis">
+                            任意字符串的截断text-overflow: ellipsis; 需要配合overflow:hidden;和white-space:nowrap使用。                   
+                        </div>
+                        <div id="use-text-overflow-clip">
+                                任意字符串的截断text-overflow: clip; 需要配合overflow:hidden;和white-space:nowrap使用。                   
+                            </div>
+                    </section>
+                </article>
+            </div>   
+        </div>
+    </div>             
     <script>
         $("#use-white-space a").click(function(event) {
             let text = "";
