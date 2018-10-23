@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://www.w3.org/1999/XSL/Transform" th:inline="text">
+
+<div class="panel-body">
+    <h2>信保用户退款退汇</h2>
+
+    <form class="form-inline" th:action="@{/ta-merchant-admin/ta-withdraw-view.htm}" th:object="${taWithdrawForm}" method="post">
+        <table class="table table-striped">
+            <tr>
+                <td>买家账号 <input type="text" th:value="*{payerId}" th:field="*{payerId}"/></td>
+                <td>
+                    <input type="submit" value="查询余额" name="submit" style="padding: 10px; font-size: 18px; font-weight: bolder;" onclick="this.enabled=false;"
+                           th:disabled="${settleAccount.balance < minWithdrawAmt}"
+                           th:title="${'the minimum withdraw amount is ' + minWithdrawAmt}"
+                    /><br>
+                </td>
+
+            </tr>
+            <tr>
+                <td>余额</td>
+                <td colspan="3"><b style="font-size: 22px;color: darkblue;" th:text="${settleAccount.currency + ' ' + settleAccount.balance}"></b></td>
+            </tr>
+        </table>
+    </form>
+
+    <form class="form-inline" th:action="@{/ta-merchant-admin/ta-withdraw-apply.htm}" th:object="${taWithdrawForm}" method="post">
+    <table class="table table-striped">
+        <tr>
+            <th colspan="4">绑定收款账户</th>
+        </tr>
+        <tr>
+            <td>账号</td>
+            <td th:text="${withdrawAccount.accountNo}">123</td>
+            <input type="text" th:value="${withdrawAccount.accountNo}" th:field="${withdrawAccount.accountNo}">
+            <td>户名</td>
+            <td th:text="${withdrawAccount.beneficiaryName}">gu shangjie</td>
+            <input type="text" th:value="${withdrawAccount.beneficiaryName}" th:field="${withdrawAccount.beneficiaryName}">
+        </tr>
+        <tr>
+            <td>银行代码</td>
+            <td><b th:text="${withdrawAccount.bic}">CMBXXX</b></td>
+            <input type="text" th:value="${withdrawAccount.bic}" th:field="${withdrawAccount.bic}">
+            <td>银行名称</td>
+            <td th:text="${withdrawAccount.beneficiaryBankName}">China Merchants Bank</td>
+            <input type="text" th:value="${withdrawAccount.beneficiaryBankName}" th:field="${withdrawAccount.beneficiaryBankName}">
+        </tr>
+        <tr>
+            <th colspan="4">结转申请</th>
+        </tr>
+        <tr>
+            <td>结转金额</td>
+            <td>USD <input type="text" th:value="*{withdrawAmt}" th:field="*{withdrawAmt}"></td>
+        </tr>
+        <tr>
+            <td colspan="4" style="text-align: center">
+                <div th:text="${hintMsg}" style="color: red;">hint mesages</div>
+                <input type="submit" value="申请结转" name="submit" style="padding: 10px; font-size: 18px; font-weight: bolder;" onclick="this.enabled=false;"
+                       th:disabled="${settleAccount.balance < minWithdrawAmt}"
+                       th:title="${'the minimum withdraw amount is ' + minWithdrawAmt}"
+                /><br>
+                <span style="color: darkblue;">结转将扣除渠道收款手续费2.4% + 跨境汇款固定手续费15USD + 期间减生的拒付/退款等支出</span>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <hr/>
+    <h3 style="margin-top: 20px;" th:text="${'结转记录最近(' + withdrawHistory.size() + ')条'}">结转最近记录(共100条)..</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>流水号</th>
+            <th>日期</th>
+            <th>申请金额</th>
+            <th>结转费用</th>
+            <th>结转金额</th>
+            <th>收款账号</th>
+            <th>状态</th>
+        </tr>
+        <tr th:each="w,iterationStatus : ${withdrawHistory}">
+            <td th:text="${iterationStatus.count}">1</td>
+            <td th:text="${w.merchantWithdrawOrderId + ''}" th:title="${'withdraw order:' +  w.withdrawOrderId}">111111</td>
+            <td th:text="${#dates.format(w.gmtCreate, 'yyyy-MM-dd HH:mm:ss')}">2017-05-21 22:00:00</td>
+            <td th:text="${w.orderCcy + ' ' + w.orderAmt}">USD 1000.00</td>
+            <td th:text="${w.withdrawAmt != null ? (w.orderCcy + ' ' + w.orderAmt.subtract(w.withdrawAmt)) : 'NA'}">USD 43.00</td>
+            <td th:text="${w.withdrawAmt != null ? (w.withdrawCcy + ' ' + w.withdrawAmt) : 'NA'}">USD 957.00</td>
+            <td th:text="${w.panMask}">111****222</td>
+            <td th:text="${w.status}" th:title="${w.errorCode + ' - ' + w.errorMessage}">CREATED</td>
+        </tr>
+    </table>
+</div>
+
+</html>
